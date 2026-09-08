@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="theme-color"
+        content="#08090b"
+    >
+
+    <meta
+        name="description"
+        content="NOVA · Planes"
+    >
+
+    <title>NOVA · Planes</title>
+
+
+    <!-- =====================================================
+         SUPABASE
+         ===================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase-config.js"></script>
+
+
+    <!-- =====================================================
+         ESTILOS
+         ===================================================== -->
+
+    <style>
+
+        /* =====================================================
+           RESET
+           ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+            min-height: 100%;
+
+            background: #08090b;
+
+            color: #ffffff;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "SF Pro Display",
+                "SF Pro",
+                "Segoe UI",
+                Roboto,
+                Inter,
+                sans-serif;
+
+            -webkit-font-smoothing: antialiased;
+
+            text-rendering: optimizeLegibility;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+            min-height: 100dvh;
+
+            overflow-x: hidden;
+
+            padding-bottom:
+                calc(
+                    78px +
+                    env(safe-area-inset-bottom)
+                );
+        }
+
+
+        a {
+
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+
+        button {
+
+            font: inherit;
+
+            border: 0;
+        }
+
+
+        /* =====================================================
+           CONTENEDOR
+           ===================================================== */
+
+        .nova-page {
+
+            width: 100%;
+
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
+
+        .nova-container {
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding:
+                28px 22px 45px;
+        }
+
+
+        /* =====================================================
+           TOP
+           ===================================================== */
+
+        .nova-top {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .nova-brand {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+        }
+
+
+        .nova-brand-name {
+
+            font-size: 24px;
+
+            font-weight: 900;
+
+            line-height: .9;
+
+            letter-spacing: -.075em;
+        }
+
+
+        .nova-brand-label {
+
+            color:
+                rgba(255,255,255,.35);
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: .22em;
+        }
+
+
+        .nova-profile-button {
+
+            width: 40px;
+
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.045);
+
+            color:
+                rgba(255,255,255,.75);
+
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                border-color .2s ease,
+                transform .2s ease;
+        }
+
+
+        .nova-profile-button:hover {
+
+            background:
+                rgba(255,255,255,.09);
+
+            border-color:
+                rgba(255,255,255,.20);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .nova-profile-button svg {
+
+            width: 18px;
+
+            height: 18px;
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .nova-welcome {
+
+            padding:
+                72px 0 52px;
+        }
+
+
+        .nova-eyebrow {
+
+            display: block;
+
+            color:
+                rgba(255,255,255,.32);
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            letter-spacing: .20em;
+        }
+
+
+        .nova-welcome h1 {
+
+            margin-top: 13px;
+
+            max-width: 760px;
+
+            font-size:
+                clamp(
+                    46px,
+                    8vw,
+                    82px
+                );
+
+            font-weight: 800;
+
+            line-height: .90;
+
+            letter-spacing: -.075em;
+        }
+
+
+        .nova-welcome p {
+
+            max-width: 470px;
+
+            margin-top: 22px;
+
+            color:
+                rgba(255,255,255,.48);
+
+            font-size: 13px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =====================================================
+           PLAN ACTUAL
+           ===================================================== */
+
+        .nova-current-plan {
+
+            width: 100%;
+
+            padding: 25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.09);
+
+            border-radius: 24px;
+
+            background:
+                rgba(255,255,255,.025);
+        }
+
+
+        .nova-current-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+
+        .nova-label {
+
+            color:
+                rgba(255,255,255,.30);
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: .18em;
+        }
+
+
+        .nova-plan-status {
+
+            padding:
+                7px 10px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 999px;
+
+            color:
+                rgba(255,255,255,.45);
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: .10em;
+        }
+
+
+        .nova-current-plan h2 {
+
+            margin-top: 22px;
+
+            font-size: 34px;
+
+            line-height: .92;
+
+            letter-spacing: -.065em;
+        }
+
+
+        .nova-current-plan p {
+
+            margin-top: 12px;
+
+            max-width: 500px;
+
+            color:
+                rgba(255,255,255,.38);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           DATOS DE CUENTA
+           ===================================================== */
+
+        .nova-user-data {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-top: 10px;
+        }
+
+
+        .nova-data-card {
+
+            padding: 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            border-radius: 19px;
+
+            background:
+                rgba(255,255,255,.018);
+        }
+
+
+        .nova-data-label {
+
+            color:
+                rgba(255,255,255,.27);
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: .16em;
+        }
+
+
+        .nova-data-value {
+
+            margin-top: 12px;
+
+            color:
+                rgba(255,255,255,.82);
+
+            font-size: 13px;
+
+            line-height: 1.4;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================================
+           SECCIONES
+           ===================================================== */
+
+        .nova-section {
+
+            padding-top: 55px;
+        }
+
+
+        .nova-section-header {
+
+            margin-bottom: 18px;
+        }
+
+
+        .nova-section-header h2 {
+
+            margin-top: 9px;
+
+            font-size:
+                clamp(
+                    30px,
+                    5vw,
+                    45px
+                );
+
+            line-height: .92;
+
+            letter-spacing: -.065em;
+        }
+
+
+        .nova-section-header p {
+
+            max-width: 460px;
+
+            margin-top: 13px;
+
+            color:
+                rgba(255,255,255,.35);
+
+            font-size: 11px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =====================================================
+           PLANES
+           ===================================================== */
+
+        .nova-plans {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+        }
+
+
+        .nova-plan {
+
+            position: relative;
+
+            min-height: 235px;
+
+            padding: 22px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-radius: 22px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+
+        .nova-plan:hover {
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                rgba(255,255,255,.16);
+
+            background:
+                rgba(255,255,255,.035);
+        }
+
+
+        .nova-plan.featured {
+
+            border-color:
+                rgba(255,255,255,.18);
+
+            background:
+                rgba(255,255,255,.035);
+        }
+
+
+        .nova-plan-number {
+
+            color:
+                rgba(255,255,255,.25);
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: .16em;
+        }
+
+
+        .nova-plan h3 {
+
+            margin-top: 18px;
+
+            font-size: 27px;
+
+            line-height: .9;
+
+            letter-spacing: -.055em;
+        }
+
+
+        .nova-plan p {
+
+            margin-top: 11px;
+
+            color:
+                rgba(255,255,255,.35);
+
+            font-size: 10px;
+
+            line-height: 1.55;
+        }
+
+
+        .nova-plan-bottom {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+
+        .nova-plan-price {
+
+            font-size: 17px;
+
+            font-weight: 800;
+
+            letter-spacing: -.03em;
+        }
+
+
+        .nova-plan-period {
+
+            margin-top: 3px;
+
+            color:
+                rgba(255,255,255,.25);
+
+            font-size: 7px;
+
+            letter-spacing: .10em;
+        }
+
+
+        .nova-plan-button {
+
+            height: 38px;
+
+            padding:
+                0 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,.05);
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: .10em;
+
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                transform .2s ease;
+        }
+
+
+        .nova-plan-button:hover {
+
+            background:
+                rgba(255,255,255,.10);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =====================================================
+           MENSAJE
+           ===================================================== */
+
+        .nova-message {
+
+            margin-top: 15px;
+
+            padding: 18px 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.06);
+
+            border-radius: 18px;
+
+            color:
+                rgba(255,255,255,.30);
+
+            background:
+                rgba(255,255,255,.015);
+
+            font-size: 10px;
+
+            line-height: 1.6;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           NAVEGACIÓN INFERIOR
+           ===================================================== */
+
+        .nova-bottom-nav {
+
+            position: fixed;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: 0;
+
+            z-index: 5000;
+
+            width: 100%;
+
+            padding:
+                9px 12px
+                calc(
+                    9px +
+                    env(safe-area-inset-bottom)
+                );
+
+            background:
+                rgba(8,9,11,.92);
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.07);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+        }
+
+
+        .nova-bottom-nav-inner {
+
+            width: 100%;
+
+            max-width: 700px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 4px;
+        }
+
+
+        .nova-nav-item {
+
+            min-height: 48px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            border-radius: 13px;
+
+            color:
+                rgba(255,255,255,.30);
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            letter-spacing: .08em;
+
+            transition:
+                background .2s ease,
+                color .2s ease;
+        }
+
+
+        .nova-nav-item svg {
+
+            width: 17px;
+
+            height: 17px;
+        }
+
+
+        .nova-nav-item.active {
+
+            color:
+                #ffffff;
+
+            background:
+                rgba(255,255,255,.07);
+        }
+
+
+        .nova-nav-item:hover {
+
+            color:
+                rgba(255,255,255,.80);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .nova-plans {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .nova-plan {
+
+                min-height: 200px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .nova-container {
+
+                padding:
+                    24px 18px 35px;
+            }
+
+
+            .nova-welcome {
+
+                padding:
+                    58px 0 38px;
+            }
+
+
+            .nova-user-data {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+
+        @media (max-width: 430px) {
+
+            .nova-container {
+
+                padding-left: 16px;
+
+                padding-right: 16px;
+            }
+
+
+            .nova-welcome h1 {
+
+                font-size: 48px;
+            }
+
+
+            .nova-current-plan {
+
+                padding: 21px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     PRINCIPAL
+     ========================================================= -->
+
+<main
+    class="nova-page"
+    id="planesPage"
+>
+
+
+    <div class="nova-container">
+
+
+        <!-- =================================================
+             TOP
+             ================================================= -->
+
+        <header class="nova-top">
+
+
+            <div class="nova-brand">
+
+                <span class="nova-brand-name">
+                    NOVA
+                </span>
+
+                <span class="nova-brand-label">
+                    TRAINING
+                </span>
+
+            </div>
+
+
+            <a
+                href="perfil.html"
+                class="nova-profile-button"
+                aria-label="Perfil"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <circle
+                        cx="12"
+                        cy="8"
+                        r="3.5"
+                    />
+
+                    <path
+                        d="M4.5 20c.8-3.4 3.2-5.3 7.5-5.3s6.7 1.9 7.5 5.3"
+                    />
+
+                </svg>
+
+            </a>
+
+        </header>
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="nova-welcome">
+
+
+            <span class="nova-eyebrow">
+                NOVA · PLANES
+            </span>
+
+
+            <h1>
+                Tu plan.<br>
+                Tu camino.
+            </h1>
+
+
+            <p>
+                Consulta el plan que tienes activo y descubre
+                las opciones disponibles para continuar
+                evolucionando dentro de NOVA.
+            </p>
+
+
+        </section>
+
+
+        <!-- =================================================
+             PLAN ACTUAL
+             ================================================= -->
+
+        <section class="nova-current-plan">
+
+
+            <div class="nova-current-top">
+
+                <span class="nova-label">
+                    PLAN ACTUAL
+                </span>
+
+
+                <span
+                    class="nova-plan-status"
+                    id="planStatus"
+                >
+                    SIN PLAN
+                </span>
+
+            </div>
+
+
+            <h2 id="currentPlan">
+                Sin plan activo
+            </h2>
+
+
+            <p id="currentPlanDescription">
+                Actualmente no tienes un plan de entrenamiento
+                asignado. Cuando tengas uno disponible,
+                aparecerá aquí.
+            </p>
+
+
+        </section>
+
+
+        <!-- =================================================
+             CUENTA
+             ================================================= -->
+
+        <section class="nova-section">
+
+
+            <span class="nova-eyebrow">
+                TU CUENTA
+            </span>
+
+
+            <div class="nova-user-data">
+
+
+                <div class="nova-data-card">
+
+                    <span class="nova-data-label">
+                        NOMBRE
+                    </span>
+
+
+                    <div
+                        class="nova-data-value"
+                        id="userName"
+                    >
+                        Cargando...
+                    </div>
+
+                </div>
+
+
+                <div class="nova-data-card">
+
+                    <span class="nova-data-label">
+                        CORREO
+                    </span>
+
+
+                    <div
+                        class="nova-data-value"
+                        id="userEmail"
+                    >
+                        Cargando...
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             OPCIONES
+             ================================================= -->
+
+        <section class="nova-section">
+
+
+            <div class="nova-section-header">
+
+
+                <span class="nova-eyebrow">
+                    NOVA · OPCIONES
+                </span>
+
+
+                <h2>
+                    Elige cómo<br>
+                    continuar.
+                </h2>
+
+
+                <p>
+                    Estas son las opciones que posteriormente
+                    estarán conectadas al sistema de contratación
+                    y planes de NOVA.
+                </p>
+
+
+            </div>
+
+
+            <div class="nova-plans">
+
+
+                <!-- =========================================
+                     PLAN 01
+                     ========================================= -->
+
+                <article class="nova-plan">
+
+
+                    <div>
+
+                        <span class="nova-plan-number">
+                            NOVA · 01
+                        </span>
+
+
+                        <h3>
+                            INICIACIÓN
+                        </h3>
+
+
+                        <p>
+                            Una opción pensada para comenzar
+                            a entrenar con estructura y dirección.
+                        </p>
+
+                    </div>
+
+
+                    <div class="nova-plan-bottom">
+
+
+                        <div>
+
+                            <div class="nova-plan-price">
+                                $1,200 MXN
+                            </div>
+
+
+                            <div class="nova-plan-period">
+                                POR MES
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="nova-plan-button"
+                            type="button"
+                            data-plan="INICIACIÓN"
+                        >
+                            PRÓXIMAMENTE
+                        </button>
+
+
+                    </div>
+
+
+                </article>
+
+
+                <!-- =========================================
+                     PLAN 02
+                     ========================================= -->
+
+                <article
+                    class="nova-plan featured"
+                >
+
+
+                    <div>
+
+                        <span class="nova-plan-number">
+                            NOVA · 02
+                        </span>
+
+
+                        <h3>
+                            DESARROLLO
+                        </h3>
+
+
+                        <p>
+                            Entrenamiento estructurado para
+                            continuar progresando y evolucionando.
+                        </p>
+
+                    </div>
+
+
+                    <div class="nova-plan-bottom">
+
+
+                        <div>
+
+                            <div class="nova-plan-price">
+                                $1,400 MXN
+                            </div>
+
+
+                            <div class="nova-plan-period">
+                                POR MES
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="nova-plan-button"
+                            type="button"
+                            data-plan="DESARROLLO"
+                        >
+                            PRÓXIMAMENTE
+                        </button>
+
+
+                    </div>
+
+
+                </article>
+
+
+                <!-- =========================================
+                     PLAN 03
+                     ========================================= -->
+
+                <article class="nova-plan">
+
+
+                    <div>
+
+                        <span class="nova-plan-number">
+                            NOVA · 03
+                        </span>
+
+
+                        <h3>
+                            PERSONALIZADO
+                        </h3>
+
+
+                        <p>
+                            Una experiencia más específica
+                            adaptada a tus objetivos y necesidades.
+                        </p>
+
+                    </div>
+
+
+                    <div class="nova-plan-bottom">
+
+
+                        <div>
+
+                            <div class="nova-plan-price">
+                                PERSONALIZADO
+                            </div>
+
+
+                            <div class="nova-plan-period">
+                                CONSULTA
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="nova-plan-button"
+                            type="button"
+                            data-plan="PERSONALIZADO"
+                        >
+                            PRÓXIMAMENTE
+                        </button>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </div>
+
+
+            <div class="nova-message">
+
+                El sistema de contratación y asignación
+                de planes se conectará posteriormente
+                con NOVA.
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     NAVEGACIÓN INFERIOR
+     ========================================================= -->
+
+<nav
+    class="nova-bottom-nav"
+    aria-label="Navegación principal"
+>
+
+
+    <div class="nova-bottom-nav-inner">
+
+
+        <!-- =================================================
+             INICIO
+             ================================================= -->
+
+        <a
+            href="principal.html"
+            class="nova-nav-item"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+
+                <path
+                    d="m4 10 8-6 8 6"
+                />
+
+                <path
+                    d="M6 9.5V20h12V9.5"
+                />
+
+            </svg>
+
+
+            <span>
+                INICIO
+            </span>
+
+        </a>
+
+
+        <!-- =================================================
+             ENTRENAMIENTOS
+             ================================================= -->
+
+        <a
+            href="training.html"
+            class="nova-nav-item"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+
+                <path
+                    d="M5 4h14"
+                />
+
+                <path
+                    d="M5 12h14"
+                />
+
+                <path
+                    d="M5 20h14"
+                />
+
+            </svg>
+
+
+            <span>
+                ENTRENAMIENTOS
+            </span>
+
+        </a>
+
+
+        <!-- =================================================
+             ACTIVIDAD
+             ================================================= -->
+
+        <a
+            href="actividad.html"
+            class="nova-nav-item"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+
+                <path
+                    d="M4 19V9"
+                />
+
+                <path
+                    d="M10 19V5"
+                />
+
+                <path
+                    d="M16 19v-7"
+                />
+
+                <path
+                    d="M22 19V3"
+                />
+
+            </svg>
+
+
+            <span>
+                ACTIVIDAD
+            </span>
+
+        </a>
+
+
+        <!-- =================================================
+             PLANES
+             ================================================= -->
+
+        <a
+            href="planes.html"
+            class="nova-nav-item active"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+
+                <rect
+                    x="4"
+                    y="4"
+                    width="16"
+                    height="16"
+                    rx="2"
+                />
+
+                <path
+                    d="M8 8h8"
+                />
+
+                <path
+                    d="M8 12h8"
+                />
+
+                <path
+                    d="M8 16h5"
+                />
+
+            </svg>
+
+
+            <span>
+                PLANES
+            </span>
+
+        </a>
+
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function () {
+
+
+        /* =====================================================
+           COMPROBAR SUPABASE
+           ===================================================== */
+
+        if (
+            !window.supabase
+        ) {
+
+            console.error(
+                "NOVA · Supabase JS no se pudo cargar."
+            );
+
+            return;
+        }
+
+
+        if (
+            typeof SUPABASE_URL === "undefined" ||
+            typeof SUPABASE_PUBLISHABLE_KEY === "undefined"
+        ) {
+
+            console.error(
+                "NOVA · No se encontró supabase-config.js."
+            );
+
+            return;
+        }
+
+
+        if (
+            !SUPABASE_URL ||
+            !SUPABASE_PUBLISHABLE_KEY
+        ) {
+
+            console.error(
+                "NOVA · Falta configuración de Supabase."
+            );
+
+            return;
+        }
+
+
+        /* =====================================================
+           CREAR CLIENTE
+           ===================================================== */
+
+        let supabaseClient;
+
+
+        try {
+
+            supabaseClient =
+                window.supabase.createClient(
+                    SUPABASE_URL,
+                    SUPABASE_PUBLISHABLE_KEY,
+                    {
+                        auth: {
+
+                            persistSession: true,
+
+                            autoRefreshToken: true,
+
+                            detectSessionInUrl: true
+
+                        }
+                    }
+                );
+
+        } catch (error) {
+
+            console.error(
+                "NOVA · Error creando Supabase:",
+                error
+            );
+
+            return;
+        }
+
+
+        /* =====================================================
+           ELEMENTOS
+           ===================================================== */
+
+        const userName =
+            document.getElementById(
+                "userName"
+            );
+
+
+        const userEmail =
+            document.getElementById(
+                "userEmail"
+            );
+
+
+        const currentPlan =
+            document.getElementById(
+                "currentPlan"
+            );
+
+
+        const planStatus =
+            document.getElementById(
+                "planStatus"
+            );
+
+
+        const currentPlanDescription =
+            document.getElementById(
+                "currentPlanDescription"
+            );
+
+
+        /* =====================================================
+           SESIÓN
+           ===================================================== */
+
+        let session;
+
+
+        try {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .auth
+                    .getSession();
+
+
+            if (error) {
+
+                console.error(
+                    "NOVA · Error obteniendo sesión:",
+                    error
+                );
+
+                window.location.href =
+                    "NOVA.html";
+
+                return;
+            }
+
+
+            if (
+                !data ||
+                !data.session
+            ) {
+
+                window.location.href =
+                    "NOVA.html";
+
+                return;
+            }
+
+
+            session =
+                data.session;
+
+
+        } catch (error) {
+
+            console.error(
+                "NOVA · Error verificando sesión:",
+                error
+            );
+
+            window.location.href =
+                "NOVA.html";
+
+            return;
+        }
+
+
+        /* =====================================================
+           USUARIO AUTH
+           ===================================================== */
+
+        const user =
+            session.user;
+
+
+        if (userEmail) {
+
+            userEmail.textContent =
+                user.email ||
+                "Sin correo";
+
+        }
+
+
+        /* =====================================================
+           NOMBRE INICIAL
+           ===================================================== */
+
+        let fallbackName =
+            user.user_metadata?.name ||
+            user.user_metadata?.full_name ||
+            user.user_metadata?.nombre ||
+            "Usuario NOVA";
+
+
+        if (userName) {
+
+            userName.textContent =
+                fallbackName;
+
+        }
+
+
+        /* =====================================================
+           CARGAR PROFILE
+           ===================================================== */
+
+        try {
+
+            const {
+                data: profile,
+                error: profileError
+            } =
+                await supabaseClient
+                    .from("profiles")
+                    .select("*")
+                    .eq("id", user.id)
+                    .maybeSingle();
+
+
+            if (profileError) {
+
+                console.error(
+                    "NOVA · Error leyendo profiles:",
+                    profileError
+                );
+
+            }
+
+
+            /* =================================================
+               PROFILE EXISTENTE
+               ================================================= */
+
+            if (profile) {
+
+
+                /* =============================================
+                   NOMBRE
+                   ============================================= */
+
+                const profileName =
+                    profile.name ||
+                    profile.full_name ||
+                    profile.nombre ||
+                    profile.first_name ||
+                    fallbackName;
+
+
+                if (userName) {
+
+                    userName.textContent =
+                        profileName;
+
+                }
+
+
+                /* =============================================
+                   PLAN
+                   
+                   No necesitamos otra tabla.
+                   Si en profiles existe alguno de estos
+                   campos, NOVA lo utilizará.
+                   ============================================= */
+
+                const possiblePlanFields = [
+
+                    "plan",
+                    "plan_name",
+                    "plan_type",
+                    "current_plan",
+                    "membership",
+                    "subscription"
+
+                ];
+
+
+                let detectedPlan =
+                    null;
+
+
+                for (
+                    const field
+                    of possiblePlanFields
+                ) {
+
+                    if (
+                        Object.prototype.hasOwnProperty.call(
+                            profile,
+                            field
+                        ) &&
+                        profile[field] !== null &&
+                        profile[field] !== ""
+                    ) {
+
+                        detectedPlan =
+                            profile[field];
+
+                        break;
+                    }
+
+                }
+
+
+                /* =============================================
+                   PLAN ENCONTRADO
+                   ============================================= */
+
+                if (detectedPlan) {
+
+
+                    if (currentPlan) {
+
+                        currentPlan.textContent =
+                            String(
+                                detectedPlan
+                            ).toUpperCase();
+
+                    }
+
+
+                    if (planStatus) {
+
+                        planStatus.textContent =
+                            "ACTIVO";
+
+                    }
+
+
+                    if (currentPlanDescription) {
+
+                        currentPlanDescription.textContent =
+                            "Este es el plan asociado actualmente a tu cuenta NOVA.";
+
+                    }
+
+
+                }
+
+
+                /* =============================================
+                   SIN PLAN
+                   ============================================= */
+
+                else {
+
+
+                    if (currentPlan) {
+
+                        currentPlan.textContent =
+                            "Sin plan activo";
+
+                    }
+
+
+                    if (planStatus) {
+
+                        planStatus.textContent =
+                            "SIN PLAN";
+
+                    }
+
+
+                    if (currentPlanDescription) {
+
+                        currentPlanDescription.textContent =
+                            "Actualmente no tienes un plan de entrenamiento asignado.";
+
+                    }
+
+                }
+
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "NOVA · Error procesando profile:",
+                error
+            );
+
+        }
+
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
+
+        const planButtons =
+            document.querySelectorAll(
+                ".nova-plan-button"
+            );
+
+
+        planButtons.forEach(
+            function (button) {
+
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        const selectedPlan =
+                            button.dataset.plan ||
+                            "PLAN";
+
+
+                        alert(
+                            "NOVA\n\n" +
+                            selectedPlan +
+                            "\n\nDisponible próximamente."
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CAMBIO DE SESIÓN
+           ===================================================== */
+
+        supabaseClient
+            .auth
+            .onAuthStateChange(
+                function (
+                    event,
+                    currentSession
+                ) {
+
+
+                    console.log(
+                        "NOVA · Auth:",
+                        event
+                    );
+
+
+                    if (
+                        !currentSession
+                    ) {
+
+                        window.location.href =
+                            "NOVA.html";
+
+                    }
+
+                }
+            );
+
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2186 @@
+<!DOCTYPE html> 
+<html lang="es"> 
+ 
+<head> 
+ 
+    <meta charset="UTF-8"> 
+ 
+    <meta 
+        name="viewport" 
+        content="width=device-width, initial-scale=1.0" 
+    > 
+ 
+    <title>NOVA · Entrenamiento</title> 
+ 
+    <link 
+        rel="stylesheet" 
+        href="css/training.css" 
+    > 
+ 
+    <!-- ===================================================== 
+         AJUSTE DEL MENÚ 
+         ===================================================== --> 
+ 
+    <style> 
+ 
+        .nova-menu { 
+ 
+            background: #ffffff !important; 
+ 
+            backdrop-filter: none !important; 
+            -webkit-backdrop-filter: none !important; 
+ 
+        } 
+ 
+ 
+        .nova-menu-link[href="atleta.html"] { 
+ 
+            background: #000000 !important; 
+ 
+            color: #ffffff !important; 
+ 
+            backdrop-filter: none !important; 
+            -webkit-backdrop-filter: none !important; 
+ 
+        } 
+ 
+ 
+        .nova-menu-link[href="atleta.html"] span { 
+ 
+            color: #ffffff !important; 
+ 
+        } 
+ 
+ 
+        .nova-menu-link[href="atleta.html"] 
+        .nova-menu-number, 
+ 
+        .nova-menu-link[href="atleta.html"] 
+        .nova-menu-arrow { 
+ 
+            color: #ffffff !important; 
+ 
+        } 
+ 
+ 
+        .nova-menu-link { 
+ 
+            backdrop-filter: none !important; 
+            -webkit-backdrop-filter: none !important; 
+ 
+        } 
+ 
+ 
+        .nova-menu-header, 
+        .nova-menu-footer { 
+ 
+            backdrop-filter: none !important; 
+            -webkit-backdrop-filter: none !important; 
+ 
+        } 
+ 
+ 
+        .site-footer { 
+ 
+            background: #ffffff !important; 
+            color: #000000 !important; 
+ 
+        } 
+ 
+ 
+        .site-footer * { 
+ 
+            color: #000000 !important; 
+ 
+        } 
+ 
+    </style> 
+ 
+</head> 
+ 
+ 
+<body> 
+ 
+ 
+<!-- ========================================================= 
+     HEADER 
+     ========================================================= --> 
+ 
+<header class="site-header"> 
+ 
+    <div class="header-inner"> 
+ 
+        <a 
+            href="" 
+            class="brand" 
+        > 
+            NOVA 
+        </a> 
+ 
+ 
+        <nav class="main-nav"> 
+ 
+            <a 
+                href="index.html" 
+                class="nav-link" 
+            > 
+                INICIO 
+            </a> 
+ 
+ 
+            <a 
+                href="#natacion" 
+                class="nav-link" 
+            > 
+                NATACIÓN 
+            </a> 
+ 
+ 
+            <a 
+                href="#hit" 
+                class="nav-link" 
+            > 
+                HIT 
+            </a> 
+ 
+ 
+            <a 
+                href="#fuerza" 
+                class="nav-link" 
+            > 
+                FUERZA 
+            </a> 
+ 
+ 
+            <a 
+                href="compras.html#membresias" 
+                class="nav-link" 
+            > 
+                PROGRAMAS 
+            </a> 
+ 
+ 
+        </nav> 
+ 
+    </div> 
+ 
+</header> 
+ 
+ 
+ 
+<!-- ========================================================= 
+     HAMBURGUESA 
+     ========================================================= --> 
+ 
+<div class="nova-mobile-menu"> 
+ 
+    <button 
+        class="nova-menu-toggle" 
+        type="button" 
+        aria-label="Abrir menú" 
+        aria-expanded="false" 
+        aria-controls="nova-menu" 
+    > 
+ 
+        <span></span> 
+        <span></span> 
+        <span></span> 
+ 
+    </button> 
+ 
+</div> 
+ 
+ 
+ 
+<!-- ========================================================= 
+     MENÚ MÓVIL 
+     ========================================================= --> 
+ 
+<div 
+    class="nova-menu-overlay" 
+    id="nova-menu-overlay" 
+    aria-hidden="true" 
+></div> 
+ 
+ 
+<nav 
+    class="nova-menu" 
+    id="nova-menu" 
+    aria-label="Menú principal" 
+    aria-hidden="true" 
+> 
+ 
+ 
+    <div class="nova-menu-header"> 
+ 
+        <span class="nova-menu-title"> 
+            NOVA 
+        </span> 
+ 
+ 
+        <button 
+            type="button" 
+            class="nova-menu-close" 
+            aria-label="Cerrar menú" 
+        > 
+            × 
+        </button> 
+ 
+    </div> 
+ 
+ 
+    <div class="nova-menu-links"> 
+ 
+ 
+        <a 
+            href="index.html" 
+            class="nova-menu-link" 
+        > 
+ 
+            <span class="nova-menu-number"> 
+                01 
+            </span> 
+ 
+            <span> 
+                INICIO 
+            </span> 
+ 
+            <span class="nova-menu-arrow"> 
+                → 
+            </span> 
+ 
+        </a> 
+ 
+ 
+ 
+        <a 
+            href="#natacion" 
+            class="nova-menu-link" 
+        > 
+ 
+            <span class="nova-menu-number"> 
+                02 
+            </span> 
+ 
+            <span> 
+                ◇ NATACIÓN 
+            </span> 
+ 
+            <span class="nova-menu-arrow"> 
+                → 
+            </span> 
+ 
+        </a> 
+ 
+ 
+ 
+        <a 
+            href="#hit" 
+            class="nova-menu-link" 
+        > 
+ 
+            <span class="nova-menu-number"> 
+                03 
+            </span> 
+ 
+            <span> 
+                ◇ HIT 
+            </span> 
+ 
+            <span class="nova-menu-arrow"> 
+                → 
+            </span> 
+ 
+        </a> 
+ 
+ 
+ 
+        <a 
+            href="#fuerza" 
+            class="nova-menu-link" 
+        > 
+ 
+            <span class="nova-menu-number"> 
+                04 
+            </span> 
+ 
+            <span> 
+                ◇ FUERZA 
+            </span> 
+ 
+            <span class="nova-menu-arrow"> 
+                → 
+            </span> 
+ 
+        </a> 
+ 
+ 
+ 
+        <a 
+            href="compras.html#membresias" 
+            class="nova-menu-link"
+            data-menu-action="membresias"
+             
+        > 
+ 
+            <span class="nova-menu-number"> 
+                05 
+            </span> 
+ 
+            <span> 
+                PROGRAMA 
+            </span> 
+ 
+            <span class="nova-menu-arrow"> 
+                → 
+            </span> 
+ 
+        </a> 
+ 
+ 
+    </div> 
+ 
+ 
+    <div class="nova-menu-footer"> 
+ 
+        <span> 
+            NOVA · ENTRENAMIENTO 
+        </span> 
+ 
+    </div> 
+ 
+</nav> 
+ 
+ 
+ 
+<!-- ========================================================= 
+     CONTENIDO 
+     ========================================================= --> 
+ 
+<main> 
+ 
+ 
+    <section 
+        class="training-library" 
+        id="entrenamientos" 
+    > 
+ 
+        <div class="page-container"> 
+ 
+ 
+            <div class="section-heading"> 
+ 
+                <div> 
+ 
+                    <span class="eyebrow"> 
+                        NOVA · ENTRENAMIENTO 
+                    </span> 
+ 
+                    <h2> 
+                        ENTRENAMIENTOS 
+                    </h2> 
+ 
+                </div> 
+ 
+ 
+                <p> 
+                    Explora las diferentes disciplinas 
+                    y encuentra una rutina para comenza tu camino. 
+                    
+                </p> 
+ 
+            </div> 
+ 
+ 
+ 
+            <!-- ================================================= 
+                 NATACIÓN 
+                 ================================================= --> 
+ 
+            <section 
+                class="discipline-section" 
+                id="natacion" 
+            > 
+ 
+                <div class="discipline-header"> 
+ 
+                    <span class="discipline-number"> 
+                        01 
+                    </span> 
+ 
+                    <div> 
+ 
+                        <span class="discipline-label"> 
+                            AGUA 
+                        </span> 
+ 
+                        <h3> 
+                            NATACIÓN 
+                        </h3> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+ 
+                <div 
+                    class="routine-grid" 
+                    id="swimmingRoutines" 
+                ></div> 
+ 
+            </section> 
+ 
+ 
+ 
+            <!-- ================================================= 
+                 HIT 
+                 ================================================= --> 
+ 
+            <section 
+                class="discipline-section" 
+                id="hit" 
+            > 
+ 
+                <div class="discipline-header"> 
+ 
+                    <span class="discipline-number"> 
+                        02 
+                    </span> 
+ 
+                    <div> 
+ 
+                        <span class="discipline-label"> 
+                            CONDICIÓN 
+                        </span> 
+ 
+                        <h3> 
+                            HIT 
+                        </h3> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+ 
+                <div 
+                    class="routine-grid" 
+                    id="hitRoutines" 
+                ></div> 
+ 
+            </section> 
+ 
+ 
+ 
+            <!-- ================================================= 
+                 FUERZA 
+                 ================================================= --> 
+ 
+            <section 
+                class="discipline-section" 
+                id="fuerza" 
+            > 
+ 
+                <div class="discipline-header"> 
+ 
+                    <span class="discipline-number"> 
+                        03 
+                    </span> 
+ 
+                    <div> 
+ 
+                        <span class="discipline-label"> 
+                            RENDIMIENTO 
+                        </span> 
+ 
+                        <h3> 
+                            FUERZA 
+                        </h3> 
+ 
+                    </div> 
+ 
+                </div> 
+ 
+ 
+                <div 
+                    class="routine-grid" 
+                    id="strengthRoutines" 
+                ></div> 
+ 
+            </section> 
+ 
+ 
+        </div> 
+ 
+    </section> 
+ 
+ 
+ 
+    <section class="programs-section"> 
+ 
+        <div class="page-container"> 
+ 
+            <div class="programs-inner"> 
+ 
+                <div> 
+ 
+                    <span class="eyebrow"> 
+                        PROGRAMAS 
+                    </span> 
+ 
+                    <h2> 
+                        ¿Quieres algo<br> 
+                        más personalizado? 
+                    </h2> 
+ 
+                </div> 
+ 
+ 
+                <div class="programs-content"> 
+ 
+                    <p> 
+                        Si buscas una estructura adaptada 
+                        a tus objetivos, nivel y ritmo de 
+                        entrenamiento, conoce los programas 
+                        NOVA. 
+                    </p> 
+ 
+ 
+                    <a 
+                        href="compras.html" 
+                        class="programs-button" 
+                    > 
+                        PROGRAMAS 
+                        <span>→</span> 
+                    </a> 
+ 
+                </div> 
+ 
+            </div> 
+ 
+        </div> 
+ 
+    </section> 
+ 
+ 
+</main> 
+ 
+ 
+ 
+<footer class="athlete-footer"> 
+ 
+    <div class="footer-inner"> 
+ 
+        <span> 
+            NOVA 
+        </span> 
+ 
+ 
+        <span> 
+            TRAINING 
+        </span> 
+ 
+ 
+        <span> 
+            © 2026 NOVA · Todos los derechos reservados 
+        </span> 
+ 
+    </div> 
+ 
+</footer> 
+ 
+ 
+ 
+<script> 
+ 
+ 
+/* ========================================================= 
+   NOVA · RUTINAS 
+   ========================================================= */ 
+ 
+const NOVA_RUTINAS = { 
+ 
+ 
+    /* ===================================================== 
+       NATACIÓN 
+       ===================================================== */ 
+ 
+    NATACION: [ 
+ 
+        { 
+            id: "natacion-01", 
+            number: "01", 
+            title: "Técnica de Crol + resistencia aeróbica", 
+            description: "Trabajo técnico de crol combinado con resistencia aeróbica, control de brazada y eficiencia dentro del agua.", 
+            meta: "2,200 M · GENERAL", 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "300 m libre continuo.", 
+                        "4 × 50 m — 25 crol + 25 dorso. Descanso: 10 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TÉCNICA", 
+                    content: [ 
+                        "4 × 50 m catch-up. Descanso: 15 s.", 
+                        "4 × 50 m puño cerrado (fist drill). Descanso: 15 s.", 
+                        "4 × 50 m — 25 fuerte + 25 suave crol. Descanso: 15 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "SERIE PRINCIPAL", 
+                    content: [ 
+                        "5 × 100 m libre a ritmo aeróbico, enfatizando una brazada larga. Descanso: 15 s.", 
+                        "4 × 100 m libre con paletas y pull buoy. Descanso: 20 s.", 
+                        "Sin material disponible: realizar libre normal." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "AFLOJE", 
+                    content: [ 
+                        "200 m libre y dorso suave." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+        { 
+            id: "natacion-02", 
+            number: "02", 
+            title: "Técnica de Espalda + Pecho", 
+            description: "Sesión centrada en espalda y pecho, trabajando técnica, coordinación, posición corporal y ritmo aeróbico.", 
+            meta: "2,400 M · GENERAL", 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "300 m libre continuo.", 
+                        "4 × 50 m — 25 espalda + 25 pecho. Descanso: 10 s.", 
+                        "2 × 50 m patada de espalda con tabla. Descanso: 15 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TÉCNICA", 
+                    content: [ 
+                        "4 × 50 m espalda — un brazo alternado. Descanso: 15 s.", 
+                        "4 × 50 m pecho — 2 patadas + 1 brazada. Descanso: 15 s.", 
+                        "6 × 25 m espalda, enfatizando la rotación del cuerpo. Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "SERIE PRINCIPAL", 
+                    content: [ 
+                        "6 × 100 m — 50 espalda + 50 pecho a ritmo aeróbico. Descanso: 20 s.", 
+                        "6 × 50 m con pull buoy.", 
+                        "Impares: espalda.", 
+                        "Pares: pecho con énfasis en el agarre y sin hiperextensión de espalda baja.", 
+                        "Descanso: 15 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "AFLOJE", 
+                    content: [ 
+                        "200 m libre suave." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+        { 
+            id: "natacion-03", 
+            number: "03", 
+            title: "Técnica de mariposa + coordinación de estilos", 
+            description: "Trabajo de coordinación de mariposa y combinación de estilos, con énfasis en control técnico y velocidad.", 
+            meta: "2,300 M · GENERAL", 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "300 m libre continuo.", 
+                        "4 × 50 m — 25 dorso + 25 libre. Descanso: 10 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TÉCNICA", 
+                    content: [ 
+                        "4 × 50 m patada de delfín lateral — 25 lado derecho + 25 lado izquierdo. Descanso: 15 s.", 
+                        "4 × 50 m mariposa — brazo derecho/izquierdo alternado. Descanso: 15 s.", 
+                        "6 × 25 m mariposa completa, priorizando la coordinación. Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "SERIE PRINCIPAL", 
+                    content: [ 
+                        "4 × 100 m combinado individual — 25 de cada estilo. Descanso: 20 s.", 
+                        "6 × 50 m libre con aletas, aumentando la frecuencia de brazada en los últimos 15 m. Descanso: 15 s.", 
+                        "Sin aletas: realizar el ejercicio sin material." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VELOCIDAD", 
+                    content: [ 
+                        "8 × 25 m sprint. Descanso: 30 s.", 
+                        "Impares: mariposa.", 
+                        "Pares: libre." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "AFLOJE", 
+                    content: [ 
+                        "200 m libre y dorso suave." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+        { 
+            id: "natacion-04", 
+            number: "04", 
+            title: "Velocidad pura, salidas y virajes", 
+            description: "Sesión orientada a velocidad, ritmo de competencia, salidas, virajes y calidad de la salida subacuática.", 
+            meta: "2,500 M · GENERAL", 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "300 m libre continuo.", 
+                        "4 × 50 m — 25 libre + 25 dorso. Descanso: 10 s.", 
+                        "2 × 50 m patada de crol con tabla. Descanso: 15 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TÉCNICA", 
+                    content: [ 
+                        "6 × 50 m libre, trabajando la entrada de la mano y el agarre. Descanso: 15 s.", 
+                        "4 × 25 m saliendo desde la pared, enfocándose en el impulso y el deslizamiento. Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "SERIE PRINCIPAL", 
+                    content: [ 
+                        "8 × 50 m libre a ritmo de competencia. Descanso: 30 s.", 
+                        "5 × 100 m libre.", 
+                        "Primeros 50 m a ritmo controlado.", 
+                        "Segundos 50 m fuertes.", 
+                        "Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VELOCIDAD", 
+                    content: [ 
+                        "12 × 25 m sprint desde la pared, cuidando un viraje rápido y una buena salida subacuática. Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "AFLOJE", 
+                    content: [ 
+                        "200 m libre suave." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+        { 
+            id: "natacion-05", 
+            number: "05", 
+            title: "Integración técnica + velocidad", 
+            description: "Sesión integral para combinar técnica, diferentes estilos, control de ritmo y velocidad.", 
+            meta: "2,500 M · GENERAL", 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "300 m libre continuo.", 
+                        "4 × 50 m — 25 crol + 25 dorso. Descanso: 10 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TÉCNICA", 
+                    content: [ 
+                        "2 × 50 m crol — catch-up. Descanso: 15 s.", 
+                        "2 × 50 m espalda — un brazo alternado. Descanso: 15 s.", 
+                        "2 × 50 m pecho — 2 patadas + 1 brazada. Descanso: 15 s.", 
+                        "4 × 25 m saliendo desde la pared, trabajando impulso, flecha y deslizamiento. Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "SERIE PRINCIPAL", 
+                    content: [ 
+                        "2 × 100 m crol a ritmo aeróbico. Descanso: 15 s.", 
+                        "2 × 100 m dorso a ritmo aeróbico. Descanso: 15 s.", 
+                        "2 × 100 m pecho a ritmo aeróbico. Descanso: 20 s.", 
+                        "4 × 100 m libre — 50 m ritmo controlado + 50 m fuerte. Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VELOCIDAD", 
+                    content: [ 
+                        "12 × 25 m sprint. Descanso: 30 s.", 
+                        "4 crol.", 
+                        "4 dorso.", 
+                        "4 pecho." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "200 m libre y dorso suave." 
+                    ] 
+                } 
+ 
+            ] 
+        } 
+ 
+    ], 
+ 
+ 
+ 
+    /* ===================================================== 
+       HIT 
+       ===================================================== */ 
+ 
+    HIT: [ 
+ 
+        { 
+            id: "hit-01", 
+            number: "01", 
+            title: "Resistencia de piernas + ritmo", 
+            description: "Sesión enfocada en resistencia de piernas, ritmo de trabajo y capacidad para sostener esfuerzos.", 
+            meta: "35–40 MIN · GENERAL", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "2 min marcha activa en el lugar. Mantén el tronco erguido y mueve los brazos de forma natural.", 
+                        "2 × 30 s movilidad de cadera. Realiza círculos amplios y controlados sin mover excesivamente el tronco.", 
+                        "2 × 30 s movilidad de tobillos. Eleva ligeramente el talón y mueve el tobillo de forma controlada.", 
+                        "2 × 30 s elevación alternada de rodillas. Eleva una rodilla a la altura cómoda de la cadera y alterna." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "ACTIVACIÓN", 
+                    content: [ 
+                        "3 × 30 s sentadilla controlada. Pies al ancho de hombros, lleva la cadera hacia atrás y abajo, mantén el pecho arriba y vuelve a subir.", 
+                        "3 × 30 s paso lateral + toque de piso. Da un paso amplio hacia un lado, flexiona la pierna y toca el piso cerca del pie; regresa y cambia de lado.", 
+                        "3 × 30 s elevación de talones. De pie, eleva los talones lentamente y baja con control.", 
+                        "Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TRABAJO PRINCIPAL", 
+                    content: [ 
+                        "4 × 3 min de circuito:", 
+                        "40 s sentadilla. Baja la cadera hacia atrás y abajo, mantén las rodillas alineadas con los pies y sube con control.", 
+                        "40 s pasos laterales. Desplázate de lado con pasos rápidos y cortos, manteniendo las rodillas ligeramente flexionadas.", 
+                        "40 s elevación alternada de rodillas. Eleva una rodilla y después la otra, manteniendo el abdomen activo.", 
+                        "40 s desplantes alternados. Da un paso al frente o atrás, baja controladamente y empuja con la pierna para volver.", 
+                        "20 s recuperación.", 
+                        "Descanso: 1 min entre bloques." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "HIT", 
+                    content: [ 
+                        "8 × 30 s:", 
+                        "15 s sentadilla rápida. Realiza la sentadilla con un ritmo mayor, pero manteniendo la técnica y controlando la bajada.", 
+                        "15 s pasos laterales rápidos. Desplázate de lado rápidamente sin cruzar los pies.", 
+                        "Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "4 min caminata suave en el lugar. Disminuye progresivamente el ritmo.", 
+                        "Movilidad de piernas. Realiza movimientos suaves de cadera, rodillas y tobillos." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+ 
+ 
+        { 
+            id: "hit-02", 
+            number: "02", 
+            title: "Cuerpo completo + resistencia", 
+            description: "Trabajo de cuerpo completo orientado a sostener el esfuerzo y desarrollar resistencia general.", 
+            meta: "40 MIN · GENERAL", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "2 min marcha suave. Camina en el lugar manteniendo una postura cómoda.", 
+                        "2 × 30 s círculos de brazos. Realiza círculos amplios hacia adelante y hacia atrás.", 
+                        "2 × 30 s rotaciones de tronco. Gira suavemente el tronco de un lado a otro manteniendo la cadera estable.", 
+                        "2 × 30 s elevación de brazos + talones. Eleva los brazos mientras subes los talones y regresa lentamente." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "ACTIVACIÓN", 
+                    content: [ 
+                        "3 × 30 s sentadilla + elevación de brazos. Haz una sentadilla y al subir eleva ambos brazos por encima de la cabeza.", 
+                        "3 × 30 s rodilla al codo contrario. Eleva la rodilla derecha hacia el codo izquierdo y alterna.", 
+                        "3 × 30 s bisagra de cadera. Lleva la cadera hacia atrás con la espalda neutra y vuelve a la posición inicial.", 
+                        "Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TRABAJO PRINCIPAL", 
+                    content: [ 
+                        "4 × 4 min:", 
+                        "40 s sentadilla con alcance al frente. Baja en sentadilla y al subir extiende los brazos al frente.", 
+                        "40 s rodilla derecha al codo izquierdo. Lleva la rodilla derecha hacia el codo izquierdo y regresa con control.", 
+                        "40 s rodilla izquierda al codo derecho. Repite el movimiento hacia el lado contrario.", 
+                        "40 s bisagra de cadera. Empuja la cadera hacia atrás manteniendo la espalda recta y vuelve a subir.", 
+                        "40 s marcha rápida con brazos. Marcha elevando las rodillas de forma activa y acompaña con los brazos.", 
+                        "40 s recuperación activa. Camina suavemente y recupera la respiración.", 
+                        "Descanso: 1 min." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "HIT", 
+                    content: [ 
+                        "10 × 20 s:", 
+                        "10 s rodillas al pecho alternadas. Eleva las rodillas de manera rápida y alternada, manteniendo el abdomen firme.", 
+                        "10 s sentadilla + alcance arriba. Baja en sentadilla y al subir extiende ambos brazos hacia arriba.", 
+                        "Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "5 min de movimientos suaves. Camina y mueve brazos y piernas de manera relajada.", 
+                        "Respiración controlada. Inhala de forma tranquila y exhala lentamente." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+ 
+ 
+        { 
+            id: "hit-03", 
+            number: "03", 
+            title: "HIT aeróbico de bajo impacto", 
+            description: "Sesión de bajo impacto para desarrollar resistencia y ritmo de trabajo sin saltos.", 
+            meta: "40 MIN · BAJO IMPACTO", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "3 min marcha activa. Camina en el lugar aumentando gradualmente el ritmo.", 
+                        "2 × 30 s apertura y cierre de piernas sin salto. Abre una pierna hacia un lado y regresa; alterna lados.", 
+                        "2 × 30 s balanceo alternado de piernas. Balancea cada pierna hacia adelante y atrás con movimiento controlado.", 
+                        "2 × 30 s brazos arriba y abajo. Eleva los brazos por encima de la cabeza y vuelve a bajarlos." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "ACTIVACIÓN", 
+                    content: [ 
+                        "3 × 30 s paso cruzado lateral. Cruza una pierna por delante de la otra mientras te desplazas lateralmente.", 
+                        "3 × 30 s toque de talón al frente. Extiende una pierna y toca el piso con el talón; alterna.", 
+                        "3 × 30 s elevación de rodilla con brazos. Eleva una rodilla mientras llevas los brazos hacia ella.", 
+                        "Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TRABAJO PRINCIPAL", 
+                    content: [ 
+                        "5 × 3 min:", 
+                        "45 s paso cruzado. Desplázate lateralmente cruzando una pierna delante de la otra.", 
+                        "45 s toque de talones. Lleva los talones hacia adelante de manera alternada.", 
+                        "45 s rodillas alternadas. Eleva una rodilla y después la otra manteniendo un ritmo constante.", 
+                        "45 s apertura y cierre de piernas. Abre una pierna hacia un lado y regresa sin realizar saltos.", 
+                        "Descanso: 45 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "HIT", 
+                    content: [ 
+                        "8 × 40 s:", 
+                        "20 s paso lateral rápido. Desplázate de lado con pasos cortos y rápidos.", 
+                        "20 s rodillas alternadas rápidas. Eleva las rodillas de forma rápida manteniendo el control.", 
+                        "Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "5 min de marcha suave. Reduce progresivamente el ritmo.", 
+                        "Movilidad de cadera y tobillos. Realiza movimientos lentos y controlados." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+ 
+ 
+        { 
+            id: "hit-04", 
+            number: "04", 
+            title: "Potencia + coordinación", 
+            description: "Sesión dinámica para desarrollar potencia, coordinación y control durante diferentes desplazamientos.", 
+            meta: "35 MIN · GENERAL", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "2 min marcha activa. Mantén una postura alta y mueve los brazos.", 
+                        "2 × 30 s movilidad de hombros. Realiza círculos amplios y controlados.", 
+                        "2 × 30 s movilidad de cadera. Realiza círculos suaves con la cadera.", 
+                        "2 × 30 s desplazamientos cortos adelante y atrás. Da pasos pequeños manteniendo las rodillas ligeramente flexionadas." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "ACTIVACIÓN", 
+                    content: [ 
+                        "3 × 30 s sentadilla + elevación de talones. Baja en sentadilla y al subir eleva los talones.", 
+                        "3 × 30 s desplazamiento adelante + regreso. Da pasos rápidos hacia adelante y vuelve al punto inicial.", 
+                        "3 × 30 s apertura lateral + cierre. Abre una pierna hacia un lado y regresa a la posición inicial.", 
+                        "Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TRABAJO PRINCIPAL", 
+                    content: [ 
+                        "4 × 3 min:", 
+                        "30 s sentadilla con impulso. Realiza una sentadilla y sube de forma potente, sin necesidad de saltar.", 
+                        "30 s desplazamiento adelante y atrás. Avanza y retrocede con pasos rápidos y controlados.", 
+                        "30 s desplazamiento lateral. Muévete rápidamente de un lado al otro manteniendo el control.", 
+                        "30 s escalador de pie. Lleva una rodilla hacia el pecho y después la otra a ritmo rápido.", 
+                        "30 s sentadilla isométrica. Mantén la posición de sentadilla con la espalda recta y abdomen activo.", 
+                        "30 s recuperación activa. Camina suavemente.", 
+                        "Descanso: 1 min." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "HIT", 
+                    content: [ 
+                        "10 × 20 s:", 
+                        "10 s sentadilla con impulso. Baja controladamente y sube de forma rápida y potente.", 
+                        "10 s desplazamiento rápido adelante y atrás. Realiza pasos cortos y rápidos manteniendo el equilibrio.", 
+                        "Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "5 min de marcha suave. Disminuye progresivamente el ritmo.", 
+                        "Movilidad general. Mueve suavemente hombros, cadera, rodillas y tobillos." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+ 
+ 
+        { 
+            id: "hit-05", 
+            number: "05", 
+            title: "Resistencia de cuerpo completo", 
+            description: "Circuito continuo para desarrollar resistencia general y tolerancia al esfuerzo.", 
+            meta: "45 MIN · GENERAL", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "3 min marcha progresiva. Comienza suave y aumenta poco a poco el ritmo.", 
+                        "2 × 30 s movilidad de columna. Realiza movimientos suaves de flexión, extensión y rotación.", 
+                        "2 × 30 s movilidad de hombros. Haz círculos controlados hacia adelante y atrás.", 
+                        "2 × 30 s elevación alternada de piernas. Eleva una pierna y después la otra manteniendo el tronco estable." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "ACTIVACIÓN", 
+                    content: [ 
+                        "3 × 30 s sentadilla abierta. Coloca los pies más separados, baja la cadera y vuelve a subir.", 
+                        "3 × 30 s inclinación lateral de tronco. Inclina el tronco hacia un lado y vuelve al centro; alterna.", 
+                        "3 × 30 s toque de punta de pie al frente. Extiende una pierna y toca el piso con la punta del pie.", 
+                        "Descanso: 20 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TRABAJO PRINCIPAL", 
+                    content: [ 
+                        "4 × 4 min:", 
+                        "45 s sentadilla abierta. Pies separados, rodillas siguiendo la dirección de los pies y cadera hacia abajo.", 
+                        "45 s toque de punta de pie alternado. Toca al frente con una pierna y cambia a la otra.", 
+                        "45 s inclinación lateral + elevación de rodilla. Inclina ligeramente el tronco y eleva la rodilla del mismo lado.", 
+                        "45 s pasos cortos en diagonal. Avanza en diagonal con pasos pequeños y controlados.", 
+                        "1 min marcha activa. Marcha manteniendo un ritmo constante.", 
+                        "Descanso: 1 min." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "HIT", 
+                    content: [ 
+                        "12 × 30 s:", 
+                        "15 s pasos diagonales rápidos. Desplázate hacia adelante y hacia un lado con pasos cortos y rápidos.", 
+                        "15 s elevación de rodillas con brazos activos. Eleva las rodillas alternadamente mientras mueves los brazos.", 
+                        "Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "5 min de marcha muy suave. Deja que la respiración vuelva progresivamente a la normalidad.", 
+                        "Respiración y movilidad general. Realiza movimientos suaves sin rebotes." 
+                    ] 
+                } 
+ 
+            ] 
+        } 
+ 
+    ], 
+ 
+ 
+ 
+    /* ===================================================== 
+       FUERZA 
+       ===================================================== */ 
+ 
+    FUERZA: [ 
+ 
+        { 
+            id: "fuerza-01", 
+            number: "01", 
+            title: "Piernas + core", 
+            description: "Sesión enfocada en desarrollar fuerza de piernas, trabajo unilateral y control de la zona media.", 
+            meta: "40–45 MIN · GENERAL", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "3 min de marcha activa. Camina en el lugar aumentando ligeramente el ritmo.", 
+                        "2 × 30 s movilidad de cadera. Realiza círculos suaves y controlados con la cadera.", 
+                        "2 × 30 s movilidad de tobillos. Mueve los tobillos lentamente y eleva los talones.", 
+                        "2 × 30 s sentadilla sin profundidad. Baja ligeramente la cadera y sube manteniendo el control." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "FUERZA DE PIERNAS", 
+                    content: [ 
+                        "4 × 12 sentadillas. Pies al ancho de hombros, lleva la cadera hacia atrás y abajo, mantén el pecho arriba y sube empujando el suelo.", 
+                        "3 × 10 zancadas hacia atrás por pierna. Da un paso atrás, baja ambas rodillas y vuelve empujando con la pierna delantera.", 
+                        "3 × 10 split squat por pierna. Coloca una pierna adelante y otra atrás, baja verticalmente y sube manteniendo el peso principalmente en la pierna delantera.", 
+                        "3 × 15 elevaciones de pantorrillas. De pie, eleva los talones, mantén arriba un instante y baja lentamente.", 
+                        "Descanso: 45–60 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "FUERZA UNILATERAL", 
+                    content: [ 
+                        "3 × 8 sentadilla a una pierna asistida por lado. Apóyate en una superficie estable, baja con una pierna y utiliza el apoyo para controlar el movimiento.", 
+                        "3 × 10 puente de glúteos a una pierna por lado. Acuéstate boca arriba, una pierna apoyada y la otra elevada; eleva la cadera apretando el glúteo.", 
+                        "Descanso: 60 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "CORE", 
+                    content: [ 
+                        "3 × 30 s plancha frontal. Apoya manos o antebrazos, mantén el cuerpo alineado y contrae abdomen y glúteos.", 
+                        "3 × 10 dead bug por lado. Acuéstate boca arriba, mueve brazo y pierna contrarios lentamente sin despegar la zona lumbar del suelo.", 
+                        "3 × 20 s hollow hold. Acuéstate boca arriba, eleva ligeramente hombros y piernas y mantén el abdomen contraído.", 
+                        "Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "5 min de movilidad suave de piernas y cadera." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+ 
+ 
+        { 
+            id: "fuerza-02", 
+            number: "02", 
+            title: "Tren superior + core", 
+            description: "Trabajo de fuerza del tren superior combinado con estabilidad y control del core.", 
+            meta: "40 MIN · GENERAL", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "3 min de marcha activa. Camina en el lugar y mueve los brazos de forma natural.", 
+                        "2 × 30 s círculos de brazos. Realiza círculos amplios y controlados.", 
+                        "2 × 30 s movilidad de hombros. Lleva los brazos en diferentes direcciones sin forzar.", 
+                        "2 × 30 s rotaciones de tronco. Gira suavemente de un lado a otro manteniendo la cadera estable." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "EMPUJE", 
+                    content: [ 
+                        "4 × 10 flexiones de brazos. Manos ligeramente más abiertas que los hombros, cuerpo alineado, baja el pecho y vuelve a subir.", 
+                        "3 × 8 flexiones cerradas. Coloca las manos más cerca del cuerpo, baja manteniendo los codos cerca y empuja para subir.", 
+                        "3 × 8 flexiones tipo diamante. Junta las manos debajo del pecho formando un triángulo y baja manteniendo los codos controlados.", 
+                        "3 × 8 pike push-up. Eleva la cadera formando una V invertida, flexiona los codos y lleva la cabeza hacia el suelo; vuelve a extender.", 
+                        "Descanso: 60 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "FUERZA Y ESTABILIDAD", 
+                    content: [ 
+                        "3 × 10 fondos de tríceps en el suelo. Siéntate con las manos detrás del cuerpo, eleva ligeramente la cadera, flexiona los codos y vuelve a extenderlos.", 
+                        "3 × 10 Y-T-W tumbado. Boca abajo, mueve los brazos formando las letras Y, T y W, manteniendo los hombros controlados.", 
+                        "3 × 12 Superman. Boca abajo, eleva brazos y piernas ligeramente al mismo tiempo sin forzar la zona lumbar.", 
+                        "Descanso: 45 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "CORE", 
+                    content: [ 
+                        "3 × 30 s plancha lateral por lado. Apóyate sobre un antebrazo, mantén el cuerpo recto y eleva la cadera.", 
+                        "3 × 10 plancha con toque de hombros por lado. Desde una plancha, toca el hombro contrario con una mano y alterna sin mover demasiado la cadera.", 
+                        "3 × 12 elevaciones de piernas. Acuéstate boca arriba, eleva las piernas juntas y bájalas lentamente sin perder el control abdominal.", 
+                        "Descanso: 30–45 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "5 min de movilidad de hombros, brazos y columna." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+ 
+ 
+        { 
+            id: "fuerza-03", 
+            number: "03", 
+            title: "Fuerza unilateral + estabilidad", 
+            description: "Sesión enfocada en fuerza unilateral, glúteos, estabilidad y control corporal.", 
+            meta: "45 MIN · GENERAL", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "3 min de marcha activa. Aumenta progresivamente el movimiento de brazos y piernas.", 
+                        "2 × 30 s movilidad de cadera. Realiza círculos suaves con la cadera.", 
+                        "2 × 30 s movilidad de rodillas. Haz flexiones y extensiones suaves sin rebotes.", 
+                        "2 × 30 s equilibrio sobre una pierna. Mantén una pierna elevada y cambia de lado." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "FUERZA UNILATERAL", 
+                    content: [ 
+                        "4 × 10 sentadilla búlgara por pierna. Coloca el empeine de una pierna detrás sobre una superficie estable, baja con la pierna delantera y vuelve a subir.", 
+                        "3 × 10 zancadas laterales por pierna. Da un paso amplio hacia un lado, flexiona esa pierna y empuja para volver al centro.", 
+                        "3 × 8 peso muerto a una pierna por lado. Apóyate sobre una pierna, lleva la cadera hacia atrás mientras inclinas el tronco y vuelve a subir manteniendo la espalda neutra.", 
+                        "Descanso: 60 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "FUERZA DE GLÚTEOS", 
+                    content: [ 
+                        "4 × 12 puente de glúteos. Acuéstate boca arriba, pies apoyados y eleva la cadera apretando los glúteos.", 
+                        "3 × 10 puente de glúteos a una pierna por lado. Mantén una pierna apoyada y la otra elevada mientras subes la cadera.", 
+                        "3 × 12 elevaciones de pantorrilla a una pierna por lado. Eleva el talón de una pierna y baja lentamente manteniendo el equilibrio.", 
+                        "Descanso: 45–60 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "ESTABILIDAD", 
+                    content: [ 
+                        "3 × 30 s equilibrio a una pierna por lado. Mantén la rodilla ligeramente flexionada y el abdomen activo.", 
+                        "3 × 10 bird dog por lado. Desde cuatro apoyos, extiende brazo y pierna contrarios sin girar la cadera.", 
+                        "3 × 20 s plancha lateral por lado. Apóyate en el antebrazo y mantén hombros, cadera y pies alineados.", 
+                        "Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "5 min de movilidad de piernas y cadera." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+ 
+ 
+        { 
+            id: "fuerza-04", 
+            number: "04", 
+            title: "Fuerza de cuerpo completo", 
+            description: "Sesión global para trabajar piernas, tren superior, fuerza complementaria y core.", 
+            meta: "45 MIN · GENERAL", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "3 min de marcha activa. Camina en el lugar y aumenta poco a poco el ritmo.", 
+                        "2 × 30 s movilidad de hombros. Realiza círculos controlados.", 
+                        "2 × 30 s movilidad de cadera. Realiza movimientos circulares suaves.", 
+                        "2 × 30 s sentadillas suaves. Baja ligeramente la cadera y vuelve a subir." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "CIRCUITO DE FUERZA", 
+                    content: [ 
+                        "4 × 10 sentadillas. Pies al ancho de hombros, cadera hacia atrás y abajo, pecho arriba y subida controlada.", 
+                        "4 × 8 flexiones de brazos. Mantén el cuerpo alineado, baja el pecho hacia el suelo y vuelve a extender los brazos.", 
+                        "4 × 10 zancadas hacia adelante por pierna. Da un paso al frente, baja ambas rodillas y empuja con la pierna delantera para regresar.", 
+                        "4 × 10 Superman. Boca abajo, eleva brazos y piernas ligeramente manteniendo el abdomen activo.", 
+                        "Descanso: 60 s entre vueltas." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "FUERZA COMPLEMENTARIA", 
+                    content: [ 
+                        "3 × 10 pike push-up. Eleva la cadera formando una V invertida, flexiona los codos y baja la cabeza hacia el suelo.", 
+                        "3 × 12 puente de glúteos. Pies apoyados, eleva la cadera y aprieta los glúteos arriba.", 
+                        "3 × 10 fondos de tríceps en el suelo. Apoya las manos detrás del cuerpo, flexiona los codos y vuelve a extender.", 
+                        "Descanso: 45–60 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "CORE", 
+                    content: [ 
+                        "3 × 30 s plancha frontal. Mantén el cuerpo alineado y el abdomen y glúteos activos.", 
+                        "3 × 10 bird dog por lado. Desde cuatro apoyos, extiende brazo y pierna contrarios sin mover la cadera.", 
+                        "3 × 12 crunch bicicleta por lado. Acuéstate boca arriba, lleva el codo hacia la rodilla contraria alternando lados.", 
+                        "Descanso: 30 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "5 min de movilidad general." 
+                    ] 
+                } 
+ 
+            ] 
+        }, 
+ 
+ 
+ 
+        { 
+            id: "fuerza-05", 
+            number: "05", 
+            title: "Fuerza + control corporal", 
+            description: "Sesión enfocada en fuerza, pausas, control corporal y estabilidad durante cada movimiento.", 
+            meta: "40–45 MIN · GENERAL", 
+ 
+            sections: [ 
+ 
+                { 
+                    title: "CALENTAMIENTO", 
+                    content: [ 
+                        "3 min de marcha activa. Camina en el lugar aumentando progresivamente el ritmo.", 
+                        "2 × 30 s movilidad de columna. Realiza movimientos suaves de flexión y rotación.", 
+                        "2 × 30 s movilidad de cadera. Realiza círculos controlados.", 
+                        "2 × 30 s movilidad de hombros. Realiza círculos hacia adelante y atrás." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "FUERZA DE PIERNAS", 
+                    content: [ 
+                        "4 × 10 sentadilla con pausa de 2 s abajo. Baja controladamente, mantén la posición dos segundos y sube empujando el suelo.", 
+                        "3 × 10 zancada hacia atrás por pierna. Da un paso atrás, baja ambas rodillas y vuelve a subir manteniendo el equilibrio.", 
+                        "3 × 10 sentadilla a una pierna asistida por lado. Utiliza un apoyo estable para controlar la bajada y subir con una pierna.", 
+                        "Descanso: 60 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "TREN SUPERIOR", 
+                    content: [ 
+                        "4 × 8 flexiones con pausa de 2 s abajo. Baja lentamente, mantén el pecho cerca del suelo durante dos segundos y vuelve a subir.", 
+                        "3 × 8 flexiones con manos abiertas. Coloca las manos un poco más abiertas que los hombros, baja controladamente y empuja para subir.", 
+                        "3 × 10 fondos de tríceps en el suelo. Apoya las manos detrás, flexiona los codos y vuelve a extenderlos manteniendo el tronco estable.", 
+                        "Descanso: 60 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "CORE + CONTROL", 
+                    content: [ 
+                        "3 × 20 s hollow hold. Mantén hombros y piernas ligeramente elevados mientras contraes el abdomen.", 
+                        "3 × 10 dead bug por lado. Mueve brazo y pierna contrarios lentamente manteniendo la zona lumbar estable.", 
+                        "3 × 30 s plancha con elevación de pierna. Desde una plancha, eleva una pierna sin girar la cadera y alterna.", 
+                        "3 × 10 bear hold con desplazamiento corto. Desde cuatro apoyos, eleva ligeramente las rodillas y desplázate unos pasos manteniendo el abdomen firme.", 
+                        "Descanso: 30–45 s." 
+                    ] 
+                }, 
+ 
+                { 
+                    title: "VUELTA A LA CALMA", 
+                    content: [ 
+                        "5 min de movilidad general y respiración." 
+                    ] 
+                } 
+ 
+            ] 
+        } 
+ 
+    ] 
+ 
+}; 
+ 
+ 
+ 
+/* ========================================================= 
+   GENERADOR DE TARJETAS 
+   ========================================================= */ 
+ 
+function renderRoutines( 
+    routines, 
+    containerId, 
+    discipline 
+) { 
+ 
+    const container = 
+        document.getElementById(containerId); 
+ 
+ 
+    if (!container) { 
+        return; 
+    } 
+ 
+ 
+    container.innerHTML = ""; 
+ 
+ 
+    routines.forEach(routine => { 
+ 
+ 
+        const card = 
+            document.createElement("article"); 
+ 
+ 
+        card.className = 
+            "routine-card"; 
+ 
+ 
+        card.innerHTML = ` 
+ 
+            <div class="routine-card-top"> 
+ 
+                <span class="routine-card-number"> 
+                    ${routine.number} 
+                </span> 
+ 
+                <span class="routine-card-discipline"> 
+                    ${discipline} 
+                </span> 
+ 
+            </div> 
+ 
+ 
+            <div class="routine-card-body"> 
+ 
+                <h4> 
+                    ${routine.title} 
+                </h4> 
+ 
+                <p> 
+                    ${routine.description} 
+                </p> 
+ 
+            </div> 
+ 
+ 
+            <div class="routine-card-bottom"> 
+ 
+                <span> 
+                    ${routine.meta} 
+                </span> 
+ 
+                <button 
+                    type="button" 
+                    class="routine-card-button" 
+                    aria-label="Ver ${routine.title}" 
+                > 
+                    → 
+                </button> 
+ 
+            </div> 
+ 
+        `; 
+ 
+ 
+        const button = 
+            card.querySelector( 
+                ".routine-card-button" 
+            ); 
+ 
+ 
+        button.addEventListener( 
+            "click", 
+            () => { 
+ 
+                showRoutine( 
+                    routine, 
+                    discipline 
+                ); 
+ 
+            } 
+        ); 
+ 
+ 
+        container.appendChild(card); 
+ 
+    }); 
+ 
+} 
+ 
+ 
+ 
+/* ========================================================= 
+   DETALLE DE RUTINA 
+   ========================================================= */ 
+ 
+function showRoutine( 
+    routine, 
+    discipline 
+) { 
+ 
+ 
+    const overlay = 
+        document.createElement("div"); 
+ 
+ 
+    overlay.className = 
+        "routine-modal"; 
+ 
+ 
+    overlay.innerHTML = ` 
+ 
+        <div class="routine-modal-box"> 
+ 
+ 
+            <button 
+                type="button" 
+                class="routine-modal-close" 
+                aria-label="Cerrar" 
+            > 
+                × 
+            </button> 
+ 
+ 
+            <span class="eyebrow"> 
+                ${discipline} 
+            </span> 
+ 
+ 
+            <h2> 
+                ${routine.title} 
+            </h2> 
+ 
+ 
+            <p class="routine-modal-meta"> 
+                ${routine.meta} 
+            </p> 
+ 
+ 
+            <div class="routine-modal-content"> 
+ 
+                ${routine.sections.map(section => ` 
+ 
+                    <section class="routine-detail-block"> 
+ 
+                        <h3> 
+                            ${section.title} 
+                        </h3> 
+ 
+ 
+                        <div> 
+ 
+                            ${section.content.map(line => ` 
+ 
+                                <p> 
+                                    ${escapeHtml(line)} 
+                                </p> 
+ 
+                            `).join("")} 
+ 
+                        </div> 
+ 
+                    </section> 
+ 
+                `).join("")} 
+ 
+            </div> 
+ 
+ 
+        </div> 
+ 
+    `; 
+ 
+ 
+    document.body.appendChild(overlay); 
+ 
+ 
+    document.body.classList.add( 
+        "routine-open" 
+    ); 
+ 
+ 
+    requestAnimationFrame(() => { 
+ 
+        overlay.classList.add( 
+            "is-visible" 
+        ); 
+ 
+    }); 
+ 
+ 
+    const closeButton = 
+        overlay.querySelector( 
+            ".routine-modal-close" 
+        ); 
+ 
+ 
+    function closeModal() { 
+ 
+        overlay.classList.remove( 
+            "is-visible" 
+        ); 
+ 
+ 
+        document.body.classList.remove( 
+            "routine-open" 
+        ); 
+ 
+ 
+        setTimeout(() => { 
+ 
+            overlay.remove(); 
+ 
+        }, 250); 
+ 
+    } 
+ 
+ 
+    closeButton.addEventListener( 
+        "click", 
+        closeModal 
+    ); 
+ 
+ 
+    overlay.addEventListener( 
+        "click", 
+        event => { 
+ 
+            if ( 
+                event.target === overlay 
+            ) { 
+ 
+                closeModal(); 
+ 
+            } 
+ 
+        } 
+    ); 
+ 
+ 
+    function escapeHandler(event) { 
+ 
+        if ( 
+            event.key === "Escape" 
+        ) { 
+ 
+            closeModal(); 
+ 
+            document.removeEventListener( 
+                "keydown", 
+                escapeHandler 
+            ); 
+ 
+        } 
+ 
+    } 
+ 
+ 
+    document.addEventListener( 
+        "keydown", 
+        escapeHandler 
+    ); 
+ 
+} 
+ 
+ 
+ 
+/* ========================================================= 
+   SEGURIDAD DE TEXTO 
+   ========================================================= */ 
+ 
+function escapeHtml(value) { 
+ 
+    return String(value) 
+ 
+        .replace( 
+            /&/g, 
+            "&amp;" 
+        ) 
+ 
+        .replace( 
+            /</g, 
+            "&lt;" 
+        ) 
+ 
+        .replace( 
+            />/g, 
+            "&gt;" 
+        ) 
+ 
+        .replace( 
+            /"/g, 
+            "&quot;" 
+        ) 
+ 
+        .replace( 
+            /'/g, 
+            "&#039;" 
+        ); 
+ 
+} 
+ 
+ 
+ 
+/* ========================================================= 
+   CARGAR RUTINAS 
+   ========================================================= */ 
+ 
+renderRoutines( 
+    NOVA_RUTINAS.NATACION, 
+    "swimmingRoutines", 
+    "NATACIÓN" 
+); 
+ 
+ 
+renderRoutines( 
+    NOVA_RUTINAS.HIT, 
+    "hitRoutines", 
+    "HIT" 
+); 
+ 
+ 
+renderRoutines( 
+    NOVA_RUTINAS.FUERZA, 
+    "strengthRoutines", 
+    "FUERZA" 
+); 
+ 
+ 
+ 
+/* ========================================================= 
+   NAVEGACIÓN MÓVIL 
+   ========================================================= */ 
+ 
+const mobileNavItems = 
+    document.querySelectorAll( 
+        ".mobile-nav-item" 
+    ); 
+ 
+ 
+mobileNavItems.forEach(item => { 
+ 
+    item.addEventListener( 
+        "click", 
+        () => { 
+ 
+            mobileNavItems.forEach(nav => { 
+ 
+                nav.classList.remove( 
+                    "active" 
+                ); 
+ 
+            }); 
+ 
+ 
+            item.classList.add( 
+                "active" 
+            ); 
+ 
+        } 
+    ); 
+ 
+}); 
+ 
+ 
+ 
+/* ========================================================= 
+   NOVA · HAMBURGUESA 
+   ========================================================= */ 
+ 
+const menuToggle = 
+    document.querySelector( 
+        ".nova-menu-toggle" 
+    ); 
+ 
+ 
+const novaMenu = 
+    document.querySelector( 
+        ".nova-menu" 
+    ); 
+ 
+ 
+const novaMenuOverlay = 
+    document.querySelector( 
+        ".nova-menu-overlay" 
+    ); 
+ 
+ 
+const novaMenuClose = 
+    document.querySelector( 
+        ".nova-menu-close" 
+    ); 
+ 
+ 
+const novaMenuLinks = 
+    document.querySelectorAll( 
+        ".nova-menu-link" 
+    ); 
+ 
+ 
+ 
+/* ========================================================= 
+   ABRIR MENÚ 
+   ========================================================= */ 
+ 
+function openNovaMenu() { 
+ 
+    if (!menuToggle || !novaMenu) { 
+        return; 
+    } 
+ 
+ 
+    menuToggle.classList.add( 
+        "is-open" 
+    ); 
+ 
+ 
+    novaMenu.classList.add( 
+        "is-open" 
+    ); 
+ 
+ 
+    if (novaMenuOverlay) { 
+ 
+        novaMenuOverlay.classList.add( 
+            "is-visible" 
+        ); 
+ 
+    } 
+ 
+ 
+    menuToggle.setAttribute( 
+        "aria-expanded", 
+        "true" 
+    ); 
+ 
+ 
+    novaMenu.setAttribute( 
+        "aria-hidden", 
+        "false" 
+    ); 
+ 
+ 
+    if (novaMenuOverlay) { 
+ 
+        novaMenuOverlay.setAttribute( 
+            "aria-hidden", 
+            "false" 
+        ); 
+ 
+    } 
+ 
+ 
+    document.body.classList.add( 
+        "menu-open" 
+    ); 
+ 
+} 
+ 
+ 
+ 
+/* ========================================================= 
+   CERRAR MENÚ 
+   ========================================================= */ 
+ 
+function closeNovaMenu() { 
+ 
+    if (!menuToggle || !novaMenu) { 
+        return; 
+    } 
+ 
+ 
+    menuToggle.classList.remove( 
+        "is-open" 
+    ); 
+ 
+ 
+    novaMenu.classList.remove( 
+        "is-open" 
+    ); 
+ 
+ 
+    if (novaMenuOverlay) { 
+ 
+        novaMenuOverlay.classList.remove( 
+            "is-visible" 
+        ); 
+ 
+    } 
+ 
+ 
+    menuToggle.setAttribute( 
+        "aria-expanded", 
+        "false" 
+    ); 
+ 
+ 
+    novaMenu.setAttribute( 
+        "aria-hidden", 
+        "true" 
+    ); 
+ 
+ 
+    if (novaMenuOverlay) { 
+ 
+        novaMenuOverlay.setAttribute( 
+            "aria-hidden", 
+            "true" 
+        ); 
+ 
+    } 
+ 
+ 
+    document.body.classList.remove( 
+        "menu-open" 
+    ); 
+ 
+} 
+ 
+ 
+ 
+/* ========================================================= 
+   CLICK HAMBURGUESA 
+   ========================================================= */ 
+ 
+if (menuToggle) { 
+ 
+    menuToggle.addEventListener( 
+        "click", 
+        () => { 
+ 
+            const isOpen = 
+                menuToggle.classList.contains( 
+                    "is-open" 
+                ); 
+ 
+ 
+            if (isOpen) { 
+ 
+                closeNovaMenu(); 
+ 
+            } else { 
+ 
+                openNovaMenu(); 
+ 
+            } 
+ 
+        } 
+    ); 
+ 
+} 
+ 
+ 
+ 
+/* ========================================================= 
+   CLICK CERRAR 
+   ========================================================= */ 
+ 
+if (novaMenuClose) { 
+ 
+    novaMenuClose.addEventListener( 
+        "click", 
+        closeNovaMenu 
+    ); 
+ 
+} 
+ 
+ 
+ 
+/* ========================================================= 
+   CLICK FUERA DEL MENÚ 
+   ========================================================= */ 
+ 
+if (novaMenuOverlay) { 
+ 
+    novaMenuOverlay.addEventListener( 
+        "click", 
+        closeNovaMenu 
+    ); 
+ 
+} 
+ 
+ 
+ 
+/* ========================================================= 
+   CERRAR AL ELEGIR OPCIÓN 
+   ========================================================= */ 
+ 
+novaMenuLinks.forEach(link => { 
+ 
+    link.addEventListener( 
+        "click", 
+        () => { 
+ 
+            closeNovaMenu(); 
+ 
+        } 
+    ); 
+ 
+}); 
+ 
+ 
+ 
+/* ========================================================= 
+   ESCAPE → CERRAR MENÚ 
+   ========================================================= */ 
+ 
+document.addEventListener( 
+    "keydown", 
+    event => { 
+ 
+        if ( 
+            event.key === "Escape" && 
+            novaMenu && 
+            novaMenu.classList.contains("is-open") 
+        ) { 
+ 
+            closeNovaMenu(); 
+ 
+        } 
+ 
+    } 
+); 
+ 
+ 
+ 
+/* ========================================================= 
+   EVITAR SCROLL DEL BODY CON MENÚ ABIERTO 
+   ========================================================= */ 
+ 
+window.addEventListener( 
+    "resize", 
+    () => { 
+ 
+        if ( 
+            window.innerWidth > 900 && 
+            novaMenu && 
+            novaMenu.classList.contains("is-open") 
+        ) { 
+ 
+            closeNovaMenu(); 
+ 
+        } 
+ 
+    } 
+); 
+ 
+ 
+</script> 
+ 
+ 
+</body> 
+ 
+</html>

@@ -1,0 +1,1748 @@
+/* =========================================================
+SCROLLBAR — DELGADA Y DISCRETA
+========================================================= */
+
+html{
+    scrollbar-width:thin;
+    scrollbar-color:rgba(255,255,255,.18) transparent;
+}
+
+html::-webkit-scrollbar{
+    width:5px;
+}
+
+html::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.18);
+    border-radius:999px;
+}
+
+html::-webkit-scrollbar-thumb:hover{
+    background:rgba(255,255,255,.32);
+}
+/* =========================================================
+   PAGINA 2
+   SISTEMA EDITORIAL
+   LIMPIO · PREMIUM · RESPONSIVE
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root{
+    width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+
+    background: #08090b;
+    color: #ffffff;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro",
+        "Segoe UI",
+        Roboto,
+        Inter,
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    width:100%;
+    overflow-x:hidden;
+
+    scroll-behavior:smooth;
+}
+
+body{
+    width:100%;
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    background:var(--black);
+    color:var(--white);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Inter",
+        "Segoe UI",
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    letter-spacing:-.02em;
+
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+
+    text-rendering:optimizeLegibility;
+}
+
+img,
+video,
+iframe{
+    display:block;
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    z-index:1000;
+
+    width:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:
+        21px 7%;
+
+    background:
+        rgba(5,5,5,.72);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.065);
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo{
+    display:block;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:15px;
+    font-weight:700;
+
+    line-height:1;
+
+    letter-spacing:1.5px;
+}
+
+.logo span{
+    display:block;
+
+    margin-top:6px;
+
+    color:var(--blue);
+
+    font-size:8px;
+    font-weight:600;
+
+    line-height:1;
+
+    letter-spacing:3px;
+}
+
+
+/* =========================================================
+   NAVEGACIÓN
+   ========================================================= */
+
+nav{
+    display:flex;
+    align-items:center;
+
+    gap:30px;
+}
+
+nav a{
+    position:relative;
+
+    color:#d9d9dc;
+
+    text-decoration:none;
+
+    font-size:12px;
+    font-weight:400;
+
+    line-height:1;
+
+    opacity:.72;
+
+    transition:
+        color .25s ease,
+        opacity .25s ease;
+}
+
+nav a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0;
+    height:1px;
+
+    background:var(--blue);
+
+    transition:
+        width .25s ease;
+}
+
+nav a:hover{
+    color:#fff;
+    opacity:1;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.program-container{
+    width:100%;
+    max-width:900px;
+
+    margin:0 auto;
+
+    padding:
+        145px 40px 80px;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.program-intro{
+    width:100%;
+
+    padding:
+        35px 0 72px;
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+.program-eyebrow{
+    display:block;
+
+    margin-bottom:20px;
+
+    color:var(--blue);
+
+    font-size:10px;
+    font-weight:600;
+
+    line-height:1.2;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+.program-intro h1{
+    max-width:800px;
+
+    margin:0 0 23px;
+
+    color:#fff;
+
+    font-size:
+        clamp(42px,5.2vw,64px);
+
+    font-weight:600;
+
+    line-height:1.02;
+
+    letter-spacing:-.055em;
+
+    text-wrap:balance;
+}
+
+.program-intro > p{
+    max-width:690px;
+
+    color:#99999f;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    letter-spacing:-.012em;
+
+    text-wrap:pretty;
+}
+
+
+/* =========================================================
+   BLOQUES GENERALES
+   ========================================================= */
+
+.program-block{
+    width:100%;
+
+    padding:
+        58px 0;
+
+    border-bottom:
+        1px solid var(--line-soft);
+}
+
+.program-block h3{
+    margin-bottom:17px;
+
+    color:var(--blue);
+
+    font-size:11px;
+    font-weight:600;
+
+    line-height:1.3;
+
+    letter-spacing:2.8px;
+
+    text-transform:uppercase;
+}
+
+.program-block > p{
+    max-width:700px;
+
+    color:var(--text);
+
+    font-size:16px;
+
+    line-height:1.8;
+
+    letter-spacing:-.012em;
+
+    text-wrap:pretty;
+}
+
+
+/* =========================================================
+   FILOSOFÍA
+   ========================================================= */
+
+.program-block.philosophy{
+    width:100%;
+
+    max-width:900px;
+
+    padding:
+        82px 0 88px;
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+.program-block.philosophy p{
+    max-width:850px;
+
+    color:#f5f5f7;
+
+    font-size:
+        clamp(29px,4vw,43px);
+
+    font-weight:500;
+
+    line-height:1.17;
+
+    letter-spacing:-.052em;
+
+    text-wrap:balance;
+}
+
+
+/* =========================================================
+   COMPROMISO
+   ========================================================= */
+
+.program-block:not(.philosophy):not(.disclaimer){
+    position:relative;
+
+    max-width:760px;
+
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.program-block:not(.philosophy):not(.disclaimer)::before{
+    content:"";
+
+    display:block;
+
+    width:34px;
+    height:1px;
+
+    margin-bottom:24px;
+
+    background:var(--blue);
+}
+
+.program-block:not(.philosophy):not(.disclaimer) h3{
+    margin-bottom:13px;
+}
+
+.program-block:not(.philosophy):not(.disclaimer) > p{
+    max-width:650px;
+
+    color:#a8a8ad;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   FAQ — SECCIÓN
+   ========================================================= */
+
+.faq-section{
+    width:100%;
+
+    padding:
+        78px 0 35px;
+}
+
+
+/* =========================================================
+   CABECERA FAQ
+   ========================================================= */
+
+.faq-heading{
+    margin-bottom:34px;
+}
+
+.faq-heading span{
+    display:block;
+
+    margin-bottom:12px;
+
+    color:var(--blue);
+
+    font-size:10px;
+    font-weight:600;
+
+    line-height:1;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+.faq-heading h2{
+    color:#fff;
+
+    font-size:
+        clamp(32px,4vw,46px);
+
+    font-weight:600;
+
+    line-height:1.05;
+
+    letter-spacing:-.045em;
+}
+
+
+/* =========================================================
+   FAQ — CONTENEDOR
+   ========================================================= */
+
+.faq{
+    width:100%;
+
+    border-top:
+        1px solid var(--line);
+}
+
+
+/* =========================================================
+   FAQ — ITEM
+   ========================================================= */
+
+.faq details{
+    width:100%;
+
+    border-bottom:
+        1px solid var(--line-soft);
+}
+
+
+/* =========================================================
+   FAQ — PREGUNTA
+   ========================================================= */
+
+.faq summary{
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    width:100%;
+
+    min-height:72px;
+
+    padding:
+        22px 0;
+
+    color:#e7e7ea;
+
+    font-size:16px;
+    font-weight:500;
+
+    line-height:1.45;
+
+    letter-spacing:-.018em;
+
+    cursor:pointer;
+
+    list-style:none;
+
+    outline:none;
+
+    user-select:none;
+
+    transition:
+        color .25s ease;
+}
+
+.faq summary::-webkit-details-marker{
+    display:none;
+}
+
+.faq summary::marker{
+    display:none;
+}
+
+
+/* =========================================================
+   TEXTO DE LA PREGUNTA
+   ========================================================= */
+
+.faq summary > span{
+    display:block;
+
+    max-width:calc(100% - 60px);
+}
+
+
+/* =========================================================
+   ICONO +
+   ========================================================= */
+
+.faq summary i{
+    flex:0 0 28px;
+
+    width:28px;
+    height:28px;
+
+    margin-left:28px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:#66666d;
+
+    font-size:13px;
+
+    font-weight:400;
+
+    transition:
+        color .25s ease,
+        transform .3s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.faq summary:hover{
+    color:#fff;
+}
+
+.faq summary:hover i{
+    color:var(--blue);
+}
+
+
+/* =========================================================
+   ABIERTA
+   ========================================================= */
+
+.faq details[open] summary{
+    color:#fff;
+}
+
+.faq details[open] summary i{
+    color:var(--blue);
+
+    transform:
+        rotate(180deg);
+}
+
+
+/* =========================================================
+   CAMBIO + → −
+   ========================================================= */
+
+.faq details[open] summary i::before{
+    content:"\f068";
+}
+
+
+/* =========================================================
+   RESPUESTA
+   ========================================================= */
+
+.faq-answer{
+    width:100%;
+
+    max-width:720px;
+
+    padding:
+        0 55px 28px 0;
+
+    color:#85858b;
+
+    font-size:14px;
+
+    line-height:1.78;
+
+    letter-spacing:-.006em;
+
+    animation:
+        faqReveal .3s cubic-bezier(.22,1,.36,1) both;
+}
+
+.faq-answer p{
+    margin:0 0 16px;
+
+    color:inherit;
+
+    font-size:inherit;
+
+    line-height:inherit;
+}
+
+.faq-answer p:last-child{
+    margin-bottom:0;
+}
+
+
+/* =========================================================
+   ANIMACIÓN FAQ
+   ========================================================= */
+
+@keyframes faqReveal{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(-6px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   AVISO
+   ========================================================= */
+
+.program-block.disclaimer{
+    max-width:760px;
+
+    margin:
+        25px auto 0;
+
+    padding:
+        38px 0 22px;
+
+    border-top:
+        1px solid rgba(255,255,255,.045);
+
+    border-bottom:none;
+}
+
+.program-block.disclaimer h3{
+    margin-bottom:11px;
+
+    color:#626268;
+
+    font-size:9px;
+
+    font-weight:600;
+
+    line-height:1.2;
+
+    letter-spacing:2.3px;
+}
+
+.program-block.disclaimer p{
+    max-width:650px;
+
+    color:#68686d;
+
+    font-size:12px;
+
+    line-height:1.75;
+}
+
+
+/* =========================================================
+   BOTÓN VOLVER
+   ========================================================= */
+
+.program-return{
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    padding-top:8px;
+}
+
+.btn-volver{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:max-content;
+
+    min-width:125px;
+    height:43px;
+
+    padding:
+        0 24px;
+
+    color:#d9d9dd;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    font-size:11px;
+    font-weight:500;
+
+    line-height:1;
+
+    letter-spacing:.04em;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+}
+
+.btn-volver:hover{
+    color:#050505;
+
+    background:#fff;
+
+    border-color:#fff;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer{
+    width:100%;
+
+    padding:
+        45px 20px 32px;
+
+    text-align:center;
+
+    color:#626268;
+
+    font-size:11px;
+}
+
+footer p{
+    margin:0;
+
+    color:inherit;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:900px){
+
+    .header{
+        padding:
+            19px 25px;
+    }
+
+    nav{
+        gap:18px;
+
+        max-width:65%;
+
+        overflow-x:auto;
+
+        scrollbar-width:none;
+    }
+
+    nav::-webkit-scrollbar{
+        display:none;
+    }
+
+    nav a{
+        white-space:nowrap;
+
+        font-size:11px;
+    }
+
+
+    .program-container{
+        max-width:760px;
+
+        padding:
+            120px 30px 70px;
+    }
+
+
+    .program-intro{
+        padding:
+            30px 0 65px;
+    }
+
+    .program-intro h1{
+        font-size:
+            clamp(40px,6vw,55px);
+    }
+
+
+    .program-block{
+        padding:
+            50px 0;
+    }
+
+    .program-block.philosophy{
+        padding:
+            68px 0 75px;
+    }
+
+    .program-block.philosophy p{
+        font-size:
+            clamp(28px,4.8vw,38px);
+    }
+
+
+    .faq-section{
+        padding:
+            68px 0 30px;
+    }
+
+    .faq-heading h2{
+        font-size:
+            clamp(31px,5vw,40px);
+    }
+
+    .faq summary{
+        font-size:15px;
+    }
+
+    .faq-answer{
+        max-width:680px;
+
+        padding-right:45px;
+    }
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media(max-width:600px){
+
+    .header{
+        padding:
+            17px 20px;
+    }
+
+    .logo{
+        font-size:14px;
+    }
+
+    .logo span{
+        margin-top:5px;
+
+        font-size:7px;
+
+        letter-spacing:2.5px;
+    }
+
+    nav{
+        max-width:58%;
+
+        gap:13px;
+    }
+
+    nav a{
+        font-size:10px;
+    }
+
+
+    /* CONTENEDOR */
+
+    .program-container{
+        max-width:none;
+
+        padding:
+            105px 20px 55px;
+    }
+
+
+    /* INTRO */
+
+    .program-intro{
+        padding:
+            25px 0 55px;
+    }
+
+    .program-eyebrow{
+        margin-bottom:17px;
+
+        font-size:9px;
+
+        letter-spacing:2.5px;
+    }
+
+    .program-intro h1{
+        margin-bottom:20px;
+
+        font-size:
+            clamp(38px,10vw,48px);
+
+        line-height:1.04;
+    }
+
+    .program-intro > p{
+        font-size:14px;
+
+        line-height:1.75;
+    }
+
+
+    /* BLOQUES */
+
+    .program-block{
+        padding:
+            43px 0;
+    }
+
+
+    /* FILOSOFÍA */
+
+    .program-block.philosophy{
+        padding:
+            55px 0 62px;
+    }
+
+    .program-block.philosophy p{
+        max-width:100%;
+
+        font-size:
+            clamp(25px,7.3vw,32px);
+
+        line-height:1.22;
+
+        letter-spacing:-.045em;
+    }
+
+
+    /* TÍTULOS */
+
+    .program-block h3{
+        margin-bottom:14px;
+
+        font-size:10px;
+
+        letter-spacing:2.3px;
+    }
+
+
+    /* TEXTO */
+
+    .program-block > p{
+        max-width:100%;
+
+        font-size:14px;
+
+        line-height:1.78;
+    }
+
+
+    /* COMPROMISO */
+
+    .program-block:not(.philosophy):not(.disclaimer){
+        max-width:none;
+    }
+
+    .program-block:not(.philosophy):not(.disclaimer)::before{
+        width:28px;
+
+        margin-bottom:21px;
+    }
+
+    .program-block:not(.philosophy):not(.disclaimer) > p{
+        max-width:100%;
+
+        font-size:14px;
+
+        line-height:1.78;
+    }
+
+
+    /* FAQ */
+
+    .faq-section{
+        padding:
+            60px 0 25px;
+    }
+
+    .faq-heading{
+        margin-bottom:24px;
+    }
+
+    .faq-heading span{
+        margin-bottom:10px;
+
+        font-size:9px;
+
+        letter-spacing:2.5px;
+    }
+
+    .faq-heading h2{
+        font-size:
+            clamp(30px,9vw,40px);
+
+        line-height:1.05;
+    }
+
+
+    .faq summary{
+        min-height:0;
+
+        padding:
+            21px 0;
+
+        font-size:15px;
+
+        line-height:1.42;
+    }
+
+    .faq summary > span{
+        max-width:calc(100% - 48px);
+    }
+
+    .faq summary i{
+        flex-basis:25px;
+
+        width:25px;
+        height:25px;
+
+        margin-left:18px;
+
+        font-size:11px;
+    }
+
+    .faq-answer{
+        max-width:100%;
+
+        padding:
+            0 30px 23px 0;
+
+        font-size:13px;
+
+        line-height:1.72;
+    }
+
+
+    /* AVISO */
+
+    .program-block.disclaimer{
+        max-width:none;
+
+        margin-top:25px;
+
+        padding:
+            32px 0 15px;
+    }
+
+    .program-block.disclaimer h3{
+        font-size:8px;
+
+        letter-spacing:2px;
+    }
+
+    .program-block.disclaimer p{
+        max-width:100%;
+
+        font-size:12px;
+
+        line-height:1.7;
+    }
+
+
+    /* BOTÓN */
+
+    .program-return{
+        padding-top:4px;
+    }
+
+    .btn-volver{
+        min-width:130px;
+
+        height:42px;
+
+        font-size:11px;
+    }
+
+
+    /* FOOTER */
+
+    footer{
+        padding:
+            40px 18px 28px;
+
+        font-size:10px;
+    }
+}
+
+
+/* =========================================================
+   MÓVILES PEQUEÑOS
+   ========================================================= */
+
+@media(max-width:380px){
+
+    .header{
+        padding:
+            15px;
+    }
+
+    .logo{
+        font-size:13px;
+    }
+
+    nav{
+        max-width:60%;
+
+        gap:9px;
+    }
+
+    nav a{
+        font-size:9px;
+    }
+
+
+    .program-container{
+        padding-left:16px;
+        padding-right:16px;
+    }
+
+
+    .program-intro{
+        padding-bottom:48px;
+    }
+
+    .program-intro h1{
+        font-size:34px;
+    }
+
+    .program-intro > p{
+        font-size:13px;
+    }
+
+
+    .program-block{
+        padding:
+            39px 0;
+    }
+
+    .program-block.philosophy{
+        padding:
+            48px 0 55px;
+    }
+
+    .program-block.philosophy p{
+        font-size:23px;
+
+        line-height:1.25;
+    }
+
+    .program-block > p{
+        font-size:13px;
+    }
+
+
+    .faq-section{
+        padding-top:53px;
+    }
+
+    .faq-heading h2{
+        font-size:30px;
+    }
+
+    .faq summary{
+        padding:
+            19px 0;
+
+        font-size:14px;
+    }
+
+    .faq summary i{
+        flex-basis:23px;
+
+        width:23px;
+        height:23px;
+
+        margin-left:14px;
+
+        font-size:10px;
+    }
+
+    .faq-answer{
+        padding-right:24px;
+
+        font-size:12px;
+
+        line-height:1.7;
+    }
+
+
+    .program-block.disclaimer p{
+        font-size:11px;
+    }
+}
+
+
+/* =========================================================
+   PANTALLAS GRANDES
+   ========================================================= */
+
+@media(min-width:1400px){
+
+    .program-container{
+        max-width:960px;
+
+        padding-top:155px;
+    }
+
+    .program-intro h1{
+        font-size:66px;
+    }
+
+    .program-block.philosophy p{
+        font-size:44px;
+    }
+}
+
+
+/* =========================================================
+   TOUCH
+   ========================================================= */
+
+@media(hover:none){
+
+    nav a:hover{
+        color:#d9d9dc;
+        opacity:.72;
+    }
+
+    nav a:hover::after{
+        width:0;
+    }
+
+    .faq summary:hover{
+        color:#e7e7ea;
+    }
+
+    .faq summary:hover i{
+        color:#66666d;
+    }
+
+    .btn-volver:hover{
+        color:#d9d9dd;
+
+        background:
+            rgba(255,255,255,.035);
+
+        border-color:
+            rgba(255,255,255,.11);
+
+        transform:none;
+    }
+}
+
+
+/* =========================================================
+   REDUCCIÓN DE MOVIMIENTO
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+    }
+}
+/* =========================================================
+   FAQ — NOVA
+========================================================= */
+
+.faq {
+    width: min(100%, 900px);
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   FAQ ITEM
+========================================================= */
+
+.faq details {
+    position: relative;
+    margin: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.faq summary {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    padding: 22px 0;
+
+    list-style: none;
+    cursor: pointer;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+
+    transition:
+        color 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+/* Quitar marcador nativo */
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq summary::marker {
+    display: none;
+}
+
+
+/* =========================================================
+   QUESTION
+========================================================= */
+
+.faq summary span {
+    display: block;
+
+    max-width: 90%;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.faq summary i {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 11px;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.faq summary:hover {
+    color: #fff;
+}
+
+.faq summary:hover i {
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* =========================================================
+   OPEN
+========================================================= */
+
+.faq details[open] summary {
+    color: #fff;
+}
+
+.faq details[open] summary i {
+    transform: rotate(45deg);
+
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.07);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   ANSWER
+========================================================= */
+
+.faq-answer {
+    max-width: 760px;
+
+    padding:
+        0
+        54px
+        24px
+        0;
+
+    animation: novaFaqOpen 0.35s ease both;
+}
+
+.faq-answer p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.52);
+
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.75;
+
+    letter-spacing: -0.005em;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes novaFaqOpen {
+
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   LAST ITEM
+========================================================= */
+
+.faq details:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+/* =========================================================
+   DISCLAIMER
+========================================================= */
+
+.program-block.disclaimer {
+    width: min(100%, 900px);
+
+    margin: 70px auto 0;
+
+    padding: 28px 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.015)
+        );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================================================
+   DISCLAIMER TITLE
+========================================================= */
+
+.program-block.disclaimer h3 {
+    margin: 0 0 10px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   DISCLAIMER TEXT
+========================================================= */
+
+.program-block.disclaimer p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.42);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   RETURN
+========================================================= */
+
+.program-return {
+    display: flex;
+    justify-content: center;
+
+    margin: 42px 0 0;
+}
+
+
+/* =========================================================
+   BUTTON — VOLVER
+========================================================= */
+
+.btn-volver {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 120px;
+    min-height: 42px;
+
+    padding: 0 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 12px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.btn-volver:hover {
+    transform: translateY(-1px);
+
+    border-color: rgba(255, 255, 255, 0.22);
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #fff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .faq summary {
+        gap: 16px;
+        padding: 20px 0;
+
+        font-size: 13px;
+    }
+
+    .faq summary i {
+        width: 28px;
+        height: 28px;
+
+        font-size: 10px;
+    }
+
+    .faq-answer {
+        padding:
+            0
+            38px
+            22px
+            0;
+    }
+
+    .faq-answer p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .program-block.disclaimer {
+        margin-top: 55px;
+        padding: 24px 22px;
+        border-radius: 16px;
+    }
+
+    .program-block.disclaimer p {
+        font-size: 11px;
+    }
+
+    .program-return {
+        margin-top: 34px;
+    }
+
+}
