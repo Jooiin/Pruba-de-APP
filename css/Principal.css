@@ -181,3 +181,238 @@ height:18px;
     html{scroll-behavior:auto}
     *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
+
+/* =========================================================
+NOVA · MODAL DE DISCIPLINAS
+========================================================= */
+
+.nova-discipline-modal{
+position:fixed;
+inset:0;
+z-index:9000;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+visibility:hidden;
+pointer-events:none;
+}
+
+.nova-discipline-modal.is-open{
+visibility:visible;
+pointer-events:auto;
+}
+
+/* FONDO */
+
+.nova-discipline-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.48);
+opacity:0;
+transition:opacity .28s ease;
+}
+
+.nova-discipline-modal.is-open .nova-discipline-overlay{
+opacity:1;
+}
+
+/* PANEL */
+
+.nova-discipline-panel{
+position:relative;
+width:min(100%,680px);
+max-height:88vh;
+overflow-y:auto;
+
+
+background:#fff;
+color:#08090b;
+
+border-radius:28px 28px 0 0;
+padding:30px 26px calc(28px + env(safe-area-inset-bottom));
+
+transform:translateY(100%);
+transition:transform .38s cubic-bezier(.22,1,.36,1);
+
+box-shadow:0 -18px 60px rgba(0,0,0,.18);
+
+
+}
+
+.nova-discipline-modal.is-open .nova-discipline-panel{
+transform:translateY(0);
+}
+
+/* BOTÓN CERRAR */
+
+.nova-discipline-close{
+position:absolute;
+top:18px;
+right:18px;
+
+
+width:42px;
+height:42px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border:0;
+border-radius:50%;
+
+background:#f1f1ef;
+color:#08090b;
+
+cursor:pointer;
+-webkit-tap-highlight-color:transparent;
+
+
+}
+
+.nova-discipline-close svg{
+width:19px;
+height:19px;
+}
+
+/* TEXTOS */
+
+.nova-discipline-modal-kicker{
+display:block;
+
+
+margin-bottom:10px;
+
+font-size:10px;
+font-weight:700;
+letter-spacing:.16em;
+text-transform:uppercase;
+
+color:#777;
+
+
+}
+
+.nova-discipline-panel h2{
+margin:0;
+padding-right:55px;
+
+
+font-size:32px;
+line-height:1.05;
+font-weight:700;
+letter-spacing:-.035em;
+
+
+}
+
+.nova-discipline-modal-description{
+margin:16px 0 26px;
+
+
+max-width:560px;
+
+font-size:15px;
+line-height:1.6;
+
+color:#5f6266;
+
+
+}
+
+/* PUNTOS CLAVE */
+
+.nova-discipline-points{
+display:flex;
+flex-direction:column;
+gap:0;
+
+
+border-top:1px solid rgba(8,9,11,.09);
+
+
+}
+
+.nova-discipline-point{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+
+
+padding:18px 0;
+
+border-bottom:1px solid rgba(8,9,11,.09);
+
+
+}
+
+.nova-discipline-point-text{
+display:flex;
+flex-direction:column;
+gap:4px;
+}
+
+.nova-discipline-point-title{
+font-size:15px;
+font-weight:700;
+line-height:1.2;
+}
+
+.nova-discipline-point-description{
+font-size:13px;
+line-height:1.45;
+color:#777;
+}
+
+.nova-discipline-point-number{
+flex:0 0 auto;
+
+
+width:34px;
+height:34px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:#08090b;
+color:#fff;
+
+font-size:11px;
+font-weight:700;
+
+
+}
+
+/* DESKTOP */
+
+@media (min-width:700px){
+
+
+.nova-discipline-modal{
+    align-items:center;
+    padding:24px;
+}
+
+.nova-discipline-panel{
+    border-radius:28px;
+    padding:36px;
+
+    transform:translateY(30px) scale(.97);
+    opacity:0;
+
+    transition:
+        transform .35s cubic-bezier(.22,1,.36,1),
+        opacity .25s ease;
+}
+
+.nova-discipline-modal.is-open .nova-discipline-panel{
+    transform:translateY(0) scale(1);
+    opacity:1;
+}
+
+
+}
