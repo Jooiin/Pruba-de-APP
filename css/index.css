@@ -86,7 +86,7 @@ height:18px;
 
 
 /* HERO */
-.nova-home-hero{position:relative;min-height:330px;margin-top:60px;overflow:hidden;border-radius:30px;background:#e9edf0;box-shadow:0 16px 38px rgba(11,29,52,.08)}
+.nova-home-hero{position:relative;min-height:330px;margin-top:100px;overflow:hidden;border-radius:30px;background:#e9edf0;box-shadow:0 16px 38px rgba(11,29,52,.08)}
 .nova-home-hero img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center}
 .nova-home-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(245,246,247,.98) 0%,rgba(245,246,247,.90) 28%,rgba(245,246,247,.20) 58%,rgba(245,246,247,0) 82%)}
 .nova-home-hero-content{position:relative;z-index:2;width:58%;padding:34px 22px}
@@ -415,4 +415,39 @@ font-weight:700;
 }
 
 
+}
+
+/* =========================================================
+   BLOQUEAR SCROLL DE LA PÁGINA CUANDO EL MODAL ESTÁ ABIERTO
+   ========================================================= */
+
+html:has(.nova-discipline-modal.is-open),
+body:has(.nova-discipline-modal.is-open){
+    overflow:hidden;
+    height:100%;
+    overscroll-behavior:none;
+}
+
+/* El modal ocupa toda la pantalla */
+.nova-discipline-modal{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100dvh;
+    overflow:hidden;
+    overscroll-behavior:none;
+}
+
+/* Solo la ventana puede hacer scroll */
+.nova-discipline-modal-panel{
+    max-height:88dvh;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+}
+
+/* Evita que el scroll del panel se propague a la página */
+.nova-discipline-modal-panel{
+    touch-action:pan-y;
 }
