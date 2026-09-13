@@ -4,47 +4,358 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
-    <meta
-        name="theme-color"
-        content="#08090b"
-    >
+<meta
+    name="theme-color"
+    content="#08090b"
+>
 
-    <meta
-        name="description"
-        content="NOVA · Training"
-    >
+<meta
+    name="description"
+    content="NOVA · Training"
+>
 
-    <link rel="stylesheet" href="css/Principal.css">
+<link
+    rel="stylesheet"
+    href="css/Principal.css"
+>
 
-    <title>NOVA</title>
-
-
-    <!-- =====================================================
-         SUPABASE
-         ===================================================== -->
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <script src="supabase-config.js"></script>
+<title>NOVA</title>
 
 
-    <!-- =====================================================
-         ESTILOS
-         ===================================================== -->
+<!-- =====================================================
+     SUPABASE
+     ===================================================== -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase-config.js"></script>
+
+
+<!-- =====================================================
+     ESTILOS DEL MODAL
+     ===================================================== -->
+
+<style>
+
+    /* =====================================================
+       NOVA · MODAL DE DISCIPLINAS
+       ===================================================== */
+
+    .nova-discipline-modal{
+        position:fixed;
+        inset:0;
+        z-index:9000;
+
+        display:flex;
+        align-items:flex-end;
+        justify-content:center;
+
+        visibility:hidden;
+        pointer-events:none;
+    }
+
+    .nova-discipline-modal.is-open{
+        visibility:visible;
+        pointer-events:auto;
+    }
+
+
+    /* =====================================================
+       FONDO
+       ===================================================== */
+
+    .nova-discipline-overlay{
+        position:absolute;
+        inset:0;
+
+        background:rgba(0,0,0,.52);
+
+        opacity:0;
+
+        transition:opacity .28s ease;
+    }
+
+    .nova-discipline-modal.is-open
+    .nova-discipline-overlay{
+        opacity:1;
+    }
+
+
+    /* =====================================================
+       PANEL
+       ===================================================== */
+
+    .nova-discipline-panel{
+        position:relative;
+
+        width:min(100%,680px);
+        max-height:88vh;
+
+        overflow-y:auto;
+        overscroll-behavior:contain;
+
+        background:#fff;
+        color:#08090b;
+
+        border-radius:28px 28px 0 0;
+
+        padding:
+            32px
+            26px
+            calc(30px + env(safe-area-inset-bottom));
+
+        transform:translateY(100%);
+
+        transition:
+            transform .38s cubic-bezier(.22,1,.36,1);
+
+        box-shadow:
+            0 -18px 60px rgba(0,0,0,.20);
+    }
+
+    .nova-discipline-modal.is-open
+    .nova-discipline-panel{
+        transform:translateY(0);
+    }
+
+
+    /* =====================================================
+       BOTÓN CERRAR
+       ===================================================== */
+
+    .nova-discipline-close{
+        position:absolute;
+
+        top:18px;
+        right:18px;
+
+        width:42px;
+        height:42px;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        padding:0;
+
+        border:0;
+        border-radius:50%;
+
+        background:#f1f1ef;
+        color:#08090b;
+
+        cursor:pointer;
+
+        -webkit-tap-highlight-color:transparent;
+    }
+
+    .nova-discipline-close:active{
+        transform:scale(.94);
+    }
+
+    .nova-discipline-close svg{
+        width:19px;
+        height:19px;
+    }
+
+
+    /* =====================================================
+       TEXTOS
+       ===================================================== */
+
+    .nova-discipline-modal-kicker{
+        display:block;
+
+        margin-bottom:10px;
+
+        font-size:10px;
+        font-weight:700;
+
+        letter-spacing:.16em;
+        text-transform:uppercase;
+
+        color:#777;
+    }
+
+    .nova-discipline-panel h2{
+        margin:0;
+        padding-right:55px;
+
+        font-size:32px;
+        line-height:1.05;
+
+        font-weight:700;
+
+        letter-spacing:-.035em;
+    }
+
+    .nova-discipline-modal-description{
+        margin:16px 0 26px;
+
+        max-width:560px;
+
+        font-size:15px;
+        line-height:1.6;
+
+        color:#5f6266;
+    }
+
+
+    /* =====================================================
+       PUNTOS CLAVE
+       ===================================================== */
+
+    .nova-discipline-points{
+        display:flex;
+        flex-direction:column;
+        gap:0;
+
+        border-top:1px solid rgba(8,9,11,.09);
+    }
+
+    .nova-discipline-point{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+
+        gap:20px;
+
+        padding:18px 0;
+
+        border-bottom:
+            1px solid rgba(8,9,11,.09);
+    }
+
+    .nova-discipline-point-text{
+        display:flex;
+        flex-direction:column;
+
+        gap:4px;
+
+        min-width:0;
+    }
+
+    .nova-discipline-point-title{
+        font-size:15px;
+        font-weight:700;
+
+        line-height:1.2;
+    }
+
+    .nova-discipline-point-description{
+        font-size:13px;
+        line-height:1.45;
+
+        color:#777;
+    }
+
+    .nova-discipline-point-number{
+        flex:0 0 auto;
+
+        width:34px;
+        height:34px;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        border-radius:50%;
+
+        background:#08090b;
+        color:#fff;
+
+        font-size:11px;
+        font-weight:700;
+    }
+
+
+    /* =====================================================
+       BOTÓN DE TARJETA
+       ===================================================== */
+
+    button.nova-home-discipline{
+        appearance:none;
+        -webkit-appearance:none;
+
+        width:100%;
+
+        margin:0;
+        padding:0;
+
+        border:0;
+
+        font:inherit;
+        text-align:left;
+
+        background:transparent;
+        color:inherit;
+
+        cursor:pointer;
+
+        -webkit-tap-highlight-color:transparent;
+    }
+
+    button.nova-home-discipline:focus{
+        outline:none;
+    }
+
+    button.nova-home-discipline:focus-visible{
+        outline:2px solid #08090b;
+        outline-offset:3px;
+    }
+
+
+    /* =====================================================
+       DESKTOP
+       ===================================================== */
+
+    @media (min-width:700px){
+
+        .nova-discipline-modal{
+            align-items:center;
+            padding:24px;
+        }
+
+        .nova-discipline-panel{
+            border-radius:28px;
+
+            padding:36px;
+
+            transform:
+                translateY(30px)
+                scale(.97);
+
+            opacity:0;
+
+            transition:
+                transform .35s cubic-bezier(.22,1,.36,1),
+                opacity .25s ease;
+        }
+
+        .nova-discipline-modal.is-open
+        .nova-discipline-panel{
+            transform:
+                translateY(0)
+                scale(1);
+
+            opacity:1;
+        }
+
+    }
+
+</style>
+```
 
 </head>
 
-
 <body>
-
 
 <!-- =========================================================
      PRINCIPAL
@@ -55,339 +366,258 @@
     id="principalPage"
 >
 
-    <div class="nova-container">
+```
+<div class="nova-container">
 
 
-        <!-- =================================================
-             TOP
-             ================================================= -->
+    <!-- =================================================
+         TOP
+         ================================================= -->
 
-        <header class="nova-top">
+    <header class="nova-top">
 
-            <div class="nova-brand">
+        <div class="nova-brand">
 
-                <span class="nova-brand-name">
-                    NOVA
-                </span>
+            <span class="nova-brand-name">
+                NOVA
+            </span>
 
-                <span class="nova-brand-label">
-                    TRAINING
-                </span>
+            <span class="nova-brand-label">
+                TRAINING
+            </span>
 
-            </div>
+        </div>
 
 
-            <a
-                href="perfil.html"
-                class="nova-profile-button"
-                aria-label="Perfil"
+        <a
+            href="perfil.html"
+            class="nova-profile-button"
+            aria-label="Perfil"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
             >
 
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                <circle
+                    cx="12"
+                    cy="8"
+                    r="3.5"
+                />
+
+                <path
+                    d="M4.5 20c.8-3.4 3.2-5.3 7.5-5.3s6.7 1.9 7.5 5.3"
+                />
+
+            </svg>
+
+        </a>
+
+    </header>
+
+
+    <!-- =================================================
+         NOVA · HOME
+         ================================================= -->
+
+    <section class="nova-home-hero">
+
+        <img
+            src="img/WhatsApp Image 4.jpeg"
+            alt="NOVA · Natación"
+        >
+
+        <div class="nova-home-hero-content">
+
+            <span class="nova-home-hero-kicker">
+                NOVA · TRAINING
+            </span>
+
+            <p>
+                Disciplina hoy.<br>
+                Resultados mañana.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         TU SEMANA
+         ================================================= -->
+
+    <section class="nova-week">
+
+        <p class="nova-week-description">
+            Natación, HIIT y fuerza forman parte de una misma visión:
+            entrenar mejor, construir capacidad y evolucionar de manera constante.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         TUS DISCIPLINAS
+         ================================================= -->
+
+    <section class="nova-home-section">
+
+        <div class="nova-home-section-head">
+
+            <h2>
+                Tus disciplinas
+            </h2>
+
+        </div>
+
+
+        <div class="nova-home-disciplines">
+
+
+            <!-- =================================================
+                 NATACIÓN
+                 ================================================= -->
+
+            <button
+                type="button"
+                class="nova-home-discipline"
+                data-discipline="natacion"
+            >
+
+                <img
+                    src="img/chaps.3.jpg"
+                    alt="Natación"
                 >
 
-                    <circle
-                        cx="12"
-                        cy="8"
-                        r="3.5"
-                    />
+                <div class="nova-home-discipline-content">
 
-                    <path
-                        d="M4.5 20c.8-3.4 3.2-5.3 7.5-5.3s6.7 1.9 7.5 5.3"
-                    />
+                    <h3>
+                        Natación
+                    </h3>
 
-                </svg>
+                    <p>
+                        Técnica · Resistencia · Fondo
+                    </p>
 
-            </a>
-
-        </header>
-
-
-        <!-- =================================================
-             NOVA · HOME
-             DASHBOARD
-             ================================================= -->
-
-        <section class="nova-home-hero">
-
-            <img
-                src="img/WhatsApp Image 4.jpeg"
-                alt="NOVA · Natación"
-            >
-
-            <div class="nova-home-hero-content">
-
-                <span class="nova-home-hero-kicker">
-                    NOVA · TRAINING
-                </span>
-
-                <h1>
-                    Entrena.<br>
-                    <span>Evoluciona.</span>
-                </h1>
-
-                <p>
-                    Disciplina hoy.<br>
-                    Resultados mañana.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             TU SEMANA
-             ================================================= -->
-
-        <section class="nova-week">
-
-
-<p class="nova-week-description">
-    Natación, HIIT y fuerza forman parte de una misma visión:
-    entrenar mejor, construir capacidad y evolucionar de manera constante.
-</p>
-
-        </section>
-
-
-        <!-- =================================================
-             PRÓXIMO ENTRENAMIENTO
-             ================================================= -->
-
-
-
-        <!-- =================================================
-             TUS DISCIPLINAS
-             ================================================= -->
-
-<section class="nova-home-section">
-<div class="nova-home-section-head">
-
-    <h2>
-        Tus disciplinas
-    </h2>
-
-    <a
-        href="training.html"
-        class="nova-home-section-link"
-    >
-        Ver todas&nbsp; →
-    </a>
-
-</div>
-
-
-<div class="nova-home-disciplines">
-
-
-    <!-- NATACIÓN -->
-
-    <a
-        href="training.html#natacion"
-        class="nova-home-discipline"
-    >
-
-        <img
-            src="img/chaps.3.jpg"
-            alt="Natación"
-        >
-
-        <div class="nova-home-discipline-content">
-
-            <h3>
-                Natación
-            </h3>
-
-            <p>
-                Técnica · Resistencia · Fondo
-            </p>
-
-            <span class="nova-card-arrow">
-                →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- CONDICIÓN -->
-
-    <a
-        href="training.html#hit"
-        class="nova-home-discipline"
-    >
-
-        <img
-            src="img/chaps.1.jpg"
-            alt="Condición"
-        >
-
-        <div class="nova-home-discipline-content">
-
-            <h3>
-                Condición
-            </h3>
-
-            <p>
-                Capacidad · Cardio · Resistencia
-            </p>
-
-            <span class="nova-card-arrow">
-                →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- RENDIMIENTO -->
-
-    <a
-        href="training.html#fuerza"
-        class="nova-home-discipline"
-    >
-
-        <img
-            src="img/WhatsApp Image 3.jpeg"
-            alt="Rendimiento"
-        >
-
-        <div class="nova-home-discipline-content">
-
-            <h3>
-                Rendimiento
-            </h3>
-
-            <p>
-                Fuerza · Potencia · Estabilidad
-            </p>
-
-            <span class="nova-card-arrow">
-                →
-            </span>
-
-        </div>
-
-    </a>
-
-</div>
-</section>
-
-
-        <!-- =================================================
-             PROGRAMAS
-             ================================================= -->
-
-        <section class="nova-home-section">
-
-            <a
-                href="planes.html"
-                class="nova-program-card"
-            >
-
-
-                <div class="nova-program-copy">
-
-                    <span>
-                        Encuentra entrenamientos personalizados, rutinas enfocadas en tu evolución, horarios flexibles y seguimiento de tu progreso y rendimiento. Todo lo que necesitas para entrenar con estructura, mejorar tus capacidades y avanzar hacia tus objetivos.
-
-
-
-Da el siguiente paso. Elige el que mejor se adapte a ti y comienza a entrenar.
+                    <span class="nova-card-arrow">
+                        →
                     </span>
-
-<div class="nova-benefit">
-    <div class="nova-benefit-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.8 8.7c0 5.5-8.8 11-8.8 11S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/>
-        </svg>
-    </div>
-
-    <span>Entrenamiento personalizado</span>
-</div>
-
-
-<div class="nova-benefit">
-    <div class="nova-benefit-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3v18"/>
-            <path d="M7 7l5-4 5 4"/>
-            <path d="M7 17l5 4 5-4"/>
-        </svg>
-    </div>
-
-    <span>Rutinas diseñadas para tu evolución</span>
-</div>
-
-
-<div class="nova-benefit">
-    <div class="nova-benefit-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="9"/>
-            <path d="M12 7v5l3 2"/>
-        </svg>
-    </div>
-
-    <span>Horarios de entrenamiento flexibles</span>
-</div>
-
-
-<div class="nova-benefit">
-    <div class="nova-benefit-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 19V5"/>
-            <path d="M4 19h16"/>
-            <path d="M8 15v-3"/>
-            <path d="M12 15V8"/>
-            <path d="M16 15V5"/>
-        </svg>
-    </div>
-
-    <span>Seguimiento de tu progreso y rendimiento</span>
-</div>
 
                 </div>
 
-
-            </a>
-
-        </section>
+            </button>
 
 
-        <!-- =================================================
-             PRÓXIMO ENTRENAMIENTO · SUPABASE
-             ================================================= -->
+            <!-- =================================================
+                 CONDICIÓN
+                 ================================================= -->
 
-        <section
-            class="nova-section"
-            id="nextTrainingSection"
-        >
-
-            <span class="nova-eyebrow">
-                TU CAMINO
-            </span>
-
-            <div
-                class="nova-next"
-                style="margin-top:18px;"
+            <button
+                type="button"
+                class="nova-home-discipline"
+                data-discipline="hit"
             >
 
-                <div class="nova-next-top">
+                <img
+                    src="img/chaps.1.jpg"
+                    alt="Condición"
+                >
 
-                    <span class="nova-next-label">
-                        PRÓXIMO ENTRENAMIENTO
+                <div class="nova-home-discipline-content">
+
+                    <h3>
+                        Condición
+                    </h3>
+
+                    <p>
+                        Capacidad · Cardio · Resistencia
+                    </p>
+
+                    <span class="nova-card-arrow">
+                        →
                     </span>
 
-                    <span class="nova-next-icon">
+                </div>
+
+            </button>
+
+
+            <!-- =================================================
+                 RENDIMIENTO
+                 ================================================= -->
+
+            <button
+                type="button"
+                class="nova-home-discipline"
+                data-discipline="fuerza"
+            >
+
+                <img
+                    src="img/WhatsApp Image 3.jpeg"
+                    alt="Rendimiento"
+                >
+
+                <div class="nova-home-discipline-content">
+
+                    <h3>
+                        Rendimiento
+                    </h3>
+
+                    <p>
+                        Fuerza · Potencia · Estabilidad
+                    </p>
+
+                    <span class="nova-card-arrow">
+                        →
+                    </span>
+
+                </div>
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         PROGRAMAS
+         ================================================= -->
+
+    <section class="nova-home-section">
+
+        <a
+            href="planes.html"
+            class="nova-program-card"
+        >
+
+            <div class="nova-week-description">
+
+                <span>
+                    Encuentra entrenamientos personalizados,
+                    rutinas enfocadas en tu evolución,
+                    horarios flexibles y seguimiento de tu
+                    progreso y rendimiento. Todo lo que necesitas
+                    para entrenar con estructura, mejorar tus
+                    capacidades y avanzar hacia tus objetivos.
+
+                    <br><br>
+
+                    Da el siguiente paso. Elige el que mejor se
+                    adapte a ti y comienza a entrenar.
+                </span>
+
+
+                <div class="nova-benefit">
+
+                    <div class="nova-benefit-icon">
 
                         <svg
                             viewBox="0 0 24 24"
@@ -398,40 +628,280 @@ Da el siguiente paso. Elige el que mejor se adapte a ti y comienza a entrenar.
                             stroke-linejoin="round"
                         >
 
-                            <path d="M5 12h14" />
-                            <path d="m13 6 6 6-6 6" />
+                            <path
+                                d="M20.8 8.7c0 5.5-8.8 11-8.8 11S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"
+                            />
 
                         </svg>
 
+                    </div>
+
+                    <span>
+                        Entrenamiento personalizado
                     </span>
 
                 </div>
 
-                <h3 id="nextTrainingTitle">
-                    Entrenamiento
-                </h3>
 
-                <p id="nextTrainingDescription">
-                    Tienes una sesión disponible dentro de tu programa de entrenamiento.
-                </p>
+                <div class="nova-benefit">
 
-                <div
-                    class="nova-next-meta"
-                    id="nextTrainingMeta"
-                ></div>
+                    <div class="nova-benefit-icon">
 
-                <a
-                    href="training.html"
-                    class="nova-next-button"
-                    id="nextTrainingButton"
-                >
-                    <span>VER ENTRENAMIENTO</span>
-                    <span>→</span>
-                </a>
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <path d="M12 3v18"/>
+                            <path d="M7 7l5-4 5 4"/>
+                            <path d="M7 17l5 4 5-4"/>
+
+                        </svg>
+
+                    </div>
+
+                    <span>
+                        Rutinas diseñadas para tu evolución
+                    </span>
+
+                </div>
+
+
+                <div class="nova-benefit">
+
+                    <div class="nova-benefit-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="9"
+                            />
+
+                            <path
+                                d="M12 7v5l3 2"
+                            />
+
+                        </svg>
+
+                    </div>
+
+                    <span>
+                        Horarios de entrenamiento flexibles
+                    </span>
+
+                </div>
+
+
+                <div class="nova-benefit">
+
+                    <div class="nova-benefit-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+
+                            <path d="M4 19V5"/>
+                            <path d="M4 19h16"/>
+                            <path d="M8 15v-3"/>
+                            <path d="M12 15V8"/>
+                            <path d="M16 15V5"/>
+
+                        </svg>
+
+                    </div>
+
+                    <span>
+                        Seguimiento de tu progreso y rendimiento
+                    </span>
+
+                </div>
 
             </div>
 
-        </section>
+        </a>
+
+    </section>
+
+
+    <!-- =================================================
+         PRÓXIMO ENTRENAMIENTO · SUPABASE
+         ================================================= -->
+
+    <section
+        class="nova-section"
+        id="nextTrainingSection"
+    >
+
+        <span class="nova-eyebrow">
+            TU CAMINO
+        </span>
+
+
+        <div
+            class="nova-next"
+            style="margin-top:18px;"
+        >
+
+            <div class="nova-next-top">
+
+                <span class="nova-next-label">
+                    PRÓXIMO ENTRENAMIENTO
+                </span>
+
+                <span class="nova-next-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+
+                        <path d="M5 12h14"/>
+                        <path d="m13 6 6 6-6 6"/>
+
+                    </svg>
+
+                </span>
+
+            </div>
+
+
+            <h3 id="nextTrainingTitle">
+                Entrenamiento
+            </h3>
+
+
+            <p id="nextTrainingDescription">
+                Tienes una sesión disponible dentro de tu programa de entrenamiento.
+            </p>
+
+
+            <div
+                class="nova-next-meta"
+                id="nextTrainingMeta"
+            ></div>
+
+
+            <a
+                href="training.html"
+                class="nova-next-button"
+                id="nextTrainingButton"
+            >
+
+                <span>
+                    VER ENTRENAMIENTO
+                </span>
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+<!-- =========================================================
+     MODAL DE DISCIPLINAS
+     ========================================================= -->
+
+<div
+    class="nova-discipline-modal"
+    id="disciplineModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="nova-discipline-overlay"
+        id="disciplineOverlay"
+    ></div>
+
+
+    <div
+        class="nova-discipline-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="disciplineModalTitle"
+    >
+
+        <button
+            type="button"
+            class="nova-discipline-close"
+            id="disciplineClose"
+            aria-label="Cerrar"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+            >
+
+                <path d="M6 6l12 12"/>
+                <path d="M18 6L6 18"/>
+
+            </svg>
+
+        </button>
+
+
+        <span
+            class="nova-discipline-modal-kicker"
+        >
+            NOVA · TRAINING
+        </span>
+
+
+        <h2 id="disciplineModalTitle">
+            Natación
+        </h2>
+
+
+        <p
+            class="nova-discipline-modal-description"
+            id="disciplineModalDescription"
+        >
+            Entrena tu capacidad en el agua a través de técnica,
+            resistencia y control del ritmo.
+        </p>
+
+
+        <div
+            class="nova-discipline-points"
+            id="disciplineModalPoints"
+        ></div>
+
+    </div>
+
+</div>
 
 
 <!-- =========================================================
@@ -462,13 +932,8 @@ Da el siguiente paso. Elige el que mejor se adapte a ti y comienza a entrenar.
                 stroke-linejoin="round"
             >
 
-                <path
-                    d="m4 10 8-6 8 6"
-                />
-
-                <path
-                    d="M6 9.5V20h12V9.5"
-                />
+                <path d="m4 10 8-6 8 6"/>
+                <path d="M6 9.5V20h12V9.5"/>
 
             </svg>
 
@@ -486,43 +951,74 @@ Da el siguiente paso. Elige el que mejor se adapte a ti y comienza a entrenar.
             class="nova-nav-item"
         >
 
-<svg
-viewBox="0 0 24 24"
-fill="none"
-stroke="currentColor"
-stroke-width="1.7"
-stroke-linecap="round"
-stroke-linejoin="round"
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
 
-<!-- Cabeza -->
-<circle cx="12" cy="4" r="2" />
+                <circle
+                    cx="12"
+                    cy="4"
+                    r="2"
+                />
 
-<!-- Torso -->
-<path d="M10 7l-1 5 3 3 3-3-1-5" />
+                <path
+                    d="M10 7l-1 5 3 3 3-3-1-5"
+                />
 
-<!-- Brazos -->
-<path d="M9 8l-3 3 1 4" />
-<path d="M15 8l3 3-1 4" />
+                <path
+                    d="M9 8l-3 3 1 4"
+                />
 
-<!-- Manos -->
-<path d="M7 15l-2 1" />
-<path d="M17 15l2-1" />
+                <path
+                    d="M15 8l3 3-1 4"
+                />
 
-<!-- Pierna izquierda -->
-<path d="M11 15l-2 4-2 2" />
+                <path
+                    d="M7 15l-2 1"
+                />
 
-<!-- Pierna derecha -->
-<path d="M13 15l2 4 2 2" />
+                <path
+                    d="M17 15l2-1"
+                />
 
-<!-- Pesa -->
-<path d="M4 15h3" />
-<path d="M3 14v2" />
-<path d="M2 14v2" />
+                <path
+                    d="M11 15l-2 4-2 2"
+                />
 
-<path d="M17 15h3" />
-<path d="M21 14v2" />
-<path d="M22 14v2" />
-</svg>
+                <path
+                    d="M13 15l2 4 2 2"
+                />
+
+                <path
+                    d="M4 15h3"
+                />
+
+                <path
+                    d="M3 14v2"
+                />
+
+                <path
+                    d="M2 14v2"
+                />
+
+                <path
+                    d="M17 15h3"
+                />
+
+                <path
+                    d="M21 14v2"
+                />
+
+                <path
+                    d="M22 14v2"
+                />
+
+            </svg>
 
             <span>
                 ENTRENAMIENTOS
@@ -547,21 +1043,10 @@ stroke-linejoin="round"
                 stroke-linejoin="round"
             >
 
-                <path
-                    d="M4 19V9"
-                />
-
-                <path
-                    d="M10 19V5"
-                />
-
-                <path
-                    d="M16 19v-7"
-                />
-
-                <path
-                    d="M22 19V3"
-                />
+                <path d="M4 19V9"/>
+                <path d="M10 19V5"/>
+                <path d="M16 19v-7"/>
+                <path d="M22 19V3"/>
 
             </svg>
 
@@ -596,17 +1081,9 @@ stroke-linejoin="round"
                     rx="2"
                 />
 
-                <path
-                    d="M8 8h8"
-                />
-
-                <path
-                    d="M8 12h8"
-                />
-
-                <path
-                    d="M8 16h5"
-                />
+                <path d="M8 8h8"/>
+                <path d="M8 12h8"/>
+                <path d="M8 16h5"/>
 
             </svg>
 
@@ -615,7 +1092,7 @@ stroke-linejoin="round"
             </span>
 
         </a>
-        
+
 
     </div>
 
@@ -628,180 +1105,673 @@ stroke-linejoin="round"
 
 <script>
 
-document.addEventListener(
-    "DOMContentLoaded",
-    async function () {
+    document.addEventListener(
+        "DOMContentLoaded",
+        async function () {
 
 
-        /* =====================================================
-           ELEMENTOS
-           ===================================================== */
+            /* =================================================
+               MODAL · ELEMENTOS
+               ================================================= */
 
-        const sessionStatus =
-            document.getElementById(
-                "sessionStatus"
-            );
+            const disciplineModal =
+                document.getElementById(
+                    "disciplineModal"
+                );
 
-        const sessionStatusDot =
-            document.getElementById(
-                "sessionStatusDot"
-            );
+            const disciplineOverlay =
+                document.getElementById(
+                    "disciplineOverlay"
+                );
 
-        const nextTrainingSection =
-            document.getElementById(
-                "nextTrainingSection"
-            );
+            const disciplineClose =
+                document.getElementById(
+                    "disciplineClose"
+                );
 
-        const nextTrainingTitle =
-            document.getElementById(
-                "nextTrainingTitle"
-            );
+            const disciplineModalTitle =
+                document.getElementById(
+                    "disciplineModalTitle"
+                );
 
-        const nextTrainingDescription =
-            document.getElementById(
-                "nextTrainingDescription"
-            );
+            const disciplineModalDescription =
+                document.getElementById(
+                    "disciplineModalDescription"
+                );
 
-        const nextTrainingMeta =
-            document.getElementById(
-                "nextTrainingMeta"
-            );
-
-
-        /* =====================================================
-           OCULTAR PRÓXIMO ENTRENAMIENTO
-           POR DEFECTO
-           ===================================================== */
-
-        function hideNextTraining() {
-
-            if (nextTrainingSection) {
-
-                nextTrainingSection.style.display =
-                    "none";
-            }
-        }
+            const disciplineModalPoints =
+                document.getElementById(
+                    "disciplineModalPoints"
+                );
 
 
-        hideNextTraining();
+            /* =================================================
+               INFORMACIÓN DE DISCIPLINAS
+               ================================================= */
 
+            const disciplineData = {
 
-        /* =====================================================
-           COMPROBAR SUPABASE
-           ===================================================== */
+                natacion: {
 
-        if (!window.supabase) {
+                    title:
+                        "Natación",
 
-            console.error(
-                "NOVA · Supabase JS no se pudo cargar."
-            );
+                    description:
+                        "Entrena tu capacidad en el agua a través de técnica, resistencia y control del ritmo.",
 
-            if (sessionStatus) {
+                    points: [
 
-                sessionStatus.textContent =
-                    "NOVA · ERROR DE CONEXIÓN";
-            }
+                        {
+                            title:
+                                "Técnica",
 
-            return;
-        }
+                            description:
+                                "Mejora la eficiencia de cada movimiento y el control de tu nado."
+                        },
 
+                        {
+                            title:
+                                "Resistencia",
 
-        if (
-            typeof SUPABASE_URL === "undefined" ||
-            typeof SUPABASE_PUBLISHABLE_KEY === "undefined"
-        ) {
+                            description:
+                                "Construye capacidad para sostener esfuerzos durante más tiempo."
+                        },
 
-            console.error(
-                "NOVA · No se encontró la configuración de Supabase."
-            );
+                        {
+                            title:
+                                "Fondo",
 
-            if (sessionStatus) {
-
-                sessionStatus.textContent =
-                    "NOVA · CONFIGURACIÓN NO DISPONIBLE";
-            }
-
-            return;
-        }
-
-
-        if (
-            !SUPABASE_URL ||
-            !SUPABASE_PUBLISHABLE_KEY
-        ) {
-
-            console.error(
-                "NOVA · Falta SUPABASE_URL o SUPABASE_PUBLISHABLE_KEY."
-            );
-
-            if (sessionStatus) {
-
-                sessionStatus.textContent =
-                    "NOVA · CONFIGURACIÓN NO DISPONIBLE";
-            }
-
-            return;
-        }
-
-
-        /* =====================================================
-           CREAR CLIENTE
-           ===================================================== */
-
-        let supabaseClient;
-
-
-        try {
-
-            supabaseClient =
-                window.supabase.createClient(
-                    SUPABASE_URL,
-                    SUPABASE_PUBLISHABLE_KEY,
-                    {
-                        auth: {
-
-                            persistSession: true,
-
-                            autoRefreshToken: true,
-
-                            detectSessionInUrl: true
+                            description:
+                                "Trabaja distancia, ritmo y control para desarrollar mayor capacidad aeróbica."
                         }
+
+                    ]
+
+                },
+
+
+                hit: {
+
+                    title:
+                        "Condición",
+
+                    description:
+                        "Desarrolla tu capacidad cardiovascular, resistencia y tolerancia al esfuerzo.",
+
+                    points: [
+
+                        {
+                            title:
+                                "Capacidad",
+
+                            description:
+                                "Mejora tu capacidad para mantener esfuerzos exigentes."
+                        },
+
+                        {
+                            title:
+                                "Cardio",
+
+                            description:
+                                "Trabaja diferentes intensidades para desarrollar tu sistema cardiovascular."
+                        },
+
+                        {
+                            title:
+                                "Resistencia",
+
+                            description:
+                                "Construye la capacidad de repetir esfuerzos con mayor consistencia."
+                        }
+
+                    ]
+
+                },
+
+
+                fuerza: {
+
+                    title:
+                        "Rendimiento",
+
+                    description:
+                        "Construye una base de fuerza y potencia para mejorar tu rendimiento deportivo.",
+
+                    points: [
+
+                        {
+                            title:
+                                "Fuerza",
+
+                            description:
+                                "Desarrolla la capacidad de producir y controlar fuerza."
+                        },
+
+                        {
+                            title:
+                                "Potencia",
+
+                            description:
+                                "Trabaja la producción rápida de fuerza para movimientos más eficientes."
+                        },
+
+                        {
+                            title:
+                                "Estabilidad",
+
+                            description:
+                                "Mejora el control corporal y la capacidad de mantener posiciones bajo carga."
+                        }
+
+                    ]
+
+                }
+
+            };
+
+
+            /* =================================================
+               ABRIR MODAL
+               ================================================= */
+
+            function openDisciplineModal(
+                discipline
+            ){
+
+                const data =
+                    disciplineData[
+                        discipline
+                    ];
+
+                if(
+                    !data ||
+                    !disciplineModal
+                ){
+                    return;
+                }
+
+
+                disciplineModalTitle.textContent =
+                    data.title;
+
+
+                disciplineModalDescription.textContent =
+                    data.description;
+
+
+                disciplineModalPoints.innerHTML =
+                    "";
+
+
+                data.points.forEach(
+                    function(
+                        point,
+                        index
+                    ){
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        item.className =
+                            "nova-discipline-point";
+
+
+                        const text =
+                            document.createElement(
+                                "div"
+                            );
+
+                        text.className =
+                            "nova-discipline-point-text";
+
+
+                        const title =
+                            document.createElement(
+                                "span"
+                            );
+
+                        title.className =
+                            "nova-discipline-point-title";
+
+                        title.textContent =
+                            point.title;
+
+
+                        const description =
+                            document.createElement(
+                                "span"
+                            );
+
+                        description.className =
+                            "nova-discipline-point-description";
+
+                        description.textContent =
+                            point.description;
+
+
+                        const number =
+                            document.createElement(
+                                "span"
+                            );
+
+                        number.className =
+                            "nova-discipline-point-number";
+
+                        number.textContent =
+                            String(
+                                index + 1
+                            ).padStart(
+                                2,
+                                "0"
+                            );
+
+
+                        text.appendChild(
+                            title
+                        );
+
+                        text.appendChild(
+                            description
+                        );
+
+
+                        item.appendChild(
+                            text
+                        );
+
+                        item.appendChild(
+                            number
+                        );
+
+
+                        disciplineModalPoints.appendChild(
+                            item
+                        );
+
                     }
                 );
 
-        } catch (error) {
 
-            console.error(
-                "NOVA · Error creando cliente Supabase:",
-                error
+                disciplineModal.classList.add(
+                    "is-open"
+                );
+
+
+                disciplineModal.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+
+
+                document.body.style.overflow =
+                    "hidden";
+
+            }
+
+
+            /* =================================================
+               CERRAR MODAL
+               ================================================= */
+
+            function closeDisciplineModal(){
+
+                if(
+                    !disciplineModal
+                ){
+                    return;
+                }
+
+
+                disciplineModal.classList.remove(
+                    "is-open"
+                );
+
+
+                disciplineModal.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+
+                document.body.style.overflow =
+                    "";
+
+            }
+
+
+            /* =================================================
+               EVENTOS DE LAS TARJETAS
+               ================================================= */
+
+            const disciplineCards =
+                document.querySelectorAll(
+                    ".nova-home-discipline"
+                );
+
+
+            disciplineCards.forEach(
+                function(card){
+
+                    card.addEventListener(
+                        "click",
+                        function(){
+
+                            const discipline =
+                                card.getAttribute(
+                                    "data-discipline"
+                                );
+
+
+                            openDisciplineModal(
+                                discipline
+                            );
+
+                        }
+                    );
+
+                }
             );
 
-            return;
-        }
+
+            /* =================================================
+               CERRAR · BOTÓN
+               ================================================= */
+
+            if(
+                disciplineClose
+            ){
+
+                disciplineClose.addEventListener(
+                    "click",
+                    closeDisciplineModal
+                );
+
+            }
 
 
-        /* =====================================================
-           COMPROBAR SESIÓN
-           ===================================================== */
+            /* =================================================
+               CERRAR · FONDO
+               ================================================= */
 
-        let session = null;
+            if(
+                disciplineOverlay
+            ){
 
+                disciplineOverlay.addEventListener(
+                    "click",
+                    closeDisciplineModal
+                );
 
-        try {
-
-            const {
-                data,
-                error
-            } =
-                await supabaseClient
-                    .auth
-                    .getSession();
+            }
 
 
-            if (error) {
+            /* =================================================
+               CERRAR · ESC
+               ================================================= */
+
+            document.addEventListener(
+                "keydown",
+                function(event){
+
+                    if(
+                        event.key === "Escape" &&
+                        disciplineModal &&
+                        disciplineModal.classList.contains(
+                            "is-open"
+                        )
+                    ){
+
+                        closeDisciplineModal();
+
+                    }
+
+                }
+            );
+
+
+            /* =================================================
+               ELEMENTOS SUPABASE
+               ================================================= */
+
+            const sessionStatus =
+                document.getElementById(
+                    "sessionStatus"
+                );
+
+            const sessionStatusDot =
+                document.getElementById(
+                    "sessionStatusDot"
+                );
+
+            const nextTrainingSection =
+                document.getElementById(
+                    "nextTrainingSection"
+                );
+
+            const nextTrainingTitle =
+                document.getElementById(
+                    "nextTrainingTitle"
+                );
+
+            const nextTrainingDescription =
+                document.getElementById(
+                    "nextTrainingDescription"
+                );
+
+            const nextTrainingMeta =
+                document.getElementById(
+                    "nextTrainingMeta"
+                );
+
+
+            /* =================================================
+               OCULTAR PRÓXIMO ENTRENAMIENTO
+               ================================================= */
+
+            function hideNextTraining(){
+
+                if(
+                    nextTrainingSection
+                ){
+
+                    nextTrainingSection.style.display =
+                        "none";
+
+                }
+
+            }
+
+
+            hideNextTraining();
+
+
+            /* =================================================
+               COMPROBAR SUPABASE
+               ================================================= */
+
+            if(
+                !window.supabase
+            ){
 
                 console.error(
-                    "NOVA · Error comprobando sesión:",
+                    "NOVA · Supabase JS no se pudo cargar."
+                );
+
+                if(
+                    sessionStatus
+                ){
+
+                    sessionStatus.textContent =
+                        "NOVA · ERROR DE CONEXIÓN";
+
+                }
+
+                return;
+
+            }
+
+
+            if(
+                typeof SUPABASE_URL ===
+                    "undefined" ||
+
+                typeof SUPABASE_PUBLISHABLE_KEY ===
+                    "undefined"
+            ){
+
+                console.error(
+                    "NOVA · No se encontró la configuración de Supabase."
+                );
+
+                if(
+                    sessionStatus
+                ){
+
+                    sessionStatus.textContent =
+                        "NOVA · CONFIGURACIÓN NO DISPONIBLE";
+
+                }
+
+                return;
+
+            }
+
+
+            if(
+                !SUPABASE_URL ||
+                !SUPABASE_PUBLISHABLE_KEY
+            ){
+
+                console.error(
+                    "NOVA · Falta SUPABASE_URL o SUPABASE_PUBLISHABLE_KEY."
+                );
+
+                if(
+                    sessionStatus
+                ){
+
+                    sessionStatus.textContent =
+                        "NOVA · CONFIGURACIÓN NO DISPONIBLE";
+
+                }
+
+                return;
+
+            }
+
+
+            /* =================================================
+               CREAR CLIENTE
+               ================================================= */
+
+            let supabaseClient;
+
+
+            try{
+
+                supabaseClient =
+                    window.supabase.createClient(
+                        SUPABASE_URL,
+                        SUPABASE_PUBLISHABLE_KEY,
+                        {
+                            auth:{
+                                persistSession:true,
+                                autoRefreshToken:true,
+                                detectSessionInUrl:true
+                            }
+                        }
+                    );
+
+            }catch(error){
+
+                console.error(
+                    "NOVA · Error creando cliente Supabase:",
+                    error
+                );
+
+                return;
+
+            }
+
+
+            /* =================================================
+               COMPROBAR SESIÓN
+               ================================================= */
+
+            let session = null;
+
+
+            try{
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .auth
+                        .getSession();
+
+
+                if(
+                    error
+                ){
+
+                    console.error(
+                        "NOVA · Error comprobando sesión:",
+                        error
+                    );
+
+                    window.location.href =
+                        "NOVA.html";
+
+                    return;
+
+                }
+
+
+                if(
+                    !data ||
+                    !data.session
+                ){
+
+                    console.warn(
+                        "NOVA · No existe una sesión activa."
+                    );
+
+                    window.location.href =
+                        "NOVA.html";
+
+                    return;
+
+                }
+
+
+                session =
+                    data.session;
+
+
+                console.log(
+                    "NOVA · Usuario autenticado:",
+                    session.user
+                );
+
+
+                if(
+                    sessionStatus
+                ){
+
+                    sessionStatus.textContent =
+                        "SESIÓN ACTIVA";
+
+                }
+
+            }catch(error){
+
+                console.error(
+                    "NOVA · Error verificando sesión:",
                     error
                 );
 
@@ -809,400 +1779,345 @@ document.addEventListener(
                     "NOVA.html";
 
                 return;
+
             }
 
 
-            if (
-                !data ||
-                !data.session
-            ) {
+            /* =================================================
+               BUSCAR ASIGNACIÓN
+               ================================================= */
 
-                console.warn(
-                    "NOVA · No existe una sesión activa."
-                );
+            async function findAssignment(
+                userId
+            ){
 
-                window.location.href =
-                    "NOVA.html";
+                const queries = [
 
-                return;
-            }
+                    {
+                        column:"user_id",
 
-
-            session =
-                data.session;
-
-
-            console.log(
-                "NOVA · Usuario autenticado:",
-                session.user
-            );
-
-
-            if (sessionStatus) {
-
-                sessionStatus.textContent =
-                    "SESIÓN ACTIVA";
-            }
+                        query:
+                            supabaseClient
+                                .from("assignments")
+                                .select("*")
+                                .eq(
+                                    "user_id",
+                                    userId
+                                )
+                                .limit(20)
+                    },
 
 
-        } catch (error) {
+                    {
+                        column:"athlete_id",
 
-            console.error(
-                "NOVA · Error verificando sesión:",
-                error
-            );
-
-            window.location.href =
-                "NOVA.html";
-
-            return;
-        }
-
-
-        /* =====================================================
-           BUSCAR ASIGNACIÓN
-
-           IMPORTANTE:
-
-           Registrarse NO crea una asignación.
-
-           Solo si existe una fila real en assignments
-           para el usuario se mostrará:
-
-               PRÓXIMO ENTRENAMIENTO
-
-           La consulta intenta cubrir las estructuras
-           habituales del proyecto:
-
-               user_id
-               athlete_id
-               profile_id
-
-           Si una columna no existe, la consulta falla
-           y se prueba la siguiente.
-           ===================================================== */
-
-        async function findAssignment(userId) {
+                        query:
+                            supabaseClient
+                                .from("assignments")
+                                .select("*")
+                                .eq(
+                                    "athlete_id",
+                                    userId
+                                )
+                                .limit(20)
+                    },
 
 
-            const queries = [
+                    {
+                        column:"profile_id",
 
-                {
-                    column: "user_id",
-                    query:
-                        supabaseClient
-                            .from("assignments")
-                            .select("*")
-                            .eq("user_id", userId)
-                            .limit(20)
-                },
+                        query:
+                            supabaseClient
+                                .from("assignments")
+                                .select("*")
+                                .eq(
+                                    "profile_id",
+                                    userId
+                                )
+                                .limit(20)
+                    }
 
-
-                {
-                    column: "athlete_id",
-                    query:
-                        supabaseClient
-                            .from("assignments")
-                            .select("*")
-                            .eq("athlete_id", userId)
-                            .limit(20)
-                },
+                ];
 
 
-                {
-                    column: "profile_id",
-                    query:
-                        supabaseClient
-                            .from("assignments")
-                            .select("*")
-                            .eq("profile_id", userId)
-                            .limit(20)
-                }
+                for(
+                    const item
+                    of queries
+                ){
 
-            ];
+                    try{
 
-
-            for (
-                const item of queries
-            ) {
-
-                try {
-
-                    const {
-                        data,
-                        error
-                    } = await item.query;
+                        const {
+                            data,
+                            error
+                        } =
+                            await item.query;
 
 
-                    if (error) {
+                        if(
+                            error
+                        ){
+
+                            console.warn(
+                                "NOVA · No se pudo consultar assignments por",
+                                item.column,
+                                error.message
+                            );
+
+                            continue;
+
+                        }
+
+
+                        if(
+                            Array.isArray(data) &&
+                            data.length > 0
+                        ){
+
+                            console.log(
+                                "NOVA · Asignación encontrada mediante:",
+                                item.column,
+                                data
+                            );
+
+                            return data;
+
+                        }
+
+                    }catch(error){
 
                         console.warn(
-                            "NOVA · No se pudo consultar assignments por",
+                            "NOVA · Error buscando asignación:",
                             item.column,
-                            error.message
+                            error
                         );
 
-                        continue;
                     }
-
-
-                    if (
-                        Array.isArray(data) &&
-                        data.length > 0
-                    ) {
-
-                        console.log(
-                            "NOVA · Asignación encontrada mediante:",
-                            item.column,
-                            data
-                        );
-
-                        return data;
-                    }
-
-                } catch (error) {
-
-                    console.warn(
-                        "NOVA · Error buscando asignación:",
-                        item.column,
-                        error
-                    );
 
                 }
 
+
+                return [];
+
             }
 
 
-            return [];
-        }
+            /* =================================================
+               MOSTRAR PRÓXIMO ENTRENAMIENTO
+               ================================================= */
+
+            function showNextTraining(
+                assignment
+            ){
+
+                if(
+                    !assignment
+                ){
+
+                    hideNextTraining();
+
+                    return;
+
+                }
 
 
-        /* =====================================================
-           MOSTRAR PRÓXIMO ENTRENAMIENTO
-           ===================================================== */
-
-        function showNextTraining(
-            assignment
-        ) {
-
-            if (!assignment) {
-
-                hideNextTraining();
-
-                return;
-            }
+                const title =
+                    assignment.title ||
+                    assignment.workout_title ||
+                    assignment.name ||
+                    assignment.workout_name ||
+                    "Entrenamiento asignado";
 
 
-            /*
-             * Intentamos obtener nombres habituales.
-             * No obligamos a que la tabla tenga todos.
-             */
-
-            const title =
-                assignment.title ||
-                assignment.workout_title ||
-                assignment.name ||
-                assignment.workout_name ||
-                "Entrenamiento asignado";
+                const description =
+                    assignment.description ||
+                    assignment.workout_description ||
+                    "Tienes una sesión disponible dentro de tu programa de entrenamiento.";
 
 
-            const description =
-                assignment.description ||
-                assignment.workout_description ||
-                "Tienes una sesión disponible dentro de tu programa de entrenamiento.";
-
-
-            const discipline =
-                assignment.discipline ||
-                assignment.discipline_name ||
-                assignment.category ||
-                "";
-
-
-            const date =
-                assignment.date ||
-                assignment.assigned_date ||
-                assignment.scheduled_date ||
-                assignment.training_date ||
-                "";
-
-
-            if (nextTrainingTitle) {
-
-                nextTrainingTitle.textContent =
-                    title;
-            }
-
-
-            if (nextTrainingDescription) {
-
-                nextTrainingDescription.textContent =
-                    description;
-            }
-
-
-            if (nextTrainingMeta) {
-
-                nextTrainingMeta.innerHTML =
+                const discipline =
+                    assignment.discipline ||
+                    assignment.discipline_name ||
+                    assignment.category ||
                     "";
 
 
-                if (discipline) {
+                const date =
+                    assignment.date ||
+                    assignment.assigned_date ||
+                    assignment.scheduled_date ||
+                    assignment.training_date ||
+                    "";
 
-                    const tag =
-                        document.createElement(
-                            "span"
-                        );
 
-                    tag.textContent =
-                        discipline;
+                if(
+                    nextTrainingTitle
+                ){
 
-                    nextTrainingMeta.appendChild(
-                        tag
-                    );
+                    nextTrainingTitle.textContent =
+                        title;
+
                 }
 
 
-                if (date) {
+                if(
+                    nextTrainingDescription
+                ){
 
-                    const dateTag =
-                        document.createElement(
-                            "span"
-                        );
+                    nextTrainingDescription.textContent =
+                        description;
 
-                    dateTag.textContent =
-                        date;
-
-                    nextTrainingMeta.appendChild(
-                        dateTag
-                    );
                 }
 
-            }
+
+                if(
+                    nextTrainingMeta
+                ){
+
+                    nextTrainingMeta.innerHTML =
+                        "";
 
 
-            if (nextTrainingSection) {
+                    if(
+                        discipline
+                    ){
 
-                nextTrainingSection.style.display =
-                    "block";
-            }
+                        const tag =
+                            document.createElement(
+                                "span"
+                            );
 
-        }
+                        tag.textContent =
+                            discipline;
 
+                        nextTrainingMeta.appendChild(
+                            tag
+                        );
 
-        /* =====================================================
-           CONSULTAR ASIGNACIONES
-           ===================================================== */
-
-        try {
-
-            const userId =
-                session.user.id;
-
-
-            const assignments =
-                await findAssignment(
-                    userId
-                );
+                    }
 
 
-            /*
-             * SI NO EXISTE ASIGNACIÓN:
-             *
-             * El usuario puede estar registrado,
-             * tener perfil y tener catálogo ampliado,
-             * pero NO tiene rutina personalizada.
-             *
-             * Por eso el bloque permanece oculto.
-             */
+                    if(
+                        date
+                    ){
 
-            if (
-                !assignments ||
-                assignments.length === 0
-            ) {
+                        const dateTag =
+                            document.createElement(
+                                "span"
+                            );
 
-                console.log(
-                    "NOVA · Usuario sin rutinas asignadas."
-                );
+                        dateTag.textContent =
+                            date;
 
-                hideNextTraining();
-
-                return;
-            }
-
-
-            /*
-             * Por ahora tomamos la primera asignación.
-             *
-             * Más adelante podemos ordenar por:
-             *
-             * - fecha
-             * - semana
-             * - día
-             * - prioridad
-             *
-             * según la estructura definitiva de Supabase.
-             */
-
-            const nextAssignment =
-                assignments[0];
-
-
-            showNextTraining(
-                nextAssignment
-            );
-
-
-        } catch (error) {
-
-            console.error(
-                "NOVA · Error consultando asignaciones:",
-                error
-            );
-
-            /*
-             * Si Supabase falla,
-             * JAMÁS mostramos una rutina falsa.
-             */
-
-            hideNextTraining();
-        }
-
-
-        /* =====================================================
-           CAMBIOS DE AUTENTICACIÓN
-           ===================================================== */
-
-        supabaseClient
-            .auth
-            .onAuthStateChange(
-                function (
-                    event,
-                    newSession
-                ) {
-
-                    console.log(
-                        "NOVA · Auth event:",
-                        event
-                    );
-
-
-                    if (!newSession) {
-
-                        window.location.href =
-                            "NOVA.html";
+                        nextTrainingMeta.appendChild(
+                            dateTag
+                        );
 
                     }
 
                 }
-            );
 
-    }
 
-);
+                if(
+                    nextTrainingSection
+                ){
+
+                    nextTrainingSection.style.display =
+                        "block";
+
+                }
+
+            }
+
+
+            /* =================================================
+               CONSULTAR ASIGNACIONES
+               ================================================= */
+
+            try{
+
+                const userId =
+                    session.user.id;
+
+
+                const assignments =
+                    await findAssignment(
+                        userId
+                    );
+
+
+                if(
+                    !assignments ||
+                    assignments.length === 0
+                ){
+
+                    console.log(
+                        "NOVA · Usuario sin rutinas asignadas."
+                    );
+
+                    hideNextTraining();
+
+                }else{
+
+                    const nextAssignment =
+                        assignments[0];
+
+
+                    showNextTraining(
+                        nextAssignment
+                    );
+
+                }
+
+            }catch(error){
+
+                console.error(
+                    "NOVA · Error consultando asignaciones:",
+                    error
+                );
+
+                hideNextTraining();
+
+            }
+
+
+            /* =================================================
+               CAMBIOS DE AUTENTICACIÓN
+               ================================================= */
+
+            supabaseClient
+                .auth
+                .onAuthStateChange(
+                    function(
+                        event,
+                        newSession
+                    ){
+
+                        console.log(
+                            "NOVA · Auth event:",
+                            event
+                        );
+
+
+                        if(
+                            !newSession
+                        ){
+
+                            window.location.href =
+                                "NOVA.html";
+
+                        }
+
+                    }
+                );
+
+
+        }
+    );
 
 </script>
 
+</main>
 
 </body>
 
