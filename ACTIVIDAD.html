@@ -1,1339 +1,1787 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html> <html lang="es"> <head>
+<meta charset="UTF-8">
 
-<head>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
-    <meta charset="UTF-8">
+<title>NOVA · Actividad</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+<link
+    rel="stylesheet"
+    href="css/Actividad.css"
+>
+</head> <body> <main class="nova-page" id="actividadPage" >
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+<header class="nova-top">
+
+    <a
+        href="principal.html"
+        class="nova-brand"
+        aria-label="NOVA Inicio"
     >
 
-    <meta
-        name="theme-color"
-        content="#08090b"
+        <span class="nova-brand-main">
+            NOVA
+        </span>
+
+        <span class="nova-brand-sub">
+            TRAINING
+        </span>
+
+    </a>
+
+
+    <a
+        href="perfil.html"
+        class="nova-profile-button"
+        aria-label="Perfil"
     >
 
-    <meta
-        name="description"
-        content="NOVA · Actividad"
-    >
-
-    <title>NOVA · Actividad</title>
-
-
-    <!-- =====================================================
-         SUPABASE
-         ===================================================== -->
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <script src="supabase-config.js"></script>
-
-
-    <!-- =====================================================
-         ESTILOS
-         ===================================================== -->
-
-    <style>
-
-        /* =====================================================
-           RESET
-           ===================================================== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-
-        html,
-        body {
-
-            width: 100%;
-            min-height: 100%;
-
-            background: #08090b;
-
-            color: #ffffff;
-
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "SF Pro Display",
-                "SF Pro",
-                "Segoe UI",
-                Roboto,
-                Inter,
-                sans-serif;
-
-            -webkit-font-smoothing: antialiased;
-
-            text-rendering: optimizeLegibility;
-        }
-
-
-        body {
-
-            min-height: 100vh;
-            min-height: 100dvh;
-
-            overflow-x: hidden;
-
-            padding-bottom:
-                calc(
-                    78px +
-                    env(safe-area-inset-bottom)
-                );
-        }
-
-
-        a {
-
-            color: inherit;
-
-            text-decoration: none;
-        }
-
-
-        button {
-
-            font: inherit;
-
-            border: 0;
-        }
-
-
-        /* =====================================================
-           CONTENEDOR
-           ===================================================== */
-
-        .nova-page {
-
-            width: 100%;
-
-            min-height: 100vh;
-            min-height: 100dvh;
-        }
-
-
-        .nova-container {
-
-            width: 100%;
-
-            max-width: 1100px;
-
-            margin: 0 auto;
-
-            padding:
-                28px 22px 55px;
-        }
-
-
-        /* =====================================================
-           TOP
-           ===================================================== */
-
-        .nova-top {
-
-            width: 100%;
-
-            display: flex;
-
-            align-items: flex-start;
-
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-
-        .nova-brand {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 5px;
-        }
-
-
-        .nova-brand-name {
-
-            font-size: 24px;
-
-            font-weight: 900;
-
-            line-height: .9;
-
-            letter-spacing: -.075em;
-        }
-
-
-        .nova-brand-label {
-
-            color:
-                rgba(255,255,255,.35);
-
-            font-size: 7px;
-
-            font-weight: 800;
-
-            letter-spacing: .22em;
-        }
-
-
-        .nova-profile-button {
-
-            width: 40px;
-
-            height: 40px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border:
-                1px solid
-                rgba(255,255,255,.10);
-
-            border-radius: 50%;
-
-            background:
-                rgba(255,255,255,.045);
-
-            color:
-                rgba(255,255,255,.75);
-
-            cursor: pointer;
-
-            transition:
-                background .2s ease,
-                border-color .2s ease,
-                transform .2s ease;
-        }
-
-
-        .nova-profile-button:hover {
-
-            background:
-                rgba(255,255,255,.09);
-
-            border-color:
-                rgba(255,255,255,.20);
-
-            transform:
-                translateY(-1px);
-        }
-
-
-        .nova-profile-button svg {
-
-            width: 18px;
-
-            height: 18px;
-        }
-
-
-        /* =====================================================
-           HERO
-           ===================================================== */
-
-        .nova-hero {
-
-            padding:
-                68px 0 42px;
-        }
-
-
-        .nova-eyebrow {
-
-            display: block;
-
-            color:
-                rgba(255,255,255,.32);
-
-            font-size: 8px;
-
-            font-weight: 800;
-
-            letter-spacing: .20em;
-        }
-
-
-        .nova-hero h1 {
-
-            margin-top: 13px;
-
-            max-width: 760px;
-
-            font-size:
-                clamp(
-                    46px,
-                    8vw,
-                    82px
-                );
-
-            font-weight: 800;
-
-            line-height: .90;
-
-            letter-spacing: -.075em;
-        }
-
-
-        .nova-hero p {
-
-            max-width: 500px;
-
-            margin-top: 22px;
-
-            color:
-                rgba(255,255,255,.48);
-
-            font-size: 13px;
-
-            line-height: 1.65;
-        }
-
-
-        /* =====================================================
-           RESUMEN
-           ===================================================== */
-
-        .nova-summary {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    3,
-                    1fr
-                );
-
-            gap: 10px;
-
-            margin-top: 10px;
-        }
-
-
-        .nova-summary-card {
-
-            min-height: 130px;
-
-            padding: 20px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.08);
-
-            border-radius: 20px;
-
-            background:
-                rgba(255,255,255,.025);
-        }
-
-
-        .nova-summary-label {
-
-            color:
-                rgba(255,255,255,.28);
-
-            font-size: 7px;
-
-            font-weight: 800;
-
-            letter-spacing: .17em;
-        }
-
-
-        .nova-summary-value {
-
-            margin-top: 24px;
-
-            font-size: 30px;
-
-            font-weight: 800;
-
-            line-height: .9;
-
-            letter-spacing: -.06em;
-        }
-
-
-        .nova-summary-unit {
-
-            margin-top: 7px;
-
-            color:
-                rgba(255,255,255,.30);
-
-            font-size: 8px;
-
-            font-weight: 700;
-
-            letter-spacing: .10em;
-        }
-
-
-        /* =====================================================
-           ACTIVIDAD
-           ===================================================== */
-
-        .nova-section {
-
-            padding-top: 58px;
-        }
-
-
-        .nova-section-header {
-
-            display: flex;
-
-            align-items: flex-end;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            margin-bottom: 18px;
-        }
-
-
-        .nova-section-header h2 {
-
-            margin-top: 9px;
-
-            font-size:
-                clamp(
-                    30px,
-                    5vw,
-                    45px
-                );
-
-            line-height: .92;
-
-            letter-spacing: -.065em;
-        }
-
-
-        .nova-section-description {
-
-            max-width: 360px;
-
-            color:
-                rgba(255,255,255,.35);
-
-            font-size: 11px;
-
-            line-height: 1.55;
-
-            text-align: right;
-        }
-
-
-        /* =====================================================
-           ESTADO VACÍO
-           ===================================================== */
-
-        .nova-empty {
-
-            width: 100%;
-
-            min-height: 300px;
-
-            padding: 28px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: flex-start;
-
-            justify-content: center;
-
-            border:
-                1px solid
-                rgba(255,255,255,.08);
-
-            border-radius: 24px;
-
-            background:
-                rgba(255,255,255,.025);
-        }
-
-
-        .nova-empty-icon {
-
-            width: 44px;
-
-            height: 44px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border:
-                1px solid
-                rgba(255,255,255,.10);
-
-            border-radius: 50%;
-
-            color:
-                rgba(255,255,255,.55);
-
-            background:
-                rgba(255,255,255,.025);
-        }
-
-
-        .nova-empty-icon svg {
-
-            width: 20px;
-
-            height: 20px;
-        }
-
-
-        .nova-empty h3 {
-
-            margin-top: 24px;
-
-            font-size: 28px;
-
-            line-height: .95;
-
-            letter-spacing: -.055em;
-        }
-
-
-        .nova-empty p {
-
-            max-width: 470px;
-
-            margin-top: 11px;
-
-            color:
-                rgba(255,255,255,.36);
-
-            font-size: 11px;
-
-            line-height: 1.6;
-        }
-
-
-        /* =====================================================
-           HISTORIAL
-           ===================================================== */
-
-        .nova-history {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 8px;
-        }
-
-
-        .nova-history-item {
-
-            min-height: 78px;
-
-            padding:
-                17px 19px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.07);
-
-            border-radius: 18px;
-
-            background:
-                rgba(255,255,255,.025);
-        }
-
-
-        .nova-history-left {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 14px;
-        }
-
-
-        .nova-history-icon {
-
-            width: 36px;
-
-            height: 36px;
-
-            flex: 0 0 auto;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border:
-                1px solid
-                rgba(255,255,255,.08);
-
-            border-radius: 50%;
-
-            color:
-                rgba(255,255,255,.45);
-        }
-
-
-        .nova-history-icon svg {
-
-            width: 16px;
-
-            height: 16px;
-        }
-
-
-        .nova-history-name {
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            letter-spacing: -.02em;
-        }
-
-
-        .nova-history-date {
-
-            margin-top: 5px;
-
-            color:
-                rgba(255,255,255,.28);
-
-            font-size: 8px;
-
-            font-weight: 700;
-
-            letter-spacing: .08em;
-        }
-
-
-        .nova-history-value {
-
-            color:
-                rgba(255,255,255,.45);
-
-            font-size: 9px;
-
-            font-weight: 800;
-
-            letter-spacing: .10em;
-        }
-
-
-        /* =====================================================
-           PROGRESO
-           ===================================================== */
-
-        .nova-progress {
-
-            padding: 24px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.08);
-
-            border-radius: 22px;
-
-            background:
-                rgba(255,255,255,.025);
-        }
-
-
-        .nova-progress-top {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-
-        .nova-progress-label {
-
-            color:
-                rgba(255,255,255,.28);
-
-            font-size: 7px;
-
-            font-weight: 800;
-
-            letter-spacing: .18em;
-        }
-
-
-        .nova-progress-status {
-
-            color:
-                rgba(255,255,255,.35);
-
-            font-size: 7px;
-
-            font-weight: 800;
-
-            letter-spacing: .12em;
-        }
-
-
-        .nova-progress h3 {
-
-            margin-top: 20px;
-
-            font-size: 25px;
-
-            line-height: .95;
-
-            letter-spacing: -.055em;
-        }
-
-
-        .nova-progress p {
-
-            max-width: 580px;
-
-            margin-top: 9px;
-
-            color:
-                rgba(255,255,255,.36);
-
-            font-size: 11px;
-
-            line-height: 1.55;
-        }
-
-
-        .nova-progress-bar {
-
-            width: 100%;
-
-            height: 4px;
-
-            margin-top: 23px;
-
-            overflow: hidden;
-
-            border-radius: 999px;
-
-            background:
-                rgba(255,255,255,.07);
-        }
-
-
-        .nova-progress-bar span {
-
-            display: block;
-
-            width: 0%;
-
-            height: 100%;
-
-            border-radius: inherit;
-
-            background:
-                #ffffff;
-        }
-
-
-        /* =====================================================
-           NAVEGACIÓN INFERIOR
-           ===================================================== */
-
-        .nova-bottom-nav {
-
-            position: fixed;
-
-            left: 0;
-
-            right: 0;
-
-            bottom: 0;
-
-            z-index: 5000;
-
-            width: 100%;
-
-            padding:
-                9px 12px
-                calc(
-                    9px +
-                    env(safe-area-inset-bottom)
-                );
-
-            background:
-                rgba(8,9,11,.92);
-
-            border-top:
-                1px solid
-                rgba(255,255,255,.07);
-
-            backdrop-filter:
-                blur(20px);
-
-            -webkit-backdrop-filter:
-                blur(20px);
-        }
-
-
-        .nova-bottom-nav-inner {
-
-            width: 100%;
-
-            max-width: 700px;
-
-            margin: 0 auto;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    4,
-                    1fr
-                );
-
-            gap: 4px;
-        }
-
-
-        .nova-nav-item {
-
-            min-height: 48px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 5px;
-
-            border-radius: 13px;
-
-            color:
-                rgba(255,255,255,.30);
-
-            font-size: 7px;
-
-            font-weight: 800;
-
-            letter-spacing: .08em;
-
-            transition:
-                background .2s ease,
-                color .2s ease;
-        }
-
-
-        .nova-nav-item svg {
-
-            width: 17px;
-
-            height: 17px;
-        }
-
-
-        .nova-nav-item.active {
-
-            color:
-                #ffffff;
-
-            background:
-                rgba(255,255,255,.07);
-        }
-
-
-        .nova-nav-item:hover {
-
-            color:
-                rgba(255,255,255,.80);
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-           ===================================================== */
-
-        @media (max-width: 800px) {
-
-            .nova-summary {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .nova-summary-card {
-
-                min-height: 105px;
-            }
-
-
-            .nova-summary-value {
-
-                margin-top: 18px;
-            }
-        }
-
-
-        @media (max-width: 700px) {
-
-            .nova-container {
-
-                padding:
-                    24px 18px 45px;
-            }
-
-
-            .nova-hero {
-
-                padding:
-                    58px 0 38px;
-            }
-
-
-            .nova-section-header {
-
-                display: block;
-            }
-
-
-            .nova-section-description {
-
-                margin-top: 12px;
-
-                text-align: left;
-            }
-
-
-            .nova-empty {
-
-                min-height: 280px;
-
-                padding: 23px;
-            }
-        }
-
-
-        @media (max-width: 430px) {
-
-            .nova-container {
-
-                padding-left: 16px;
-
-                padding-right: 16px;
-            }
-
-
-            .nova-hero h1 {
-
-                font-size: 48px;
-            }
-
-
-            .nova-empty h3 {
-
-                font-size: 25px;
-            }
-
-
-            .nova-history-item {
-
-                padding:
-                    15px;
-            }
-
-
-            .nova-history-left {
-
-                gap: 10px;
-            }
-
-        }
-
-    </style>
-
-</head>
-
-
-<body>
+        <span class="nova-profile-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+            >
+
+                <circle
+                    cx="12"
+                    cy="8"
+                    r="3.2"
+                ></circle>
+
+                <path
+                    d="M5.5 19c.8-3.3 3.1-5 6.5-5s5.7 1.7 6.5 5"
+                ></path>
+
+            </svg>
+
+        </span>
+
+    </a>
+
+</header>
 
 
 <!-- =========================================================
-     PRINCIPAL
+     CONTENIDO
      ========================================================= -->
 
-<main
-    class="nova-page"
-    id="actividadPage"
->
+<div class="nova-container">
 
 
-    <div class="nova-container">
+    <!-- =====================================================
+         INTRO
+         ===================================================== -->
+
+    <section class="activity-intro">
+
+        <span class="activity-eyebrow">
+            NOVA · ACTIVIDAD
+        </span>
+
+        <h1>
+            Entrena.<br>
+            Muévete.<br>
+            Evoluciona.
+        </h1>
+
+        <p>
+            Explora tus entrenamientos por disciplina y encuentra
+            diferentes formas de trabajar tu capacidad, fuerza,
+            resistencia y rendimiento.
+        </p>
+
+    </section>
 
 
-        <!-- =================================================
-             TOP
-             ================================================= -->
+    <!-- =====================================================
+         NATACIÓN
+         ===================================================== -->
 
-        <header class="nova-top">
+    <section
+        class="activity-discipline"
+        data-discipline="Natación"
+        data-discipline-image="img/chaps.3.jpg"
+    >
 
+        <div class="discipline-heading">
 
-            <div class="nova-brand">
+            <div>
 
-                <span class="nova-brand-name">
-                    NOVA
+                <span class="discipline-number">
+                    01
                 </span>
 
-                <span class="nova-brand-label">
-                    TRAINING
-                </span>
+                <h2>
+                    Natación
+                </h2>
 
             </div>
+
+            <span class="discipline-count">
+                10 entrenamientos
+            </span>
+
+        </div>
+
+
+        <div class="workout-grid">
 
 
             <a
-                href="perfil.html"
-                class="nova-profile-button"
-                aria-label="Perfil"
+                href="#"
+                class="workout-card"
+                data-title="Base aeróbica"
+                data-type="Natación"
+                data-description="Trabajo enfocado en construir y mantener una base aeróbica sólida mediante nado continuo y control del esfuerzo."
+                data-goal="Resistencia aeróbica"
+                data-duration="45–60 min"
             >
 
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.7"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
+                <span>
+                    01
+                </span>
 
-                    <circle
-                        cx="12"
-                        cy="8"
-                        r="3.5"
-                    />
+                <strong>
+                    Base aeróbica
+                </strong>
 
-                    <path
-                        d="M4.5 20c.8-3.4 3.2-5.3 7.5-5.3s6.7 1.9 7.5 5.3"
-                    />
-
-                </svg>
+                <small>
+                    Resistencia · Libre
+                </small>
 
             </a>
 
-        </header>
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Umbral"
+                data-type="Natación"
+                data-description="Entrenamiento orientado a sostener ritmos exigentes durante bloques prolongados y mejorar la capacidad de trabajo."
+                data-goal="Umbral · Resistencia"
+                data-duration="50–65 min"
+            >
+
+                <span>
+                    02
+                </span>
+
+                <strong>
+                    Umbral
+                </strong>
+
+                <small>
+                    Ritmo · Resistencia
+                </small>
+
+            </a>
 
 
-        <!-- =================================================
-             HERO
-             ================================================= -->
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Fuerza"
+                data-type="Natación"
+                data-description="Sesión con énfasis en fuerza específica de nado utilizando diferentes estímulos y resistencia en el agua."
+                data-goal="Fuerza · Propulsión"
+                data-duration="45–60 min"
+            >
 
-        <section class="nova-hero">
+                <span>
+                    03
+                </span>
+
+                <strong>
+                    Fuerza
+                </strong>
+
+                <small>
+                    Pull · Paletas
+                </small>
+
+            </a>
 
 
-            <span class="nova-eyebrow">
-                NOVA · ACTIVIDAD
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Técnica"
+                data-type="Natación"
+                data-description="Trabajo técnico para mejorar posición corporal, eficiencia de brazada, coordinación y economía de movimiento."
+                data-goal="Técnica · Eficiencia"
+                data-duration="40–55 min"
+            >
+
+                <span>
+                    04
+                </span>
+
+                <strong>
+                    Técnica
+                </strong>
+
+                <small>
+                    Crol · Eficiencia
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Fondo"
+                data-type="Natación"
+                data-description="Sesión de volumen progresivo enfocada en desarrollar resistencia y capacidad para mantener el esfuerzo durante largas distancias."
+                data-goal="Fondo · Aeróbico"
+                data-duration="60–80 min"
+            >
+
+                <span>
+                    05
+                </span>
+
+                <strong>
+                    Fondo
+                </strong>
+
+                <small>
+                    Distancia · Aeróbico
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Ritmo"
+                data-type="Natación"
+                data-description="Series estructuradas para aprender a reconocer, controlar y sostener diferentes ritmos de entrenamiento."
+                data-goal="Ritmo · Pace"
+                data-duration="45–60 min"
+            >
+
+                <span>
+                    06
+                </span>
+
+                <strong>
+                    Ritmo
+                </strong>
+
+                <small>
+                    Series · Pace
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Potencia"
+                data-type="Natación"
+                data-description="Bloques de alta intensidad para desarrollar velocidad, potencia de brazada y capacidad de producir fuerza rápidamente."
+                data-goal="Potencia · Velocidad"
+                data-duration="40–55 min"
+            >
+
+                <span>
+                    07
+                </span>
+
+                <strong>
+                    Potencia
+                </strong>
+
+                <small>
+                    Velocidad · Fuerza
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Mixto"
+                data-type="Natación"
+                data-description="Combinación de técnica y trabajo de ritmo para desarrollar una sesión completa y equilibrada."
+                data-goal="Técnica · Ritmo"
+                data-duration="50–65 min"
+            >
+
+                <span>
+                    08
+                </span>
+
+                <strong>
+                    Mixto
+                </strong>
+
+                <small>
+                    Técnica · Ritmo
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Resistencia"
+                data-type="Natación"
+                data-description="Entrenamiento de volumen enfocado en sostener el trabajo durante períodos prolongados."
+                data-goal="Volumen · Fondo"
+                data-duration="60–75 min"
+            >
+
+                <span>
+                    09
+                </span>
+
+                <strong>
+                    Resistencia
+                </strong>
+
+                <small>
+                    Volumen · Fondo
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Completo"
+                data-type="Natación"
+                data-description="Sesión integral que combina fuerza, técnica y trabajo aeróbico para desarrollar diferentes capacidades en una misma sesión."
+                data-goal="Fuerza · Aeróbico"
+                data-duration="55–75 min"
+            >
+
+                <span>
+                    10
+                </span>
+
+                <strong>
+                    Completo
+                </strong>
+
+                <small>
+                    Fuerza · Aeróbico
+                </small>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONDICIÓN
+         ===================================================== -->
+
+    <section
+        class="activity-discipline"
+        data-discipline="Condición"
+        data-discipline-image="img/chaps.1.jpg"
+    >
+
+        <div class="discipline-heading">
+
+            <div>
+
+                <span class="discipline-number">
+                    02
+                </span>
+
+                <h2>
+                    Condición
+                </h2>
+
+            </div>
+
+            <span class="discipline-count">
+                10 entrenamientos
             </span>
 
-
-            <h1>
-                Sigue tu<br>
-                evolución.
-            </h1>
+        </div>
 
 
-            <p>
-                Aquí podrás consultar tus entrenamientos,
-                revisar tu actividad y observar cómo avanza
-                tu camino dentro de NOVA.
-            </p>
+        <div class="workout-grid">
 
 
-        </section>
-
-
-        <!-- =================================================
-             RESUMEN
-             ================================================= -->
-
-        <section class="nova-summary">
-
-
-            <!-- SESIONES -->
-
-            <article class="nova-summary-card">
-
-                <span class="nova-summary-label">
-                    SESIONES
-                </span>
-
-                <div
-                    class="nova-summary-value"
-                    id="sessionsValue"
-                >
-                    0
-                </div>
-
-                <div class="nova-summary-unit">
-                    COMPLETADAS
-                </div>
-
-            </article>
-
-
-            <!-- DISTANCIA -->
-
-            <article class="nova-summary-card">
-
-                <span class="nova-summary-label">
-                    DISTANCIA
-                </span>
-
-                <div
-                    class="nova-summary-value"
-                    id="distanceValue"
-                >
-                    0
-                </div>
-
-                <div class="nova-summary-unit">
-                    METROS
-                </div>
-
-            </article>
-
-
-            <!-- TIEMPO -->
-
-            <article class="nova-summary-card">
-
-                <span class="nova-summary-label">
-                    TIEMPO
-                </span>
-
-                <div
-                    class="nova-summary-value"
-                    id="timeValue"
-                >
-                    0
-                </div>
-
-                <div class="nova-summary-unit">
-                    MINUTOS
-                </div>
-
-            </article>
-
-
-        </section>
-
-
-        <!-- =================================================
-             ACTIVIDAD RECIENTE
-             ================================================= -->
-
-        <section class="nova-section">
-
-
-            <div class="nova-section-header">
-
-
-                <div>
-
-                    <span class="nova-eyebrow">
-                        HISTORIAL
-                    </span>
-
-                    <h2>
-                        Tu actividad.
-                    </h2>
-
-                </div>
-
-
-                <p class="nova-section-description">
-
-                    Cada entrenamiento completado podrá
-                    formar parte de tu historial.
-
-                </p>
-
-
-            </div>
-
-
-            <!-- =================================================
-                 ESTADO VACÍO
-                 ================================================= -->
-
-            <div
-                class="nova-empty"
-                id="emptyActivity"
+            <a
+                href="#"
+                class="workout-card"
+                data-title="HIIT Base"
+                data-type="Condición"
+                data-description="Intervalos de alta intensidad controlada para desarrollar capacidad cardiovascular y tolerancia al esfuerzo."
+                data-goal="Cardio · Capacidad"
+                data-duration="25–40 min"
             >
 
+                <span>
+                    01
+                </span>
 
-                <div class="nova-empty-icon">
+                <strong>
+                    HIIT Base
+                </strong>
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.7"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
+                <small>
+                    Cardio · Capacidad
+                </small>
 
-                        <path
-                            d="M4 19V9"
-                        />
-
-                        <path
-                            d="M10 19V5"
-                        />
-
-                        <path
-                            d="M16 19v-7"
-                        />
-
-                        <path
-                            d="M22 19V3"
-                        />
-
-                    </svg>
-
-                </div>
+            </a>
 
 
-                <h3>
-                    Aún no tienes actividad.
-                </h3>
-
-
-                <p>
-                    Cuando completes tu primer entrenamiento,
-                    aparecerá aquí para que puedas consultar
-                    tu historial y observar tu progreso.
-                </p>
-
-
-            </div>
-
-
-            <!-- =================================================
-                 HISTORIAL FUTURO
-                 ================================================= -->
-
-            <div
-                class="nova-history"
-                id="activityHistory"
-                style="display:none;"
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Intervalos"
+                data-type="Condición"
+                data-description="Trabajo estructurado alternando esfuerzos y recuperaciones para mejorar el ritmo y la capacidad cardiovascular."
+                data-goal="Ritmo · Cardio"
+                data-duration="30–45 min"
             >
 
-                <!--
-                    Los entrenamientos completados
-                    aparecerán aquí posteriormente.
-                -->
+                <span>
+                    02
+                </span>
+
+                <strong>
+                    Intervalos
+                </strong>
+
+                <small>
+                    Ritmo · Cardio
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Metcon"
+                data-type="Condición"
+                data-description="Sesión metabólica que combina diferentes movimientos para mantener un nivel elevado de trabajo."
+                data-goal="Trabajo · Resistencia"
+                data-duration="20–35 min"
+            >
+
+                <span>
+                    03
+                </span>
+
+                <strong>
+                    Metcon
+                </strong>
+
+                <small>
+                    Trabajo · Resistencia
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Cardio"
+                data-type="Condición"
+                data-description="Entrenamiento orientado a desarrollar una base cardiovascular eficiente y sostenible."
+                data-goal="Aeróbico · Base"
+                data-duration="30–50 min"
+            >
+
+                <span>
+                    04
+                </span>
+
+                <strong>
+                    Cardio
+                </strong>
+
+                <small>
+                    Aeróbico · Base
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Potencia"
+                data-type="Condición"
+                data-description="Trabajo explosivo que combina intensidad y velocidad para mejorar la capacidad de producir esfuerzo rápidamente."
+                data-goal="Explosividad · Ritmo"
+                data-duration="25–40 min"
+            >
+
+                <span>
+                    05
+                </span>
+
+                <strong>
+                    Potencia
+                </strong>
+
+                <small>
+                    Explosividad · Ritmo
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Resistencia"
+                data-type="Condición"
+                data-description="Sesión de volumen destinada a mejorar la capacidad de mantener el trabajo cardiovascular durante más tiempo."
+                data-goal="Volumen · Cardio"
+                data-duration="35–55 min"
+            >
+
+                <span>
+                    06
+                </span>
+
+                <strong>
+                    Resistencia
+                </strong>
+
+                <small>
+                    Volumen · Cardio
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Tabata"
+                data-type="Condición"
+                data-description="Intervalos cortos de alta intensidad organizados en bloques de trabajo y recuperación."
+                data-goal="Alta intensidad"
+                data-duration="20–30 min"
+            >
+
+                <span>
+                    07
+                </span>
+
+                <strong>
+                    Tabata
+                </strong>
+
+                <small>
+                    Alta intensidad
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Circuito"
+                data-type="Condición"
+                data-description="Circuito dinámico que combina estímulos cardiovasculares y de fuerza para desarrollar capacidad general."
+                data-goal="Cardio · Fuerza"
+                data-duration="30–45 min"
+            >
+
+                <span>
+                    08
+                </span>
+
+                <strong>
+                    Circuito
+                </strong>
+
+                <small>
+                    Cardio · Fuerza
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Threshold"
+                data-type="Condición"
+                data-description="Trabajo cercano al umbral para mejorar la capacidad de sostener intensidades altas de manera controlada."
+                data-goal="Umbral · Capacidad"
+                data-duration="30–45 min"
+            >
+
+                <span>
+                    09
+                </span>
+
+                <strong>
+                    Threshold
+                </strong>
+
+                <small>
+                    Umbral · Capacidad
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Engine"
+                data-type="Condición"
+                data-description="Entrenamiento enfocado en desarrollar un motor aeróbico fuerte y una mayor capacidad de trabajo."
+                data-goal="Aeróbico · Potencia"
+                data-duration="35–55 min"
+            >
+
+                <span>
+                    10
+                </span>
+
+                <strong>
+                    Engine
+                </strong>
+
+                <small>
+                    Aeróbico · Potencia
+                </small>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RENDIMIENTO
+         ===================================================== -->
+
+    <section
+        class="activity-discipline"
+        data-discipline="Rendimiento"
+        data-discipline-image="img/WhatsApp Image 3.jpeg"
+    >
+
+        <div class="discipline-heading">
+
+            <div>
+
+                <span class="discipline-number">
+                    03
+                </span>
+
+                <h2>
+                    Rendimiento
+                </h2>
 
             </div>
 
+            <span class="discipline-count">
+                10 entrenamientos
+            </span>
 
-        </section>
-
-
-        <!-- =================================================
-             PROGRESO
-             ================================================= -->
-
-        <section class="nova-section">
+        </div>
 
 
-            <div class="nova-progress">
+        <div class="workout-grid">
 
 
-                <div class="nova-progress-top">
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Fuerza base"
+                data-type="Rendimiento"
+                data-description="Trabajo de fuerza general enfocado en control, técnica y construcción de una base sólida."
+                data-goal="Fuerza · Control"
+                data-duration="45–60 min"
+            >
+
+                <span>
+                    01
+                </span>
+
+                <strong>
+                    Fuerza base
+                </strong>
+
+                <small>
+                    Fuerza · Control
+                </small>
+
+            </a>
 
 
-                    <span class="nova-progress-label">
-                        PROGRESO
-                    </span>
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Potencia"
+                data-type="Rendimiento"
+                data-description="Entrenamiento orientado a producir fuerza rápidamente y mejorar la capacidad explosiva."
+                data-goal="Explosividad · Fuerza"
+                data-duration="40–55 min"
+            >
+
+                <span>
+                    02
+                </span>
+
+                <strong>
+                    Potencia
+                </strong>
+
+                <small>
+                    Explosividad · Fuerza
+                </small>
+
+            </a>
 
 
-                    <span
-                        class="nova-progress-status"
-                        id="progressStatus"
-                    >
-                        EN CONSTRUCCIÓN
-                    </span>
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Full Body"
+                data-type="Rendimiento"
+                data-description="Sesión completa para trabajar fuerza, estabilidad y control de todo el cuerpo."
+                data-goal="Fuerza · Estabilidad"
+                data-duration="50–65 min"
+            >
+
+                <span>
+                    03
+                </span>
+
+                <strong>
+                    Full Body
+                </strong>
+
+                <small>
+                    Fuerza · Estabilidad
+                </small>
+
+            </a>
 
 
-                </div>
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Tren inferior"
+                data-type="Rendimiento"
+                data-description="Trabajo específico para desarrollar fuerza y capacidad de producción en piernas."
+                data-goal="Fuerza · Pierna"
+                data-duration="45–60 min"
+            >
+
+                <span>
+                    04
+                </span>
+
+                <strong>
+                    Tren inferior
+                </strong>
+
+                <small>
+                    Fuerza · Pierna
+                </small>
+
+            </a>
 
 
-                <h3>
-                    Tu evolución comienza con cada sesión.
-                </h3>
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Tren superior"
+                data-type="Rendimiento"
+                data-description="Sesión enfocada en fuerza y control de hombros, espalda, pecho y brazos."
+                data-goal="Fuerza · Control"
+                data-duration="45–60 min"
+            >
+
+                <span>
+                    05
+                </span>
+
+                <strong>
+                    Tren superior
+                </strong>
+
+                <small>
+                    Fuerza · Control
+                </small>
+
+            </a>
 
 
-                <p>
-                    Esta sección se conectará posteriormente
-                    con tu historial de entrenamiento para
-                    mostrar tu evolución de forma progresiva.
-                </p>
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Core"
+                data-type="Rendimiento"
+                data-description="Trabajo de estabilidad y control del centro del cuerpo para mejorar transferencia y movimiento."
+                data-goal="Estabilidad · Control"
+                data-duration="25–40 min"
+            >
+
+                <span>
+                    06
+                </span>
+
+                <strong>
+                    Core
+                </strong>
+
+                <small>
+                    Estabilidad · Control
+                </small>
+
+            </a>
 
 
-                <div class="nova-progress-bar">
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Halterofilia"
+                data-type="Rendimiento"
+                data-description="Trabajo técnico y de potencia basado en movimientos de halterofilia para desarrollar fuerza y velocidad."
+                data-goal="Técnica · Potencia"
+                data-duration="45–65 min"
+            >
 
-                    <span
-                        id="progressBar"
-                    ></span>
+                <span>
+                    07
+                </span>
 
-                </div>
+                <strong>
+                    Halterofilia
+                </strong>
 
+                <small>
+                    Técnica · Potencia
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Fuerza máxima"
+                data-type="Rendimiento"
+                data-description="Sesión enfocada en desarrollar altos niveles de producción de fuerza mediante cargas elevadas."
+                data-goal="Carga · Fuerza"
+                data-duration="45–60 min"
+            >
+
+                <span>
+                    08
+                </span>
+
+                <strong>
+                    Fuerza máxima
+                </strong>
+
+                <small>
+                    Carga · Fuerza
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Fuerza + Cardio"
+                data-type="Rendimiento"
+                data-description="Combinación de fuerza y trabajo cardiovascular para desarrollar capacidad física completa."
+                data-goal="Mixto · Capacidad"
+                data-duration="45–65 min"
+            >
+
+                <span>
+                    09
+                </span>
+
+                <strong>
+                    Fuerza + Cardio
+                </strong>
+
+                <small>
+                    Mixto · Capacidad
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Performance"
+                data-type="Rendimiento"
+                data-description="Entrenamiento completo para integrar fuerza, potencia y capacidad de trabajo."
+                data-goal="Potencia · Capacidad"
+                data-duration="50–70 min"
+            >
+
+                <span>
+                    10
+                </span>
+
+                <strong>
+                    Performance
+                </strong>
+
+                <small>
+                    Potencia · Capacidad
+                </small>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RUNNING
+         ===================================================== -->
+
+    <section
+        class="activity-discipline"
+        data-discipline="Running"
+        data-discipline-image="img/chaps.1.jpg"
+    >
+
+        <div class="discipline-heading">
+
+            <div>
+
+                <span class="discipline-number">
+                    04
+                </span>
+
+                <h2>
+                    Running
+                </h2>
 
             </div>
 
+            <span class="discipline-count">
+                10 entrenamientos
+            </span>
 
-        </section>
+        </div>
 
 
-    </div>
+        <div class="workout-grid">
 
-</main>
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Rodaje"
+                data-type="Running"
+                data-description="Carrera continua a intensidad controlada para construir una base aeróbica sólida."
+                data-goal="Base · Aeróbico"
+                data-duration="30–60 min"
+            >
+
+                <span>
+                    01
+                </span>
+
+                <strong>
+                    Rodaje
+                </strong>
+
+                <small>
+                    Base · Aeróbico
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Intervalos"
+                data-type="Running"
+                data-description="Repeticiones estructuradas para desarrollar velocidad, ritmo y capacidad cardiovascular."
+                data-goal="Ritmo · Velocidad"
+                data-duration="30–50 min"
+            >
+
+                <span>
+                    02
+                </span>
+
+                <strong>
+                    Intervalos
+                </strong>
+
+                <small>
+                    Ritmo · Velocidad
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Tempo"
+                data-type="Running"
+                data-description="Carrera sostenida a un ritmo exigente y controlado para mejorar el umbral."
+                data-goal="Umbral · Ritmo"
+                data-duration="30–50 min"
+            >
+
+                <span>
+                    03
+                </span>
+
+                <strong>
+                    Tempo
+                </strong>
+
+                <small>
+                    Umbral · Ritmo
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Fartlek"
+                data-type="Running"
+                data-description="Sesión variable que combina diferentes ritmos y esfuerzos dentro de una misma carrera."
+                data-goal="Ritmo · Distancia"
+                data-duration="35–55 min"
+            >
+
+                <span>
+                    04
+                </span>
+
+                <strong>
+                    Fartlek
+                </strong>
+
+                <small>
+                    Ritmo · Distancia
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Cuestas"
+                data-type="Running"
+                data-description="Trabajo en pendiente para desarrollar fuerza específica de carrera y potencia."
+                data-goal="Fuerza · Potencia"
+                data-duration="30–50 min"
+            >
+
+                <span>
+                    05
+                </span>
+
+                <strong>
+                    Cuestas
+                </strong>
+
+                <small>
+                    Fuerza · Potencia
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Velocidad"
+                data-type="Running"
+                data-description="Repeticiones rápidas destinadas a mejorar velocidad, coordinación y capacidad neuromuscular."
+                data-goal="Ritmo · Sprint"
+                data-duration="25–45 min"
+            >
+
+                <span>
+                    06
+                </span>
+
+                <strong>
+                    Velocidad
+                </strong>
+
+                <small>
+                    Ritmo · Sprint
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Fondo"
+                data-type="Running"
+                data-description="Carrera prolongada enfocada en desarrollar resistencia aeróbica y tolerancia al volumen."
+                data-goal="Distancia · Aeróbico"
+                data-duration="60–100 min"
+            >
+
+                <span>
+                    07
+                </span>
+
+                <strong>
+                    Fondo
+                </strong>
+
+                <small>
+                    Distancia · Aeróbico
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Progresivo"
+                data-type="Running"
+                data-description="Carrera que comienza controlada y aumenta progresivamente la intensidad."
+                data-goal="Ritmo · Resistencia"
+                data-duration="40–70 min"
+            >
+
+                <span>
+                    08
+                </span>
+
+                <strong>
+                    Progresivo
+                </strong>
+
+                <small>
+                    Ritmo · Resistencia
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Recovery"
+                data-type="Running"
+                data-description="Rodaje suave destinado a favorecer la recuperación mientras se mantiene el movimiento."
+                data-goal="Suave · Aeróbico"
+                data-duration="20–40 min"
+            >
+
+                <span>
+                    09
+                </span>
+
+                <strong>
+                    Recovery
+                </strong>
+
+                <small>
+                    Suave · Aeróbico
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Race Pace"
+                data-type="Running"
+                data-description="Trabajo específico a ritmos cercanos al objetivo de competencia para desarrollar control y tolerancia."
+                data-goal="Ritmo · Distancia"
+                data-duration="35–60 min"
+            >
+
+                <span>
+                    10
+                </span>
+
+                <strong>
+                    Race Pace
+                </strong>
+
+                <small>
+                    Ritmo · Distancia
+                </small>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CROSSFIT
+         ===================================================== -->
+
+    <section
+        class="activity-discipline"
+        data-discipline="CrossFit"
+        data-discipline-image="img/WhatsApp Image 3.jpeg"
+    >
+
+        <div class="discipline-heading">
+
+            <div>
+
+                <span class="discipline-number">
+                    05
+                </span>
+
+                <h2>
+                    CrossFit
+                </h2>
+
+            </div>
+
+            <span class="discipline-count">
+                10 entrenamientos
+            </span>
+
+        </div>
+
+
+        <div class="workout-grid">
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="WOD 01"
+                data-type="CrossFit"
+                data-description="Entrenamiento del día combinando diferentes estímulos de fuerza y acondicionamiento."
+                data-goal="Fuerza · Metcon"
+                data-duration="30–50 min"
+            >
+
+                <span>
+                    01
+                </span>
+
+                <strong>
+                    WOD 01
+                </strong>
+
+                <small>
+                    Fuerza · Metcon
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="EMOM"
+                data-type="CrossFit"
+                data-description="Trabajo organizado por minutos que permite controlar intensidad, volumen y ritmo."
+                data-goal="Potencia · Ritmo"
+                data-duration="20–35 min"
+            >
+
+                <span>
+                    02
+                </span>
+
+                <strong>
+                    EMOM
+                </strong>
+
+                <small>
+                    Potencia · Ritmo
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="AMRAP"
+                data-type="CrossFit"
+                data-description="Máximo número de rondas posibles dentro de un tiempo determinado."
+                data-goal="Capacidad · Volumen"
+                data-duration="15–30 min"
+            >
+
+                <span>
+                    03
+                </span>
+
+                <strong>
+                    AMRAP
+                </strong>
+
+                <small>
+                    Capacidad · Volumen
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Strength"
+                data-type="CrossFit"
+                data-description="Sesión centrada en fuerza y calidad técnica de los principales movimientos."
+                data-goal="Fuerza · Técnica"
+                data-duration="40–60 min"
+            >
+
+                <span>
+                    04
+                </span>
+
+                <strong>
+                    Strength
+                </strong>
+
+                <small>
+                    Fuerza · Técnica
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Chipper"
+                data-type="CrossFit"
+                data-description="Entrenamiento largo y progresivo con diferentes movimientos realizados en secuencia."
+                data-goal="Resistencia · Metcon"
+                data-duration="25–45 min"
+            >
+
+                <span>
+                    05
+                </span>
+
+                <strong>
+                    Chipper
+                </strong>
+
+                <small>
+                    Resistencia · Metcon
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Complex"
+                data-type="CrossFit"
+                data-description="Secuencia de movimientos ejecutados de forma continua para desarrollar potencia y control."
+                data-goal="Potencia · Control"
+                data-duration="25–40 min"
+            >
+
+                <span>
+                    06
+                </span>
+
+                <strong>
+                    Complex
+                </strong>
+
+                <small>
+                    Potencia · Control
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Engine"
+                data-type="CrossFit"
+                data-description="Trabajo cardiovascular específico para aumentar la capacidad de mantener esfuerzos prolongados."
+                data-goal="Cardio · Capacidad"
+                data-duration="30–50 min"
+            >
+
+                <span>
+                    07
+                </span>
+
+                <strong>
+                    Engine
+                </strong>
+
+                <small>
+                    Cardio · Capacidad
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Barbell"
+                data-type="CrossFit"
+                data-description="Trabajo con barra enfocado en fuerza, control y producción de potencia."
+                data-goal="Fuerza · Potencia"
+                data-duration="35–55 min"
+            >
+
+                <span>
+                    08
+                </span>
+
+                <strong>
+                    Barbell
+                </strong>
+
+                <small>
+                    Fuerza · Potencia
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Conditioning"
+                data-type="CrossFit"
+                data-description="Sesión de acondicionamiento para mejorar resistencia y capacidad de trabajo."
+                data-goal="Cardio · Resistencia"
+                data-duration="25–45 min"
+            >
+
+                <span>
+                    09
+                </span>
+
+                <strong>
+                    Conditioning
+                </strong>
+
+                <small>
+                    Cardio · Resistencia
+                </small>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="workout-card"
+                data-title="Benchmark"
+                data-type="CrossFit"
+                data-description="Entrenamiento de referencia utilizado para evaluar rendimiento y evolución a través del tiempo."
+                data-goal="Performance · WOD"
+                data-duration="20–40 min"
+            >
+
+                <span>
+                    10
+                </span>
+
+                <strong>
+                    Benchmark
+                </strong>
+
+                <small>
+                    Performance · WOD
+                </small>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RECETAS
+         ===================================================== -->
+
+    <section class="recipes-section">
+
+        <div class="recipes-heading">
+
+            <div>
+
+                <span class="recipes-eyebrow">
+                    NOVA · NUTRICIÓN
+                </span>
+
+                <h2>
+                    Recetas
+                </h2>
+
+            </div>
+
+            <span class="recipes-scroll-hint">
+                Desliza →
+            </span>
+
+        </div>
+
+
+        <div class="recipes-window">
+
+            <div class="recipes-track">
+
+
+                <a
+                    href="#"
+                    class="recipe-card"
+                    data-recipe-title="Desayuno proteína"
+                    data-recipe-category="Desayuno"
+                    data-recipe-description="Una opción completa para comenzar el día con proteína, energía y una combinación equilibrada de nutrientes."
+                    data-recipe-goal="Proteína · Energía"
+                    data-recipe-time="10–15 min"
+                    data-recipe-image="img/receta-01.jpg"
+                >
+
+                    <div class="recipe-image">
+
+                        <img
+                            src="img/receta-01.jpg"
+                            alt="Desayuno alto en proteína"
+                        >
+
+                    </div>
+
+                    <div class="recipe-content">
+
+                        <span>
+                            01
+                        </span>
+
+                        <h3>
+                            Desayuno proteína
+                        </h3>
+
+                        <p>
+                            Proteína · Energía
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="recipe-card"
+                    data-recipe-title="Power bowl"
+                    data-recipe-category="Comida"
+                    data-recipe-description="Bowl completo pensado para combinar proteína, carbohidratos y vegetales en una comida práctica y equilibrada."
+                    data-recipe-goal="Completo · Balanceado"
+                    data-recipe-time="15–20 min"
+                    data-recipe-image="img/receta-02.jpg"
+                >
+
+                    <div class="recipe-image">
+
+                        <img
+                            src="img/receta-02.jpg"
+                            alt="Bowl de comida saludable"
+                        >
+
+                    </div>
+
+                    <div class="recipe-content">
+
+                        <span>
+                            02
+                        </span>
+
+                        <h3>
+                            Power bowl
+                        </h3>
+
+                        <p>
+                            Completo · Balanceado
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="recipe-card"
+                    data-recipe-title="Comida post training"
+                    data-recipe-category="Post entrenamiento"
+                    data-recipe-description="Comida pensada para después de entrenar, aportando proteína y energía para favorecer la recuperación."
+                    data-recipe-goal="Recuperación · Proteína"
+                    data-recipe-time="15–25 min"
+                    data-recipe-image="img/receta-03.jpg"
+                >
+
+                    <div class="recipe-image">
+
+                        <img
+                            src="img/receta-03.jpg"
+                            alt="Comida saludable post entrenamiento"
+                        >
+
+                    </div>
+
+                    <div class="recipe-content">
+
+                        <span>
+                            03
+                        </span>
+
+                        <h3>
+                            Comida post training
+                        </h3>
+
+                        <p>
+                            Recuperación · Proteína
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="recipe-card"
+                    data-recipe-title="Snack energético"
+                    data-recipe-category="Snack"
+                    data-recipe-description="Una alternativa práctica para mantener energía entre comidas y acompañar tus sesiones de entrenamiento."
+                    data-recipe-goal="Energía · Práctico"
+                    data-recipe-time="5–10 min"
+                    data-recipe-image="img/receta-04.jpg"
+                >
+
+                    <div class="recipe-image">
+
+                        <img
+                            src="img/receta-04.jpg"
+                            alt="Snack saludable"
+                        >
+
+                    </div>
+
+                    <div class="recipe-content">
+
+                        <span>
+                            04
+                        </span>
+
+                        <h3>
+                            Snack energético
+                        </h3>
+
+                        <p>
+                            Energía · Práctico
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="recipe-card"
+                    data-recipe-title="Cena recovery"
+                    data-recipe-category="Cena"
+                    data-recipe-description="Una cena equilibrada enfocada en recuperación, aportando los nutrientes necesarios para cerrar el día."
+                    data-recipe-goal="Recuperación · Balance"
+                    data-recipe-time="15–25 min"
+                    data-recipe-image="img/receta-05.jpg"
+                >
+
+                    <div class="recipe-image">
+
+                        <img
+                            src="img/receta-05.jpg"
+                            alt="Cena saludable"
+                        >
+
+                    </div>
+
+                    <div class="recipe-content">
+
+                        <span>
+                            05
+                        </span>
+
+                        <h3>
+                            Cena recovery
+                        </h3>
+
+                        <p>
+                            Recuperación · Balance
+                        </p>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
 
 
 <!-- =========================================================
-     NAVEGACIÓN INFERIOR
+     BOTTOM NAV
      ========================================================= -->
 
 <nav
@@ -1341,439 +1789,399 @@
     aria-label="Navegación principal"
 >
 
-
     <div class="nova-bottom-nav-inner">
 
-
-        <!-- =================================================
-             INICIO
-             ================================================= -->
 
         <a
             href="principal.html"
             class="nova-nav-item"
+            aria-label="Inicio"
         >
 
             <svg
                 viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                aria-hidden="true"
             >
 
-                <path
-                    d="m4 10 8-6 8 6"
-                />
+                <path d="M3.5 10.5 12 3l8.5 7.5"></path>
 
-                <path
-                    d="M6 9.5V20h12V9.5"
-                />
+                <path d="M5.5 9.5V21h13V9.5"></path>
+
+                <path d="M9.5 21v-6h5v6"></path>
 
             </svg>
 
             <span>
-                INICIO
+                Inicio
             </span>
 
         </a>
 
-
-        <!-- =================================================
-             ENTRENAMIENTOS
-             ================================================= -->
 
         <a
             href="training.html"
             class="nova-nav-item"
+            aria-label="Entrenamientos"
         >
 
             <svg
                 viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                aria-hidden="true"
             >
 
-                <path
-                    d="M5 4h14"
-                />
+                <path d="M4 7h16"></path>
 
-                <path
-                    d="M5 12h14"
-                />
+                <path d="M4 17h16"></path>
 
-                <path
-                    d="M5 20h14"
-                />
+                <path d="M7 4v6"></path>
+
+                <path d="M17 14v6"></path>
+
+                <path d="M10 5.5h4"></path>
+
+                <path d="M10 15.5h4"></path>
 
             </svg>
 
             <span>
-                ENTRENAMIENTOS
+                Entrenos
             </span>
 
         </a>
 
-
-        <!-- =================================================
-             ACTIVIDAD
-             ================================================= -->
 
         <a
             href="actividad.html"
             class="nova-nav-item active"
+            aria-label="Actividad"
+            aria-current="page"
         >
 
             <svg
                 viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                aria-hidden="true"
             >
 
-                <path
-                    d="M4 19V9"
-                />
+                <path d="M4 18V10"></path>
 
-                <path
-                    d="M10 19V5"
-                />
+                <path d="M9.5 18V6"></path>
 
-                <path
-                    d="M16 19v-7"
-                />
+                <path d="M15 18v-8"></path>
 
-                <path
-                    d="M22 19V3"
-                />
+                <path d="M20 18V4"></path>
 
             </svg>
 
             <span>
-                ACTIVIDAD
+                Actividad
             </span>
 
         </a>
 
-
-        <!-- =================================================
-             PLANES
-             ================================================= -->
 
         <a
             href="planes.html"
             class="nova-nav-item"
+            aria-label="Planes"
         >
 
             <svg
                 viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                aria-hidden="true"
             >
 
-                <rect
-                    x="4"
-                    y="4"
-                    width="16"
-                    height="16"
-                    rx="2"
-                />
+                <path d="M4 7h16"></path>
 
-                <path
-                    d="M8 8h8"
-                />
+                <path d="M4 12h16"></path>
 
-                <path
-                    d="M8 12h8"
-                />
+                <path d="M4 17h16"></path>
 
-                <path
-                    d="M8 16h5"
-                />
+                <circle
+                    cx="8"
+                    cy="7"
+                    r="1.5"
+                ></circle>
+
+                <circle
+                    cx="15"
+                    cy="12"
+                    r="1.5"
+                ></circle>
+
+                <circle
+                    cx="10"
+                    cy="17"
+                    r="1.5"
+                ></circle>
 
             </svg>
 
             <span>
-                PLANES
+                Planes
             </span>
 
         </a>
 
-
     </div>
 
 </nav>
+</main> <!-- ========================================================= MODAL · ENTRENAMIENTO ========================================================= --> <div class="activity-modal" id="activityModal" aria-hidden="true" >
+<div
+    class="activity-modal-backdrop"
+    data-modal-close
+></div>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-     ========================================================= -->
+<div
+    class="activity-modal-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="activityModalTitle"
+>
 
-<script>
+    <button
+        type="button"
+        class="activity-modal-close"
+        id="activityModalClose"
+        aria-label="Cerrar"
+    >
 
-document.addEventListener(
-    "DOMContentLoaded",
-    async function () {
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
 
+            <path d="M6 6l12 12"></path>
 
-        /* =====================================================
-           SUPABASE
-           ===================================================== */
+            <path d="M18 6 6 18"></path>
 
-        if (
-            !window.supabase
-        ) {
+        </svg>
 
-            console.error(
-                "NOVA · Supabase JS no se pudo cargar."
-            );
+    </button>
 
-            return;
-        }
 
+    <div class="activity-modal-image">
 
-        if (
-            typeof SUPABASE_URL === "undefined" ||
-            typeof SUPABASE_PUBLISHABLE_KEY === "undefined"
-        ) {
+        <img
+            id="activityModalImage"
+            src=""
+            alt=""
+        >
 
-            console.error(
-                "NOVA · No se encontró la configuración de Supabase."
-            );
+        <div class="activity-modal-image-overlay"></div>
 
-            return;
-        }
+        <span
+            class="activity-modal-number"
+            id="activityModalNumber"
+        >
+            01
+        </span>
 
+    </div>
 
-        if (
-            !SUPABASE_URL ||
-            !SUPABASE_PUBLISHABLE_KEY
-        ) {
 
-            console.error(
-                "NOVA · Falta SUPABASE_URL o SUPABASE_PUBLISHABLE_KEY."
-            );
+    <div class="activity-modal-content">
 
-            return;
-        }
+        <span
+            class="activity-modal-eyebrow"
+            id="activityModalType"
+        >
+            NATACIÓN
+        </span>
 
 
-        let supabaseClient;
+        <h2 id="activityModalTitle">
+            Base aeróbica
+        </h2>
 
 
-        try {
+        <p id="activityModalDescription">
+            Trabajo enfocado en construir una base aeróbica sólida.
+        </p>
 
-            supabaseClient =
-                window.supabase.createClient(
-                    SUPABASE_URL,
-                    SUPABASE_PUBLISHABLE_KEY,
-                    {
-                        auth: {
 
-                            persistSession: true,
+        <div class="activity-modal-meta">
 
-                            autoRefreshToken: true,
+            <div class="activity-modal-meta-item">
 
-                            detectSessionInUrl: true
-                        }
-                    }
-                );
+                <span>
+                    OBJETIVO
+                </span>
 
-        } catch (error) {
+                <strong id="activityModalGoal">
+                    Resistencia aeróbica
+                </strong>
 
-            console.error(
-                "NOVA · Error creando cliente Supabase:",
-                error
-            );
+            </div>
 
-            return;
-        }
 
+            <div class="activity-modal-meta-item">
 
-        /* =====================================================
-           COMPROBAR SESIÓN
-           ===================================================== */
+                <span>
+                    DURACIÓN
+                </span>
 
-        try {
+                <strong id="activityModalDuration">
+                    45–60 min
+                </strong>
 
-            const {
-                data,
-                error
-            } =
-                await supabaseClient
-                    .auth
-                    .getSession();
+            </div>
 
+        </div>
 
-            if (error) {
 
-                console.error(
-                    "NOVA · Error comprobando sesión:",
-                    error
-                );
+        <button
+            type="button"
+            class="activity-modal-action"
+            id="activityModalAction"
+        >
 
-                window.location.href =
-                    "NOVA.html";
+            Ver entrenamiento
 
-                return;
-            }
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
 
+                <path d="M5 12h14"></path>
 
-            if (
-                !data ||
-                !data.session
-            ) {
+                <path d="m13 6 6 6-6 6"></path>
 
-                console.warn(
-                    "NOVA · No existe una sesión activa."
-                );
+            </svg>
 
-                window.location.href =
-                    "NOVA.html";
+        </button>
 
-                return;
-            }
+    </div>
 
+</div>
+</div> <!-- ========================================================= MODAL · RECETA ========================================================= --> <div class="recipe-modal" id="recipeModal" aria-hidden="true" >
+<div
+    class="recipe-modal-backdrop"
+    data-recipe-modal-close
+></div>
 
-            console.log(
-                "NOVA · Usuario autenticado:",
-                data.session.user
-            );
 
+<div
+    class="recipe-modal-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="recipeModalTitle"
+>
 
-        } catch (error) {
+    <button
+        type="button"
+        class="recipe-modal-close"
+        id="recipeModalClose"
+        aria-label="Cerrar receta"
+    >
 
-            console.error(
-                "NOVA · Error verificando sesión:",
-                error
-            );
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
 
-            window.location.href =
-                "NOVA.html";
+            <path d="M6 6l12 12"></path>
 
-            return;
-        }
+            <path d="M18 6 6 18"></path>
 
+        </svg>
 
-        /* =====================================================
-           ESTADO INICIAL
-           ===================================================== */
+    </button>
 
-        const sessionsValue =
-            document.getElementById(
-                "sessionsValue"
-            );
 
+    <div class="recipe-modal-image">
 
-        const distanceValue =
-            document.getElementById(
-                "distanceValue"
-            );
+        <img
+            id="recipeModalImage"
+            src=""
+            alt=""
+        >
 
+        <div class="recipe-modal-image-overlay"></div>
 
-        const timeValue =
-            document.getElementById(
-                "timeValue"
-            );
+        <span
+            class="recipe-modal-number"
+            id="recipeModalNumber"
+        >
+            01
+        </span>
 
+    </div>
 
-        const progressStatus =
-            document.getElementById(
-                "progressStatus"
-            );
 
+    <div class="recipe-modal-content">
 
-        const progressBar =
-            document.getElementById(
-                "progressBar"
-            );
+        <span
+            class="recipe-modal-eyebrow"
+            id="recipeModalCategory"
+        >
+            DESAYUNO
+        </span>
 
 
-        /*
-         * Por ahora no existen tablas de actividad.
-         *
-         * Los valores permanecen en cero hasta que
-         * conectemos el historial de entrenamientos.
-         */
+        <h2 id="recipeModalTitle">
+            Desayuno proteína
+        </h2>
 
-        if (sessionsValue) {
 
-            sessionsValue.textContent = "0";
-        }
+        <p id="recipeModalDescription">
+            Una opción completa para comenzar el día con proteína,
+            energía y una combinación equilibrada de nutrientes.
+        </p>
 
 
-        if (distanceValue) {
+        <div class="recipe-modal-meta">
 
-            distanceValue.textContent = "0";
-        }
+            <div class="recipe-modal-meta-item">
 
+                <span>
+                    OBJETIVO
+                </span>
 
-        if (timeValue) {
+                <strong id="recipeModalGoal">
+                    Proteína · Energía
+                </strong>
 
-            timeValue.textContent = "0";
-        }
+            </div>
 
 
-        if (progressStatus) {
+            <div class="recipe-modal-meta-item">
 
-            progressStatus.textContent =
-                "EN CONSTRUCCIÓN";
-        }
+                <span>
+                    TIEMPO
+                </span>
 
+                <strong id="recipeModalTime">
+                    10–15 min
+                </strong>
 
-        if (progressBar) {
+            </div>
 
-            progressBar.style.width =
-                "0%";
-        }
+        </div>
 
 
-        /* =====================================================
-           CAMBIOS DE AUTENTICACIÓN
-           ===================================================== */
+        <button
+            type="button"
+            class="recipe-modal-action"
+            id="recipeModalAction"
+        >
 
-        supabaseClient
-            .auth
-            .onAuthStateChange(
-                function (
-                    event,
-                    session
-                ) {
+            Ver receta
 
-                    console.log(
-                        "NOVA · Auth event:",
-                        event
-                    );
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
 
+                <path d="M5 12h14"></path>
 
-                    if (
-                        !session
-                    ) {
+                <path d="m13 6 6 6-6 6"></path>
 
-                        window.location.href =
-                            "NOVA.html";
-                    }
+            </svg>
 
-                }
-            );
+        </button>
 
+    </div>
 
-    }
-
-);
-
-</script>
-
-
-</body>
-
-</html>
+</div>
+</div> <!-- ========================================================= JAVASCRIPT ========================================================= --> <script> document.addEventListener("DOMContentLoaded", function () { /* ========================================================= REFERENCIAS · MODAL ENTRENAMIENTO ========================================================= */ const activityModal = document.getElementById("activityModal"); const activityModalPanel = document.querySelector(".activity-modal-panel"); const activityModalClose = document.getElementById("activityModalClose"); const activityModalImage = document.getElementById("activityModalImage"); const activityModalNumber = document.getElementById("activityModalNumber"); const activityModalType = document.getElementById("activityModalType"); const activityModalTitle = document.getElementById("activityModalTitle"); const activityModalDescription = document.getElementById("activityModalDescription"); const activityModalGoal = document.getElementById("activityModalGoal"); const activityModalDuration = document.getElementById("activityModalDuration"); const activityModalAction = document.getElementById("activityModalAction"); const workoutCards = document.querySelectorAll(".workout-card"); let lastFocusedWorkout = null; /* ========================================================= ABRIR · MODAL ENTRENAMIENTO ========================================================= */ function openActivityModal(card) { const discipline = card.closest(".activity-discipline"); if (!discipline) { return; } const title = card.dataset.title || card.querySelector("strong")?.textContent || ""; const type = card.dataset.type || discipline.dataset.discipline || ""; const description = card.dataset.description || "Entrenamiento NOVA."; const goal = card.dataset.goal || card.querySelector("small")?.textContent || ""; const duration = card.dataset.duration || "Consultar"; const number = card.querySelector("span")?.textContent || "01"; const image = discipline.dataset.disciplineImage || ""; activityModalType.textContent = type.toUpperCase(); activityModalTitle.textContent = title; activityModalDescription.textContent = description; activityModalGoal.textContent = goal; activityModalDuration.textContent = duration; activityModalNumber.textContent = number; activityModalImage.src = image; activityModalImage.alt = title; activityModalAction.dataset.training = title; activityModalAction.dataset.discipline = type; lastFocusedWorkout = card; activityModal.classList.add("is-open"); activityModal.setAttribute( "aria-hidden", "false" ); document.body.classList.add( "modal-open" ); requestAnimationFrame(function () { activityModalPanel.classList.add( "is-visible" ); }); activityModalClose.focus(); } /* ========================================================= CERRAR · MODAL ENTRENAMIENTO ========================================================= */ function closeActivityModal() { if (!activityModal) { return; } activityModalPanel.classList.remove( "is-visible" ); activityModal.classList.remove( "is-open" ); activityModal.setAttribute( "aria-hidden", "true" ); if ( !recipeModal || !recipeModal.classList.contains("is-open") ) { document.body.classList.remove( "modal-open" ); } if (lastFocusedWorkout) { lastFocusedWorkout.focus(); } } /* ========================================================= EVENTOS · ENTRENAMIENTOS ========================================================= */ workoutCards.forEach(function (card) { card.addEventListener( "click", function (event) { event.preventDefault(); openActivityModal(card); } ); }); if (activityModalClose) { activityModalClose.addEventListener( "click", closeActivityModal ); } if (activityModal) { activityModal.addEventListener( "click", function (event) { if ( event.target.hasAttribute( "data-modal-close" ) ) { closeActivityModal(); } } ); } /* ========================================================= IMAGEN · ENTRENAMIENTO ========================================================= */ if (activityModalImage) { activityModalImage.addEventListener( "error", function () { this.style.display = "none"; } ); activityModalImage.addEventListener( "load", function () { this.style.display = "block"; } ); } /* ========================================================= ACCIÓN · ENTRENAMIENTO ========================================================= */ if (activityModalAction) { activityModalAction.addEventListener( "click", function () { const training = this.dataset.training; const discipline = this.dataset.discipline; console.log( "Entrenamiento seleccionado:", discipline, training ); } ); } /* ========================================================= REFERENCIAS · MODAL RECETA ========================================================= */ const recipeModal = document.getElementById("recipeModal"); const recipeModalPanel = document.querySelector(".recipe-modal-panel"); const recipeModalClose = document.getElementById("recipeModalClose"); const recipeModalImage = document.getElementById("recipeModalImage"); const recipeModalNumber = document.getElementById("recipeModalNumber"); const recipeModalTitle = document.getElementById("recipeModalTitle"); const recipeModalCategory = document.getElementById("recipeModalCategory"); const recipeModalDescription = document.getElementById("recipeModalDescription"); const recipeModalGoal = document.getElementById("recipeModalGoal"); const recipeModalTime = document.getElementById("recipeModalTime"); const recipeModalAction = document.getElementById("recipeModalAction"); const recipeCards = document.querySelectorAll(".recipe-card"); let lastFocusedRecipe = null; /* ========================================================= ABRIR · MODAL RECETA ========================================================= */ function openRecipeModal(card) { if (!recipeModal) { return; } const title = card.dataset.recipeTitle || card.querySelector("h3")?.textContent || ""; const category = card.dataset.recipeCategory || ""; const description = card.dataset.recipeDescription || ""; const goal = card.dataset.recipeGoal || ""; const time = card.dataset.recipeTime || ""; const image = card.dataset.recipeImage || ""; const number = card.querySelector( ".recipe-content span" )?.textContent || "01"; recipeModalNumber.textContent = number; recipeModalCategory.textContent = category.toUpperCase(); recipeModalTitle.textContent = title; recipeModalDescription.textContent = description; recipeModalGoal.textContent = goal; recipeModalTime.textContent = time; recipeModalImage.src = image; recipeModalImage.alt = title; recipeModalAction.dataset.recipe = title; lastFocusedRecipe = card; recipeModal.classList.add( "is-open" ); recipeModal.setAttribute( "aria-hidden", "false" ); document.body.classList.add( "modal-open" ); requestAnimationFrame(function () { if (recipeModalPanel) { recipeModalPanel.classList.add( "is-visible" ); } }); recipeModalClose.focus(); } /* ========================================================= CERRAR · MODAL RECETA ========================================================= */ function closeRecipeModal() { if (!recipeModal) { return; } if (recipeModalPanel) { recipeModalPanel.classList.remove( "is-visible" ); } recipeModal.classList.remove( "is-open" ); recipeModal.setAttribute( "aria-hidden", "true" ); if ( !activityModal || !activityModal.classList.contains("is-open") ) { document.body.classList.remove( "modal-open" ); } if (lastFocusedRecipe) { lastFocusedRecipe.focus(); } } /* ========================================================= EVENTOS · RECETAS ========================================================= */ recipeCards.forEach(function (card) { card.addEventListener( "click", function (event) { event.preventDefault(); openRecipeModal(card); } ); }); if (recipeModalClose) { recipeModalClose.addEventListener( "click", closeRecipeModal ); } if (recipeModal) { recipeModal.addEventListener( "click", function (event) { if ( event.target.hasAttribute( "data-recipe-modal-close" ) ) { closeRecipeModal(); } } ); } /* ========================================================= IMAGEN · RECETA ========================================================= */ if (recipeModalImage) { recipeModalImage.addEventListener( "error", function () { this.style.display = "none"; } ); recipeModalImage.addEventListener( "load", function () { this.style.display = "block"; } ); } /* ========================================================= ACCIÓN · RECETA ========================================================= */ if (recipeModalAction) { recipeModalAction.addEventListener( "click", function () { const recipe = this.dataset.recipe; console.log( "Receta seleccionada:", recipe ); } ); } /* ========================================================= ESCAPE · CERRAR MODALES ========================================================= */ document.addEventListener( "keydown", function (event) { if (event.key !== "Escape") { return; } if ( recipeModal && recipeModal.classList.contains("is-open") ) { closeRecipeModal(); return; } if ( activityModal && activityModal.classList.contains("is-open") ) { closeActivityModal(); } } ); }); </script> </body> </html>
